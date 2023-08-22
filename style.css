@@ -71,3 +71,18 @@
     background-color: #FFFFFF;
     
 }
+
+
+/* container */ 
+
+.containerTask{
+    margin: 0;
+    margin-top: 69px;
+    margin-left: 21px;
+}
+
+.plannedContainer{
+    width: 454px;
+    border-radius: 8px;
+    border-top: 10px solid #86D3EB ;
+}

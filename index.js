@@ -50,6 +50,52 @@ const template = document.getElementById("mon-template");
 
         header.appendChild(darkButton); 
 
+        const containerTask = document.createElement("div");
+        containerTask.classList.add('containerTask'); 
+
+        const plannedContainer = document.createElement("div");
+        plannedContainer.classList.add("plannedContainer"); 
+
+            const planned = document.createElement("div"); 
+            planned.classList.add("planned");
+
+                const plannedTitle = document.createElement("p");
+                plannedTitle.classList.add("title");
+
+                const plannedCount = document.createElement("p"); 
+                plannedCount.classList.add("count"); 
+
+                planned.appendChild(plannedTitle);
+                planned.appendChild(plannedCount); 
+
+            plannedContainer.appendChild(planned); 
+
+            const plannedAddTask = document.createElement("div"); 
+            plannedAddTask.classList.add("addTask"); 
+
+                const p3 = document.createElement("p");
+                p3.classList.add("addTaskPlus"); 
+
+                const p4 = document.createElement("p"); 
+                p4.classList.add("addTaskText"); 
+
+                plannedAddTask.appendChild(p3);
+                plannedAddTask.appendChild(p4);
+            
+            plannedContainer.appendChild(plannedAddTask); 
+
+        containerTask.appendChild(plannedContainer);
+
+    clone.appendChild(containerTask); 
+
+
+        // const inProgress = document.createElement("div"); 
+        // inProgress.classList.add("inProgress"); 
+
+        // const completed = document.createElement("div"); 
+        // completed.classList.add("completed"); 
+
+
     
 
     document.getElementById("app").appendChild(clone);
