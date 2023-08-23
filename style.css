@@ -1,3 +1,7 @@
+body{
+    margin: 0;
+}
+
 #app{
     width: 1440px;
     font-family: 'Merriweather Sans' , sans-serif;
@@ -209,7 +213,68 @@ header > input:focus{
     margin-left: 170px;
 }
 
-.completed > img:hover {
+
+
+/* modal */ 
+
+.modal {
+
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
+}
+
+.modalContent {
+    background-color: #fff;
+    padding-left: 42px;
+    border-radius: 15px;
+    width: 512px;
+    margin: 180px 0px 0px 459px;
+    position: relative;
+    display: grid;
+}
+
+.modalContent > *{
+    grid-row-start: 1;
+    grid-column-start: 1;
+    display: none;
+}
+
+.modalContent > p:nth-child(1){
+    font-size: 50px;
+    margin-left: 450px;
+    display: block;
+    rotate: 45deg;
+    line-height: 0px;
+}
+
+.modalContent > p:nth-child(2){
+    display: block;
+    font-size: 24px;
+    margin: 0;
+    margin-top: 33px;
+}
+
+.modalContent > img:nth-child(3){
+    display: block;
+    margin-top: 35px;
+    margin-left: 135px;
+}
+
+.clear:hover{
     filter: brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(257%) hue-rotate(118deg) brightness(96%) contrast(91%);
     cursor: pointer;
+}
+
+.modalContent > input:nth-child(4){
+    display: block;
+    outline: none;
+    margin: 0;
+    margin-top: 96px;
+    padding: 21px 62px 23px 23px;
+    width: 382px;
 }

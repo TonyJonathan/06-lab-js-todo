@@ -54,12 +54,37 @@
                 <div class="completed">
                     <p class="title">COMPLETED</p>
                     <p class="completedCount">0</p>
-                    <img src="picture/Corbeille.svg" width="35" height="36" alt="Corbeille">
+                    <img src="picture/Corbeille.svg" width="35" height="36" alt="Corbeille" class="clear">
                 </div>
                 <div class="addTask">
                     <p class="addTaskPlus">+</p>
                     <p class="addTaskText">Add task</p>
                 </div>
+            </div>
+        </div>
+
+
+
+
+<!-- mettre une classe clear pour pouvoir la changée en dark en js -->
+        <div id="myModal" class="modal">
+            <div class="modalContent">
+                <p class="clear">+</p>
+                <p>PLANNED</p>
+                <img src="picture/guillemet.svg" width="13" height="24" alt="guillemet" class="clear">
+                <input type="text" class="taskTitle" placeholder="Title of the task">
+                <input type="text" class="taskTitle" placeholder="Description of the task">
+
+                <div class = "buttonModal">
+                    <input type="radio" id="font_1" name="font" value="1">
+                    <label for="font_1">URGENT</label>
+                </div>
+                <div class = "buttonModal">
+                    <input type="radio" id="font_2" name="font" value="2">
+                    <label for="font_2">ON HOLD</label>
+                </div>
+                <p>ADD NEW TASK</p>
+
             </div>
         </div>
     </template>
