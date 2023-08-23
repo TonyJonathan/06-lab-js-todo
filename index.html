@@ -11,9 +11,57 @@
     <title>06-lab-js-todo</title>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+    </div>
 
     <template id="mon-template">
+
+        <header>
+            <img src="picture/logo.png" width="193" height="59" alt="To do list écrit à côté d'une liste à compléter sur un calpin">
+            <input type="text" class="filter" placeholder="Type to filter task...">
+            <div class="new_task">
+                <p>+</p>
+                <p>New task</p>
+            </div>
+            <div class="darkButton">
+                <div class="darkButtonCircle">
+                </div>
+            </div>
+        </header>
+
+        <div class="containerTask">
+            <div class="plannedContainer">
+                <div class="planned">
+                    <p class="title">PLANNED</p>
+                    <p class="plannedCount">0</p>
+                </div>
+                <div class="addTask">
+                    <p class="addTaskPlus">+</p>
+                    <p class="addTaskText">Add task</p>
+                </div>
+            </div>
+            <div class="inProgressContainer">
+                <div class="inProgress">
+                    <p class="title">IN PROGRESS</p>
+                    <p class="inProgressCount">0</p>
+                </div>
+                <div class="addTask">
+                    <p class="addTaskPlus">+</p>
+                    <p class="addTaskText">Add task</p>
+                </div>
+            </div>
+            <div class="completedContainer">
+                <div class="completed">
+                    <p class="title">COMPLETED</p>
+                    <p class="completedCount">0</p>
+                    <img src="picture/Corbeille.svg" width="35" height="36" alt="Corbeille">
+                </div>
+                <div class="addTask">
+                    <p class="addTaskPlus">+</p>
+                    <p class="addTaskText">Add task</p>
+                </div>
+            </div>
+        </div>
     </template>
 </body>
 </html>
