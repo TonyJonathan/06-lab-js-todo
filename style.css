@@ -232,37 +232,39 @@ header > input:focus{
     background-color: #fff;
     padding-left: 42px;
     border-radius: 15px;
-    width: 512px;
-    margin: 180px 0px 0px 459px;
+    width:395px;
+    margin: 180px 0px 0px 495px;
     position: relative;
-    display: grid;
+    display: block;
+    padding-bottom: 25px;
 }
 
 .modalContent > *{
     grid-row-start: 1;
     grid-column-start: 1;
-    display: none;
 }
 
-.modalContent > p:nth-child(1){
-    font-size: 50px;
-    margin-left: 450px;
-    display: block;
-    rotate: 45deg;
-    line-height: 0px;
+.taskDescription{
+    display: flex;
 }
 
-.modalContent > p:nth-child(2){
-    display: block;
+.taskDescription > p:nth-child(1){
     font-size: 24px;
     margin: 0;
     margin-top: 33px;
 }
 
-.modalContent > img:nth-child(3){
-    display: block;
+.taskDescription > img:nth-child(2){
     margin-top: 35px;
-    margin-left: 135px;
+    margin-left: 20px;
+}
+
+.taskDescription > p:nth-child(3){
+    font-size: 50px;
+    margin-left:200px;
+    rotate: 45deg;
+    line-height: 0px;
+    margin-top: 32px;
 }
 
 .clear:hover{
@@ -270,11 +272,87 @@ header > input:focus{
     cursor: pointer;
 }
 
-.modalContent > input:nth-child(4){
-    display: block;
+.modalContent > input:nth-child(2){
+    width: 262px;
+    font-size: 16px;
     outline: none;
     margin: 0;
-    margin-top: 96px;
-    padding: 21px 62px 23px 23px;
-    width: 382px;
+    margin-top: 15px;
+    padding: 16px 62px 13px 23px;
+    border-radius: 8px;
+    border: 2px solid #E1E8E9;
+    font-weight: 500;
+    font-family: 'Arial' , sans-serif;
+}
+
+.textArea{
+    width: 304px;
+    font-family: 'Arial' , sans-serif;
+    font-size: 16px;
+    outline: none;
+    margin: 0;
+    margin-top: 19px;
+    padding: 16px 23px 20px 23px;
+    border-radius: 8px;
+    border: 2px solid #E1E8E9;
+    line-height: 30px;
+}
+
+.buttonModal{
+    display: flex;
+    margin-top: 18px;
+}
+
+label{
+    display: block;
+    margin: 0;
+    width: 103px;
+    color: #FFFFFF;
+    background-color: #9B9B9B;
+    text-align: center;
+    line-height: 31px;
+    border-radius: 5px;
+}
+
+.onHold > label{
+    margin-left: 35px;
+}
+
+.urgent > label:hover{
+    background-color: #ff6c6c;
+    cursor: pointer;
+    transition: color 0s;
+} 
+
+.onHold > label:hover{
+    background-color: #FFB951;
+    cursor: pointer;
+} 
+
+.urgent > input:checked +label{
+    background-color: #FF3838;
+}
+
+.onHold > input:checked +label{
+    background-color: #FF9900;
+}
+
+.urgent > input, .onHold > input {
+    display: none;
+}
+
+.modalContent > p:nth-child(5){
+    width: 350px;
+    color: #ffffff;
+    background-color: #00B49E;
+    text-align: center;
+    line-height: 42px;
+    border-radius: 10px;
+    margin: 0;
+    margin-top: 35px;
+}
+
+.modalContent > p:nth-child(5):hover{
+    cursor: pointer;
+    background-color: #53e3d3;
 }

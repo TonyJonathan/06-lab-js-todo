@@ -69,20 +69,27 @@
 <!-- mettre une classe clear pour pouvoir la changée en dark en js -->
         <div id="myModal" class="modal">
             <div class="modalContent">
-                <p class="clear">+</p>
-                <p>PLANNED</p>
-                <img src="picture/guillemet.svg" width="13" height="24" alt="guillemet" class="clear">
+                <div class="taskDescription">
+                    
+                    <p>PLANNED</p>
+                    <img src="picture/guillemet.svg" width="13" height="24" alt="guillemet" class="clear">
+                    <p class="clear">+</p>
+                </div>
                 <input type="text" class="taskTitle" placeholder="Title of the task">
-                <input type="text" class="taskTitle" placeholder="Description of the task">
+                <textarea class="textArea" placeholder="Description of the task"></textarea>
 
-                <div class = "buttonModal">
-                    <input type="radio" id="font_1" name="font" value="1">
-                    <label for="font_1">URGENT</label>
+                <div class="buttonModal">
+                    <div class = "urgent">
+                        <input type="radio" id="value_1" name="value" value="1">
+                        <label for="value_1">URGENT</label>
+                    </div>
+                    <div class = "onHold">
+                        <input type="radio" id="value_2" name="value" value="2">
+                        <label for="value_2">ON HOLD</label>
+                    </div>
+                
                 </div>
-                <div class = "buttonModal">
-                    <input type="radio" id="font_2" name="font" value="2">
-                    <label for="font_2">ON HOLD</label>
-                </div>
+               
                 <p>ADD NEW TASK</p>
 
             </div>
