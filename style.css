@@ -53,7 +53,7 @@ header > img{
 
 header > input{
     width: 493px;
-    font-family: 'Merriweather Sans' , sans-serif;
+    font-family: 'Arial' , sans-serif;
     border: 2px solid #00B49E;
     padding: 13px 0 10px 30px;
     margin: 31px 93px 30px 198px;
@@ -142,6 +142,7 @@ header > input:focus{
 .addTask:hover{
     cursor: pointer;
    color: #53e3d3;
+ 
 }
 
 .addTaskPlus{
@@ -149,6 +150,7 @@ header > input:focus{
     font-weight: 700;
     line-height: 30px;
     margin: 0;
+  
 }
 
 .addTaskText{
@@ -218,7 +220,7 @@ header > input:focus{
 /* modal */ 
 
 .modal {
-
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;
@@ -245,6 +247,7 @@ header > input:focus{
 }
 
 .taskDescription{
+    width: 395px;
     display: flex;
 }
 
@@ -252,16 +255,26 @@ header > input:focus{
     font-size: 24px;
     margin: 0;
     margin-top: 33px;
+    white-space: nowrap;
+}
+
+.taskDescription > p:nth-child(1):hover{
+    cursor: pointer;
+}
+
+.taskDescription > p:nth-child(1):hover~img{
+    filter: brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(257%) hue-rotate(118deg) brightness(96%) contrast(91%);
 }
 
 .taskDescription > img:nth-child(2){
     margin-top: 35px;
-    margin-left: 20px;
+    padding-left: 20px;
 }
 
 .taskDescription > p:nth-child(3){
     font-size: 50px;
-    margin-left:200px;
+    margin-left: auto;
+    margin-right: 17px;
     rotate: 45deg;
     line-height: 0px;
     margin-top: 32px;
@@ -286,7 +299,7 @@ header > input:focus{
 }
 
 .textArea{
-    width: 304px;
+    width: 301px;
     font-family: 'Arial' , sans-serif;
     font-size: 16px;
     outline: none;
@@ -296,6 +309,7 @@ header > input:focus{
     border-radius: 8px;
     border: 2px solid #E1E8E9;
     line-height: 30px;
+    resize: none;
 }
 
 .buttonModal{
@@ -355,4 +369,8 @@ label{
 .modalContent > p:nth-child(5):hover{
     cursor: pointer;
     background-color: #53e3d3;
+}
+
+.error::placeholder{
+    color: red;
 }
