@@ -5,22 +5,25 @@ const template = document.getElementById("mon-template");
     const buttonOnHold = clone.querySelector('.onHold > input'); 
 
     let clickUrgent = 0; 
-    let clickHoldOn = 0; 
+    let clickOnHold = 0; 
     
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
     function clickAgainReset(event){
         if(event.target == buttonUrgent && clickUrgent == 0){
             clickUrgent++; 
+            clickOnHold = 0;
         } else if (event.target == buttonUrgent && clickUrgent == 1){
             buttonUrgent.checked = false;
             clickUrgent--;
+            
         }
         
-        if(event.target == buttonOnHold && clickHoldOn == 0){
-            clickHoldOn++; 
-        } else if (event.target == buttonOnHold && clickHoldOn == 1){
+        if(event.target == buttonOnHold && clickOnHold == 0){
+            clickOnHold++; 
+            clickUrgent = 0;
+        } else if (event.target == buttonOnHold && clickOnHold == 1){
             buttonOnHold.checked = false;
-            clickHoldOn--;
+            clickOnHold--;
         }
     }
   
