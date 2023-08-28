@@ -14,11 +14,19 @@ const template = document.getElementById("mon-template");
     const addTask = clone.querySelectorAll('.addTask');
     const addTaskAll = clone.querySelectorAll('.addTask > *');
 
-    console.log(addNewTask.parentNode);
-   
+    let plannedCountText = clone.querySelector('.plannedCount');
+    let inProgressCountText = clone.querySelector('.inProgressCount');
+    let completedCountText = clone.querySelector('.completedCount');
 
+    let plannedCount = parseInt(clone.querySelector('.plannedCount').textContent);
+    let inProgressCount = parseInt(clone.querySelector('.inProgressCount').textContent);
+    let completedCount = parseInt(clone.querySelector('.completedCount').textContent);
+
+    
+    console.log(plannedCountText); 
     let clickUrgent = 0; 
     let clickOnHold = 0; 
+
     
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
     function clickAgainReset(event){
@@ -28,10 +36,7 @@ const template = document.getElementById("mon-template");
         } else if (event.target == buttonUrgent && clickUrgent == 1){
             buttonUrgent.checked = false;
             clickUrgent--;
-            
-        }
-        
-        if(event.target == buttonOnHold && clickOnHold == 0){
+        }else if(event.target == buttonOnHold && clickOnHold == 0){
             clickOnHold++; 
             clickUrgent = 0;
         } else if (event.target == buttonOnHold && clickOnHold == 1){
@@ -43,8 +48,12 @@ const template = document.getElementById("mon-template");
     document.addEventListener('click', clickAgainReset); 
 
     function openModal(){
-        taskCategory.textContent = 'PLANNED'; 
         modal.style.display = 'block'; 
+    }
+
+    function closeModal(){
+        taskCategory.textContent = 'PLANNED'; 
+        modal.style.display = 'none';
         inputTitle.classList.remove('error'); 
         inputTitle.placeholder = 'Title of the task';
         inputTitle.value = ''; 
@@ -52,11 +61,7 @@ const template = document.getElementById("mon-template");
         buttonOnHold.checked = false; 
         buttonUrgent.checked = false; 
         clickUrgent = 0; 
-        clickOnHold = 0; 
-    }
-
-    function closeModal(){
-        modal.style.display = 'none';
+        clickOnHold = 0;  
     }
 
 
@@ -71,6 +76,20 @@ function submitInfo(){
     if(inputTitle.value == ''){
         inputTitle.placeholder = 'Please add a title to your task'; 
         inputTitle.classList.add('error'); 
+    } else {
+        closeModal(); 
+            if(taskCategory.textContent == "PLANNED") {
+                plannedCount++;
+                plannedCountText.textContent = plannedCount.toString();
+            } else if(taskCategory.textContent == "IN PROGRESS") {
+                inProgressCount++;
+                inProgressCountText.textContent = inProgressCount.toString();
+            } else if(taskCategory.textContent == "COMPLETED") {
+                completedCount++;
+                completedCountText.textContent = completedCount.toString();
+        }
+
+        
     }
 }
 
@@ -89,7 +108,7 @@ quotationMark.addEventListener('click', changeCategoryTask);
 
 
 
-document.getElementById("app").appendChild(clone);
+
 
 
 
@@ -99,57 +118,47 @@ document.getElementById("app").appendChild(clone);
 //     }
 // }); 
 
-function addNewTask(){
+function addCategoryTask(){
     addTask.forEach(element => {
         
         element.addEventListener('click', (event) => {
         modal.style.display = 'block';
-        console.log(event.target.parentNode.className);
-        if(event.target.parentNode.className == "inProgressContainer"){
-            taskCategory.textContent = 'IN PROGRESS'
+        if(event.target.parentNode.className == "plannedContainer"){
+            taskCategory.textContent = 'PLANNED';
+                   
+        }else if(event.target.parentNode.className == "inProgressContainer"){
+            taskCategory.textContent = 'IN PROGRESS';
                    
         } else if (event.target.parentNode.className == "completedContainer"){
-                taskCategory.textContent = 'COMPLETED'
-                console.log('completed');
+                taskCategory.textContent = 'COMPLETED';
             } 
     })
         }); 
 
+    addTaskAll.forEach(element =>{
+        element.addEventListener('click', (event) => {
+            modal.style.display = 'block';
+
+            if(event.target.parentNode.parentNode.className == "plannedContainer"){
+                taskCategory.textContent = 'PLANNED';
+                           
+            } else if(event.target.parentNode.parentNode.className == "inProgressContainer"){
+                taskCategory.textContent = 'IN PROGRESS';
+                           
+            } else if (event.target.parentNode.parentNode.className == "completedContainer"){
+                taskCategory.textContent = 'COMPLETED';
+            } 
+        })
+    })
         
+};
 
-        
-    };
-
-    // {
-    //     modal.style.display = 'block';
-    //     if(element.parentNode.className == "inProgressContainer"){
-    //         taskCategory.textContent = 'IN PROGRESS'
-    //         console.log('inprogress');
-    //     } else if (element.parentNode.className == "completedContainer"){
-    //         taskCategory.textContent = 'COMPLETED'
-    //         console.log('completed');
-    //    
-
-    // function addNewTask(){
-    //     addTask.forEach(element => {
-    //         console.log(element.parentNode.className);
-    //         element.addEventListener('click', (event) =>{
-    //             if(event.target){
-    //                 console.log(event.target.parentNode.className); 
-    //             }
-    //         });
-    //         if(element.parentNode.className == "inProgressContainer"){
-    //             inputTitle.textContent = 'IN PROGRESS'
-    //         } else if (element.parentNode.className == "completedContainer"){
-    //             inputTitle.textContent = 'COMPLETED'
-    //         } else {
-    //             console.log('aaaahah')
-    //         }
-    //     });
+addCategoryTask(); 
 
 
 
-addNewTask(); 
+
+document.getElementById("app").appendChild(clone);
 
 //.append
 
