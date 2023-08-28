@@ -158,6 +158,67 @@ addCategoryTask();
 
 
 
+
+
+
+submit.addEventListener('click', function() {
+    const listTemplate = document.getElementById('listTemplate');
+    const ulClone = document.importNode(listTemplate.content, true);
+    const todoList = ulClone.querySelector('#todoList');
+    
+    const taskTemplate = document.getElementById('taskTemplate');
+    const taskClone = document.importNode(taskTemplate.content, true);
+
+    let task = taskClone.querySelector('.task'); 
+
+    let noClickedTask = taskClone.querySelector('.noClickedTask');
+
+    let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
+    taskText1.textContent = "Nouvelle tâche";
+    let alert = taskClone.querySelector('.alert'); 
+    let taskText2 = taskClone.querySelector('.noClickedTask > p:nth-child(3)');
+    taskText2.textContent = "...";
+    
+    noClickedTask.appendChild(taskText1); 
+    noClickedTask.appendChild(alert); 
+    noClickedTask.appendChild(taskText2); 
+
+    task.appendChild(noClickedTask); 
+
+    
+    let taskText3 = taskClone.querySelector('.task > p:nth-child(1)');
+    taskText3.textContent = "urgent";
+
+    let clickedTask = taskClone.querySelector('.clickedTask'); 
+    let taskText4 = taskClone.querySelector('.clickedTask > p:nth-child(1)');
+    taskText4.textContent = "description";
+    let taskBin = taskClone.querySelector('.clickedTask > img:nth-child(2)');
+
+
+
+    
+    
+    task.appendChild(taskText3);
+    clickedTask.appendChild(taskText4);
+    clickedTask.appendChild(taskBin);
+
+    task.appendChild(clickedTask); 
+
+
+    
+    taskBin.addEventListener('click', function() {
+        taskClone.remove();
+    });
+
+    todoList.appendChild(taskClone);
+
+    // Ajouter la liste à la page
+    document.body.appendChild(ulClone);
+});
+
+
+
+
 document.getElementById("app").appendChild(clone);
 
 //.append

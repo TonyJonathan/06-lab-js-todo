@@ -374,3 +374,51 @@ label{
 .error::placeholder{
     color: red;
 }
+
+
+/* task */ 
+
+li{
+    list-style: none;
+}
+
+.task{
+    width: 405px;
+    padding-left: 21px;
+    font-family: 'Merriweather Sans' , sans-serif;
+    font-weight: 500;
+    border: 2px solid #E1E8E9;
+    border-radius: 8px;
+}
+
+.noClickedTask{
+    width: 405px;
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.noClickedTask > p:nth-child(1){
+    font-size: 20px;
+    color: #3E3E3E;
+    margin: 0;
+}
+
+.alert{
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    background-color: #FF3838;
+}
+
+.noClickedTask > p:nth-child(3){
+    font-size: 40px;
+    color: #9B9B9B;
+    margin: 0;
+    margin-left: auto;
+    margin-right:  -6px;
+    rotate: 90deg;
+    letter-spacing: 0.1px;
+    font-weight: 700;
+
+}
