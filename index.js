@@ -16,7 +16,8 @@ const template = document.getElementById("mon-template");
     const plannedContainer = clone.querySelector('.plannedContainer');
     const inProgressContainer = clone.querySelector('.inProgressContainer');
     const completedContainer = clone.querySelector('.completedContainer');
-
+    const completedContainerBin = clone.querySelector('.completed > img');
+    
     let plannedCountText = clone.querySelector('.plannedCount');
     let inProgressCountText = clone.querySelector('.inProgressCount');
     let completedCountText = clone.querySelector('.completedCount');
@@ -25,11 +26,8 @@ const template = document.getElementById("mon-template");
     let inProgressCount = parseInt(clone.querySelector('.inProgressCount').textContent);
     let completedCount = parseInt(clone.querySelector('.completedCount').textContent);
 
-    
-    console.log(plannedCountText); 
     let clickUrgent = 0; 
     let clickOnHold = 0; 
-
     
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
     function clickAgainReset(event){
@@ -67,8 +65,6 @@ const template = document.getElementById("mon-template");
         clickOnHold = 0;  
     }
 
-
-
     newTask.addEventListener('click', openModal);
     cross.addEventListener('click', closeModal); 
 
@@ -80,7 +76,6 @@ function submitInfo(){
         inputTitle.placeholder = 'Please add a title to your task'; 
         inputTitle.classList.add('error'); 
     } else {
-
         // ajoute la tâche
         const listTemplate = document.getElementById('listTemplate');
         const ulClone = document.importNode(listTemplate.content, true);
@@ -97,7 +92,6 @@ function submitInfo(){
         taskText1.textContent = inputTitle.value;
         let alert = taskClone.querySelector('.alert'); 
         
-
         if(buttonUrgent.checked==true){
             alert.classList.add('alertUrgent'); 
             console.log("aller"); 
@@ -120,17 +114,16 @@ function submitInfo(){
         if(buttonUrgent.checked == true){
             taskText3.textContent = "URGENT";
             taskText3.classList.add('taskAlertUrgent'); 
-
         } else if(buttonOnHold.checked == true){
             taskText3.textContent = "ON HOLD";
             taskText3.classList.add('taskAlertOnHold'); 
         } else {
             taskText3.hidden = true; 
         }
-        
 
         let clickedTask = taskClone.querySelector('.clickedTask'); 
         let taskText4 = taskClone.querySelector('.clickedTask > p:nth-child(1)');
+
         if(textAreaDescription.value == ''){
             taskText4.textContent = 'no description'; 
         } else {
@@ -147,13 +140,11 @@ function submitInfo(){
 
         todoList.appendChild(taskClone);
 
-        
-
         // Ajouter la liste à la page
         document.body.appendChild(ulClone);
         
         // ferme le modal et incrémente le nombre de tâches
-        closeModal(); 
+        
             if(taskCategory.textContent == "PLANNED") {
                 plannedCount++;
                 plannedCountText.textContent = plannedCount.toString();
@@ -168,7 +159,7 @@ function submitInfo(){
                 completedContainer.appendChild(task); 
         }
 
-        
+         closeModal();
     }
 }
 
@@ -184,11 +175,6 @@ function changeCategoryTask(){
 
 taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
-
-
-
-
-
 
 
 // document.addEventListener('click', (event) =>{
@@ -229,14 +215,9 @@ function addCategoryTask(){
             } 
         })
     })
-        
 };
 
 addCategoryTask(); 
-
-
-
-
 
 submit.addEventListener('click', function() {
 
@@ -253,14 +234,43 @@ function deleteTask(event){
 
     taskBinAll.forEach(element =>{
         if(event.target==element){
+            let taskElement = element.parentNode;
+            console.log(taskElement.parentNode.parentNode.className); 
+             
+            if(taskElement.parentNode.parentNode.className == "plannedContainer"){
+                plannedCount--;
+                plannedCountText.textContent = plannedCount.toString();
+                       
+            }else if(taskElement.parentNode.parentNode.className == "inProgressContainer"){
+                inProgressCount--; 
+                inProgressCountText.textContent = inProgressCount.toString();
+                       
+            } else if (taskElement.parentNode.parentNode.className == "completedContainer"){
+                    completedCount--; 
+                    completedCountText.textContent = completedCount.toString();
+                }
             element.parentNode.parentNode.remove(); 
         }
         
     })
 }
+function deleteAllCompleteTask(){
+
+    const completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
+        return node.tagName === 'DIV' && node.classList.contains('task');
+      });
+
+      completedContainerTask.forEach(divTask => {
+        divTask.remove(); 
+      });
+
+      completedCount = 0;
+      completedCountText.textContent = completedCount.toString();
+  }
 
 document.addEventListener('click', deleteTask); 
- 
+
+completedContainerBin.addEventListener('click', deleteAllCompleteTask); 
 
 document.getElementById("app").appendChild(clone);
 
