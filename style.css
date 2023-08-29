@@ -389,36 +389,121 @@ li{
     font-weight: 500;
     border: 2px solid #E1E8E9;
     border-radius: 8px;
+    margin-left: 14px;
+    margin-bottom: 15px;
+    padding-bottom: 16px;
 }
+
+.task:hover{
+    border: 2px solid #53e3d3;
+    cursor: pointer;
+}
+
+.task:focus{
+    border: 2px solid #00B49E;
+}
+
+
 
 .noClickedTask{
     width: 405px;
     display: flex;
     align-items: center;
     margin: 0;
+    margin-top: 15px;
 }
 
 .noClickedTask > p:nth-child(1){
+    width: 335px;
     font-size: 20px;
     color: #3E3E3E;
     margin: 0;
 }
 
-.alert{
+.alertUrgent{
     width: 17px;
     height: 17px;
     border-radius: 5px;
     background-color: #FF3838;
+    
+    margin-left: 10px;
+}
+
+.alertOnHold{
+    width: 17px;
+    height: 17px;
+    border-radius: 5px;
+    background-color: #FF9900;
+    margin-left: 10px;
+    
+    
 }
 
 .noClickedTask > p:nth-child(3){
-    font-size: 40px;
+    font-size: 30px;
     color: #9B9B9B;
     margin: 0;
     margin-left: auto;
-    margin-right:  -6px;
+    margin-right: -3px;
+    margin-top: 0px;
     rotate: 90deg;
-    letter-spacing: 0.1px;
+    letter-spacing: -1px;
     font-weight: 700;
+}
 
+.task:focus > .taskAlertUrgent, .task:focus > .taskAlertOnHold {
+    display: block;
+}
+
+.task:focus > .clickedTask{
+    display: flex;
+}
+.taskAlertUrgent{
+    width: 103px;
+    background-color: #FF3838;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin: 0;
+    margin-top: 10px;
+    display: none;
+}
+
+.taskAlertOnHold{
+    width: 103px;
+    background-color: #FF9900;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    border-radius: 5px;
+    margin: 0;
+    margin-top: 10px;
+    display: none;
+}
+
+
+.clickedTask{
+    font-family: 'Merriweather Sans' , sans-serif;
+    font-size: 16px;
+    display: flex;
+    align-items: center;
+    margin-top: 16px;
+    display: none;
+}
+
+.clickedTask > p:nth-child(1){
+   width: 353px;
+   margin: 0;
+}
+
+.clickedTask > p:nth-child(1)::first-letter{
+    text-transform: uppercase;
+}
+
+.clickedTask > img:nth-child(2){
+    margin-left: auto;
+    margin-right: 10px;
 }

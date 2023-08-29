@@ -13,6 +13,9 @@ const template = document.getElementById("mon-template");
     const quotationMark = clone.querySelector('.taskDescription > img:nth-child(2)'); 
     const addTask = clone.querySelectorAll('.addTask');
     const addTaskAll = clone.querySelectorAll('.addTask > *');
+    const plannedContainer = clone.querySelector('.plannedContainer');
+    const inProgressContainer = clone.querySelector('.inProgressContainer');
+    const completedContainer = clone.querySelector('.completedContainer');
 
     let plannedCountText = clone.querySelector('.plannedCount');
     let inProgressCountText = clone.querySelector('.inProgressCount');
@@ -77,16 +80,92 @@ function submitInfo(){
         inputTitle.placeholder = 'Please add a title to your task'; 
         inputTitle.classList.add('error'); 
     } else {
+
+        // ajoute la tâche
+        const listTemplate = document.getElementById('listTemplate');
+        const ulClone = document.importNode(listTemplate.content, true);
+        const todoList = ulClone.querySelector('#todoList');
+        
+        const taskTemplate = document.getElementById('taskTemplate');
+        const taskClone = document.importNode(taskTemplate.content, true);
+
+        let task = taskClone.querySelector('.task'); 
+
+        let noClickedTask = taskClone.querySelector('.noClickedTask');
+
+        let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
+        taskText1.textContent = inputTitle.value;
+        let alert = taskClone.querySelector('.alert'); 
+        
+
+        if(buttonUrgent.checked==true){
+            alert.classList.add('alertUrgent'); 
+            console.log("aller"); 
+        } else if(buttonOnHold.checked==true){
+            alert.classList.add('alertOnHold'); 
+        } 
+
+        let taskText2 = taskClone.querySelector('.noClickedTask > p:nth-child(3)');
+        taskText2.textContent = "...";
+        
+        noClickedTask.appendChild(taskText1); 
+        noClickedTask.appendChild(alert); 
+        noClickedTask.appendChild(taskText2); 
+
+        task.appendChild(noClickedTask); 
+
+        let taskText3 = taskClone.querySelector('.taskAlert');
+        taskText3.classList.remove('taskAlert')
+
+        if(buttonUrgent.checked == true){
+            taskText3.textContent = "URGENT";
+            taskText3.classList.add('taskAlertUrgent'); 
+
+        } else if(buttonOnHold.checked == true){
+            taskText3.textContent = "ON HOLD";
+            taskText3.classList.add('taskAlertOnHold'); 
+        } else {
+            taskText3.hidden = true; 
+        }
+        
+
+        let clickedTask = taskClone.querySelector('.clickedTask'); 
+        let taskText4 = taskClone.querySelector('.clickedTask > p:nth-child(1)');
+        if(textAreaDescription.value == ''){
+            taskText4.textContent = 'no description'; 
+        } else {
+            taskText4.textContent = textAreaDescription.value;
+        }
+        
+        let taskBin = taskClone.querySelector('.clickedTask > img:nth-child(2)');
+
+        task.appendChild(taskText3);
+        clickedTask.appendChild(taskText4);
+        clickedTask.appendChild(taskBin);
+
+        task.appendChild(clickedTask); 
+
+        todoList.appendChild(taskClone);
+
+        
+
+        // Ajouter la liste à la page
+        document.body.appendChild(ulClone);
+        
+        // ferme le modal et incrémente le nombre de tâches
         closeModal(); 
             if(taskCategory.textContent == "PLANNED") {
                 plannedCount++;
                 plannedCountText.textContent = plannedCount.toString();
+                plannedContainer.appendChild(task); 
             } else if(taskCategory.textContent == "IN PROGRESS") {
                 inProgressCount++;
                 inProgressCountText.textContent = inProgressCount.toString();
+                inProgressContainer.appendChild(task); 
             } else if(taskCategory.textContent == "COMPLETED") {
                 completedCount++;
                 completedCountText.textContent = completedCount.toString();
+                completedContainer.appendChild(task); 
         }
 
         
@@ -159,65 +238,29 @@ addCategoryTask();
 
 
 
-
-
 submit.addEventListener('click', function() {
-    const listTemplate = document.getElementById('listTemplate');
-    const ulClone = document.importNode(listTemplate.content, true);
-    const todoList = ulClone.querySelector('#todoList');
-    
-    const taskTemplate = document.getElementById('taskTemplate');
-    const taskClone = document.importNode(taskTemplate.content, true);
 
-    let task = taskClone.querySelector('.task'); 
+    if(inputTitle.value == ''){
 
-    let noClickedTask = taskClone.querySelector('.noClickedTask');
-
-    let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
-    taskText1.textContent = "Nouvelle tâche";
-    let alert = taskClone.querySelector('.alert'); 
-    let taskText2 = taskClone.querySelector('.noClickedTask > p:nth-child(3)');
-    taskText2.textContent = "...";
-    
-    noClickedTask.appendChild(taskText1); 
-    noClickedTask.appendChild(alert); 
-    noClickedTask.appendChild(taskText2); 
-
-    task.appendChild(noClickedTask); 
-
-    
-    let taskText3 = taskClone.querySelector('.task > p:nth-child(1)');
-    taskText3.textContent = "urgent";
-
-    let clickedTask = taskClone.querySelector('.clickedTask'); 
-    let taskText4 = taskClone.querySelector('.clickedTask > p:nth-child(1)');
-    taskText4.textContent = "description";
-    let taskBin = taskClone.querySelector('.clickedTask > img:nth-child(2)');
-
-
-
-    
-    
-    task.appendChild(taskText3);
-    clickedTask.appendChild(taskText4);
-    clickedTask.appendChild(taskBin);
-
-    task.appendChild(clickedTask); 
-
-
-    
-    taskBin.addEventListener('click', function() {
-        taskClone.remove();
-    });
-
-    todoList.appendChild(taskClone);
-
-    // Ajouter la liste à la page
-    document.body.appendChild(ulClone);
+    } else {
+        console.log(inputTitle.value); 
+    }
 });
 
 
+function deleteTask(event){
+    let taskBinAll = document.querySelectorAll('.clickedTask > img:nth-child(2)');
 
+    taskBinAll.forEach(element =>{
+        if(event.target==element){
+            element.parentNode.parentNode.remove(); 
+        }
+        
+    })
+}
+
+document.addEventListener('click', deleteTask); 
+ 
 
 document.getElementById("app").appendChild(clone);
 
