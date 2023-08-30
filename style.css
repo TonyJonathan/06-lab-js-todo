@@ -375,7 +375,6 @@ label{
     color: red;
 }
 
-
 /* task */ 
 
 li{
@@ -403,8 +402,6 @@ li{
     border: 2px solid #00B49E;
 }
 
-
-
 .noClickedTask{
     width: 405px;
     display: flex;
@@ -425,7 +422,6 @@ li{
     height: 17px;
     border-radius: 5px;
     background-color: #FF3838;
-    
     margin-left: 10px;
 }
 
@@ -435,8 +431,6 @@ li{
     border-radius: 5px;
     background-color: #FF9900;
     margin-left: 10px;
-    
-    
 }
 
 .noClickedTask > p:nth-child(3){
@@ -458,6 +452,11 @@ li{
 .task:focus > .clickedTask{
     display: flex;
 }
+
+.task:focus > .noClickedTask > .alertUrgent, .task:focus > .noClickedTask > .alertOnHold {
+    display: none;
+}
+
 .taskAlertUrgent{
     width: 103px;
     background-color: #FF3838;
@@ -483,7 +482,6 @@ li{
     margin-top: 10px;
     display: none;
 }
-
 
 .clickedTask{
     font-family: 'Merriweather Sans' , sans-serif;

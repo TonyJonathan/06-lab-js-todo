@@ -1,5 +1,7 @@
-const template = document.getElementById("mon-template");
+    const template = document.getElementById("mon-template");
     const clone = document.importNode(template.content, true);
+
+    const filterTask = clone.querySelector('header > input');
 
     const buttonUrgent = clone.querySelector('.urgent > input'); 
     const buttonOnHold = clone.querySelector('.onHold > input'); 
@@ -17,6 +19,8 @@ const template = document.getElementById("mon-template");
     const inProgressContainer = clone.querySelector('.inProgressContainer');
     const completedContainer = clone.querySelector('.completedContainer');
     const completedContainerBin = clone.querySelector('.completed > img');
+
+   
     
     let plannedCountText = clone.querySelector('.plannedCount');
     let inProgressCountText = clone.querySelector('.inProgressCount');
@@ -28,7 +32,8 @@ const template = document.getElementById("mon-template");
 
     let clickUrgent = 0; 
     let clickOnHold = 0; 
-    
+
+
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
     function clickAgainReset(event){
         if(event.target == buttonUrgent && clickUrgent == 0){
@@ -77,6 +82,7 @@ function submitInfo(){
         inputTitle.classList.add('error'); 
     } else {
         // ajoute la tâche
+        
         const listTemplate = document.getElementById('listTemplate');
         const ulClone = document.importNode(listTemplate.content, true);
         const todoList = ulClone.querySelector('#todoList');
@@ -90,6 +96,7 @@ function submitInfo(){
 
         let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
         taskText1.textContent = inputTitle.value;
+         
         let alert = taskClone.querySelector('.alert'); 
         
         if(buttonUrgent.checked==true){
@@ -219,15 +226,6 @@ function addCategoryTask(){
 
 addCategoryTask(); 
 
-submit.addEventListener('click', function() {
-
-    if(inputTitle.value == ''){
-
-    } else {
-        console.log(inputTitle.value); 
-    }
-});
-
 
 function deleteTask(event){
     let taskBinAll = document.querySelectorAll('.clickedTask > img:nth-child(2)');
@@ -251,9 +249,10 @@ function deleteTask(event){
                 }
             element.parentNode.parentNode.remove(); 
         }
-        
+    
     })
 }
+
 function deleteAllCompleteTask(){
 
     const completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
@@ -273,6 +272,16 @@ document.addEventListener('click', deleteTask);
 completedContainerBin.addEventListener('click', deleteAllCompleteTask); 
 
 document.getElementById("app").appendChild(clone);
+
+
+function filterTaskWhenType(){
+    filterText = filterTask.value; 
+
+
+    
+}
+
+filterTask.addEventListener('input', filterTaskWhenType); 
 
 //.append
 
