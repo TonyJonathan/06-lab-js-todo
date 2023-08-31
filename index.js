@@ -34,6 +34,7 @@
     let clickOnHold = 0; 
 
 
+
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
     function clickAgainReset(event){
         if(event.target == buttonUrgent && clickUrgent == 0){
@@ -90,12 +91,14 @@ function submitInfo(){
         const taskTemplate = document.getElementById('taskTemplate');
         const taskClone = document.importNode(taskTemplate.content, true);
 
-        let task = taskClone.querySelector('.task'); 
+        task = taskClone.querySelector('.task'); 
 
         let noClickedTask = taskClone.querySelector('.noClickedTask');
 
         let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
         taskText1.textContent = inputTitle.value;
+
+
          
         let alert = taskClone.querySelector('.alert'); 
         
@@ -276,9 +279,27 @@ document.getElementById("app").appendChild(clone);
 
 function filterTaskWhenType(){
     filterText = filterTask.value; 
+    let allTaskTitle = document.querySelectorAll(".noClickedTask > p:nth-child(1)");
+
+    allTaskTitle.forEach(element =>{
+        parentTask = element.parentNode.parentNode;
+        console.log(parentTask.childNodes[6].childNodes[3].textContent);
+        let taskDescription = parentTask.childNodes[6].childNodes[3].textContent;
+        
+
+        if(filterText ==''){
+            element.parentNode.parentNode.style.display="block"; 
+            
+        } else if(element.textContent.toLowerCase().includes(filterText) == false && taskDescription.toLowerCase().includes(filterText) == false){
+           
+            element.parentNode.parentNode.style.display="none"; 
+        } else if (element.textContent.toLowerCase().includes(filterText) == true || taskDescription.toLowerCase().includes(filterText) == true){
+            element.parentNode.parentNode.style.display="block";
+        }
+    })
 
 
-    
+     
 }
 
 filterTask.addEventListener('input', filterTaskWhenType); 
