@@ -240,7 +240,7 @@ function deleteTask(event){
     taskBinAll.forEach(element =>{
         if(event.target==element){
             let taskElement = element.parentNode;
-            keyName = "task_" + taskElement.parentNode.childNodes[0].childNodes[0].textContent; 
+            var keyName = "task_" + taskElement.parentNode.childNodes[0].childNodes[0].textContent; 
              
             if(taskElement.parentNode.parentNode.className == "plannedContainer"){
                 plannedCount--;
