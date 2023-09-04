@@ -19,8 +19,6 @@
     const inProgressContainer = clone.querySelector('.inProgressContainer');
     const completedContainer = clone.querySelector('.completedContainer');
     const completedContainerBin = clone.querySelector('.completed > img');
-
-   
     
     let plannedCountText = clone.querySelector('.plannedCount');
     let inProgressCountText = clone.querySelector('.inProgressCount');
@@ -32,8 +30,6 @@
 
     let clickUrgent = 0; 
     let clickOnHold = 0; 
-
-
 
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
     function clickAgainReset(event){
@@ -98,13 +94,10 @@ function submitInfo(){
         let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
         taskText1.textContent = inputTitle.value;
 
-
-         
         let alert = taskClone.querySelector('.alert'); 
         
         if(buttonUrgent.checked==true){
             alert.classList.add('alertUrgent'); 
-            console.log("aller"); 
         } else if(buttonOnHold.checked==true){
             alert.classList.add('alertOnHold'); 
         } 
@@ -168,6 +161,17 @@ function submitInfo(){
                 completedCountText.textContent = completedCount.toString();
                 completedContainer.appendChild(task); 
         }
+
+         // Sauvegardez les données de la tâche dans le stockage local
+    const titleTaskLocalStorage = inputTitle.value;
+    const taskData = {
+        title: inputTitle.value,
+        description: taskText4.textContent,
+        urgent: buttonUrgent.checked,
+        onHold: buttonOnHold.checked,
+        category: task.parentNode.className
+    };
+    localStorage.setItem(`task_${titleTaskLocalStorage}`, JSON.stringify(taskData));
 
          closeModal();
     }
@@ -256,6 +260,144 @@ function deleteTask(event){
     })
 }
 
+var elements = []; 
+var keys = Object.keys(localStorage);
+
+keys.forEach(function(key){
+    var valeur = localStorage.getItem(key);
+    elements.push(valeur);
+})
+
+console.log(elements);
+
+function teeest(){
+    elements.forEach(element =>{
+        var parsedElement = JSON.parse(element); // Si vos données sont stockées au format JSON
+        console.log(parsedElement.title);
+        var recreateTask = document.createElement('div');
+        recreateTask.classList.add('task'); 
+        recreateTask.setAttribute('tabindex', '0');
+
+        var recreateNoClickedTask = document.createElement('div');
+        recreateNoClickedTask.classList.add('noClickedTask'); 
+        
+        var recreateTitle = document.createElement('p'); 
+        recreateTitle.textContent = parsedElement.title; 
+
+        var recreateAlert = document.createElement('div'); 
+        recreateAlert.classList.add('alert'); 
+
+        if(parsedElement.urgent == true){
+            recreateAlert.classList.add('alertUrgent');  
+        } else if(parsedElement.onHold == true){
+            recreateAlert.classList.add('alertOnHold');  
+        }
+
+        var recreateMenu = document.createElement('p');
+        recreateMenu.classList.add('clear');
+        recreateMenu.textContent = '...';
+        
+        recreateTask.appendChild(recreateNoClickedTask);
+
+
+        recreateNoClickedTask.appendChild(recreateTitle);
+
+        recreateNoClickedTask.appendChild(recreateAlert);
+        recreateNoClickedTask.appendChild(recreateMenu); 
+
+        var recreateButtonTask = document.createElement('p'); 
+
+        if(parsedElement.urgent == true){
+            recreateButtonTask.textContent = "URGENT";
+            recreateButtonTask.classList.add('taskAlertUrgent'); 
+        } else if(parsedElement.onHold == true){
+            recreateButtonTask.textContent = "ON HOLD";
+            recreateButtonTask.classList.add('taskAlertOnHold'); 
+        } else {
+            recreateButtonTask.hidden = true; 
+        }
+
+        recreateTask.appendChild(recreateButtonTask); 
+        
+        
+
+        var recreateClickedTask = document.createElement('div');
+        recreateClickedTask.classList.add('clickedTask'); 
+
+        recreateTask.appendChild(recreateClickedTask); 
+
+        var recreateDescription = document.createElement('p');
+        recreateDescription.textContent = parsedElement.description; 
+        recreateClickedTask.appendChild(recreateDescription); 
+
+
+        if(parsedElement.category = 'plannedContainer'){
+            plannedContainer.appendChild(recreateTask); 
+        } else if (parsedElement.category = 'inProgressContainer'){
+            inProgressContainer.appendChild(recreateTask); 
+        } else {
+            completedContainer.appendChild(recreateTask); 
+        }
+  
+        if(parsedElement.urgent == true){
+            var recreateTaskAlert = document.createElement('p'); 
+            recreateTaskAlert.classList.add('taskAlertUrgent'); 
+            recreateTaskAlert.textContent = 'URGENT'; 
+        } else if(parsedElement.onHold == true){
+            var recreateTaskAlert = document.createElement('p'); 
+            recreateTaskAlert.classList.add('taskAlertOnHold'); 
+            recreateTaskAlert.textContent = 'ON HOLD'; 
+        }
+
+        var recreateBin = document.createElement('img');
+        recreateBin.src = 'picture/Corbeille.svg';
+        recreateBin.width = 25;
+        recreateBin.height = 26;
+        recreateBin.alt = 'Corbeille';
+        recreateBin.className = 'clear';
+        recreateClickedTask.appendChild(recreateBin); 
+    })
+
+}
+
+teeest();
+
+
+
+function init() {
+    // ...
+
+    // Récupérez les clés du stockage local
+    var keys = Object.keys(localStorage);
+
+    // Parcourez les clés et restaurez les tâches
+    keys.forEach(function (key) {
+        if (key.startsWith('task_')) {
+            var taskData = JSON.parse(localStorage.getItem(key));
+            recreateTaskElement(taskData);
+            console.log(localStorage.getItem(key));
+        }
+    });
+}
+
+
+    function recreateTaskElement(taskData) {
+
+        let allTask = document.querySelectorAll('.task'); 
+
+        allTask.forEach(element =>{
+            
+        })
+}
+
+// Appelez la fonction d'initialisation lorsque la page est chargée
+window.addEventListener('load', init);
+
+
+
+
+
+
 function deleteAllCompleteTask(){
 
     const completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
@@ -298,8 +440,6 @@ function filterTaskWhenType(){
         }
     })
 
-
-     
 }
 
 filterTask.addEventListener('input', filterTaskWhenType); 
