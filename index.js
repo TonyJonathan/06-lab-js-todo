@@ -240,7 +240,7 @@ function deleteTask(event){
     taskBinAll.forEach(element =>{
         if(event.target==element){
             let taskElement = element.parentNode;
-            console.log(taskElement.parentNode.parentNode.className); 
+            keyName = "task_" + taskElement.parentNode.childNodes[0].childNodes[0].textContent; 
              
             if(taskElement.parentNode.parentNode.className == "plannedContainer"){
                 plannedCount--;
@@ -255,6 +255,8 @@ function deleteTask(event){
                     completedCountText.textContent = completedCount.toString();
                 }
             element.parentNode.parentNode.remove(); 
+
+            localStorage.removeItem(keyName);
         }
     
     })
@@ -270,7 +272,7 @@ keys.forEach(function(key){
 
 console.log(elements);
 
-function teeest(){
+function recreateTaskElements(){
     elements.forEach(element =>{
         var parsedElement = JSON.parse(element); // Si vos données sont stockées au format JSON
         console.log(parsedElement.title);
@@ -299,7 +301,6 @@ function teeest(){
         
         recreateTask.appendChild(recreateNoClickedTask);
 
-
         recreateNoClickedTask.appendChild(recreateTitle);
 
         recreateNoClickedTask.appendChild(recreateAlert);
@@ -318,8 +319,6 @@ function teeest(){
         }
 
         recreateTask.appendChild(recreateButtonTask); 
-        
-        
 
         var recreateClickedTask = document.createElement('div');
         recreateClickedTask.classList.add('clickedTask'); 
@@ -330,12 +329,17 @@ function teeest(){
         recreateDescription.textContent = parsedElement.description; 
         recreateClickedTask.appendChild(recreateDescription); 
 
-
-        if(parsedElement.category = 'plannedContainer'){
+        if(parsedElement.category == 'plannedContainer'){
+            plannedCount++;
+            plannedCountText.textContent = plannedCount.toString();
             plannedContainer.appendChild(recreateTask); 
-        } else if (parsedElement.category = 'inProgressContainer'){
+        } else if (parsedElement.category == 'inProgressContainer'){
+            inProgressCount++;
+            inProgressCountText.textContent = inProgressCount.toString();
             inProgressContainer.appendChild(recreateTask); 
         } else {
+            completedCount++;
+            completedCountText.textContent = completedCount.toString();
             completedContainer.appendChild(recreateTask); 
         }
   
@@ -360,42 +364,7 @@ function teeest(){
 
 }
 
-teeest();
-
-
-
-function init() {
-    // ...
-
-    // Récupérez les clés du stockage local
-    var keys = Object.keys(localStorage);
-
-    // Parcourez les clés et restaurez les tâches
-    keys.forEach(function (key) {
-        if (key.startsWith('task_')) {
-            var taskData = JSON.parse(localStorage.getItem(key));
-            recreateTaskElement(taskData);
-            console.log(localStorage.getItem(key));
-        }
-    });
-}
-
-
-    function recreateTaskElement(taskData) {
-
-        let allTask = document.querySelectorAll('.task'); 
-
-        allTask.forEach(element =>{
-            
-        })
-}
-
-// Appelez la fonction d'initialisation lorsque la page est chargée
-window.addEventListener('load', init);
-
-
-
-
+recreateTaskElements();
 
 
 function deleteAllCompleteTask(){
@@ -406,10 +375,14 @@ function deleteAllCompleteTask(){
 
       completedContainerTask.forEach(divTask => {
         divTask.remove(); 
+        var divTaskKey = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+        localStorage.removeItem(divTaskKey);
+
       });
 
       completedCount = 0;
       completedCountText.textContent = completedCount.toString();
+
   }
 
 document.addEventListener('click', deleteTask); 
@@ -446,5 +419,4 @@ filterTask.addEventListener('input', filterTaskWhenType);
 
 //.append
 
-// <template> utilisé pour créer un template pour inserer les tache que l'on viendra cloner à chaque fois
 
