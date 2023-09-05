@@ -172,11 +172,7 @@ taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
 
 
-// document.addEventListener('click', (event) =>{
-//     if(event.target){
-//         console.log(event.target); 
-//     }
-// }); 
+
 
 
 function addCategoryTask(){
@@ -380,4 +376,26 @@ function filterTaskWhenType(){
 }
 
 filterTask.addEventListener('input', filterTaskWhenType); 
+
+
+const darkButton = document.querySelector('.darkButton'); 
+const app = document.querySelector('#app'); 
+const header = document.querySelector('header'); 
+
+
+function darkMode() {
+    app.classList.toggle('darkApp'); 
+    header.classList.toggle('darkHeader'); 
+
+}
+
+darkButton.addEventListener('click', darkMode); 
+
 //.append
+
+
+// document.addEventListener('click', (event) =>{
+//     if(event.target){
+//         console.log(event.target); 
+//     }
+// }); 

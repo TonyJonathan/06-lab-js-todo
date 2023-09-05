@@ -5,10 +5,13 @@ body{
 #app{
     width: 1440px;
     font-family: 'Merriweather Sans' , sans-serif;
-    background-color: #E1E8E9;
     margin: 0;
     color: #3E3E3E;
     padding-bottom: 83px;
+}
+
+.clearApp{
+    background-color: #E1E8E9;
 }
 
 header{
@@ -504,4 +507,15 @@ li{
 .clickedTask > img:nth-child(2){
     margin-left: auto;
     margin-right: 10px;
+}
+
+
+/* darkMode */ 
+
+.darkHeader{
+    background-color: #707070;
+}
+
+.darkApp{
+    background-color: #363636;
 }
