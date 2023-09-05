@@ -101,7 +101,6 @@ header > input:focus{
     height: 16px;
     border-radius: 10px;
     background-color: #FFFFFF;
-    
 }
 
 
@@ -466,6 +465,10 @@ li{
     font-weight: 700;
 }
 
+.noClickedTask:hover > .clear:nth-child(3){
+    color: #53e3d3;
+}
+
 .task:focus > .taskAlertUrgent, .task:focus > .taskAlertOnHold {
     display: block;
 }
@@ -474,7 +477,7 @@ li{
     display: flex;
 }
 
-.task:focus > .noClickedTask > .alertUrgent, .task:focus > .noClickedTask > .alertOnHold {
+.task:focus > .noClickedTask > .alertUrgent, .task:focus > .noClickedTask > .alertOnHold, .task:focus > .noClickedTask > p:nth-child(3) {
     display: none;
 }
 
@@ -651,6 +654,35 @@ li{
 }
 
 .darkCross:hover{
+    filter: none;
+    color: #25D6E1;
+}
+
+
+/* dark task */
+
+
+.darkTask:hover{
+    border: 2px solid #25D6E1;
+}
+
+.darkTask:focus{
+    border: 2px solid #25D6E1;
+}
+
+
+.darkTask > .noClickedTask > p:nth-child(1){
+    color: #e3e3e3;
+}
+
+
+
+.darkTask > .noClickedTask > p:nth-child(3){
+    filter: none;
+    color: #e3e3e3;
+}
+
+.darkTask:hover > .noClickedTask > p:nth-child(3){
     filter: none;
     color: #25D6E1;
 }

@@ -356,12 +356,16 @@ document.getElementById("app").appendChild(clone);
 
 
 function filterTaskWhenType(){
-    filterText = filterTask.value; 
-    let allTaskTitle = document.querySelectorAll(".noClickedTask > p:nth-child(1)");
-    allTaskTitle.forEach(element =>{
-        parentTask = element.parentNode.parentNode;
-        console.log(parentTask.childNodes[6].childNodes[3].textContent);
-        let taskDescription = parentTask.childNodes[6].childNodes[3].textContent;
+        let filterText = filterTask.value; 
+        let allTaskTitle = document.querySelectorAll(".noClickedTask > p:nth-child(1)");
+        allTaskTitle.forEach(element =>{
+        let parentTask = element.parentNode.parentNode;
+        if(parentTask.childNodes[0].nodeName == "#text"){
+            var taskDescription = parentTask.childNodes[4].childNodes[4].textContent
+        } else {
+            var taskDescription = parentTask.childNodes[0].childNodes[0].textContent;
+        }
+        // let taskDescription = parentTask.childNodes[6].childNodes[3].textContent;
         
         if(filterText ==''){
             element.parentNode.parentNode.style.display="block"; 
@@ -386,6 +390,7 @@ const darkLogo = document.querySelector('.darkLogoHidden');
 const darkButtonCircle = document.querySelector('.darkButtonCircle');
 const clearElement = document.querySelectorAll('.clear'); 
 const modalContent = document.querySelector('.modalContent');
+
 
 
 function darkMode() {
