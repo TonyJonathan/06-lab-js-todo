@@ -384,6 +384,9 @@ const header = document.querySelector('header');
 const clearLogo = document.querySelector('header > img:nth-child(1)');
 const darkLogo = document.querySelector('.darkLogoHidden'); 
 const darkButtonCircle = document.querySelector('.darkButtonCircle');
+const clearElement = document.querySelectorAll('.clear'); 
+const modalContent = document.querySelector('.modalContent');
+
 
 function darkMode() {
     app.classList.toggle('darkApp'); 
@@ -394,6 +397,22 @@ function darkMode() {
     newTask.classList.toggle('darkNewTask'); 
     darkButton.classList.toggle('darkButtonActivate'); 
     darkButtonCircle.classList.toggle('darkButtonActivateCircle'); 
+    plannedContainer.classList.toggle('darkPlannedContainer'); 
+    plannedCountText.classList.toggle('darkCount'); 
+    inProgressCountText.classList.toggle('darkCount'); 
+    completedCountText.classList.toggle('darkCount'); 
+    inProgressContainer.classList.toggle('darkInProgressContainer');
+    completedContainer.classList.toggle('darkCompletedContainer'); 
+    addTask.forEach(element =>{
+        element.classList.toggle('darkAddTask'); 
+    })
+    clearElement.forEach(element =>{
+        element.classList.toggle('dark'); 
+    })
+    modalContent.classList.toggle('darkModalContent'); 
+    cross.classList.toggle('darkCross'); 
+
+
 }
 
 darkButton.addEventListener('click', darkMode); 

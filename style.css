@@ -6,12 +6,13 @@ body{
     width: 1440px;
     font-family: 'Merriweather Sans' , sans-serif;
     margin: 0;
-    color: #3E3E3E;
+    
     padding-bottom: 83px;
 }
 
 .clearApp{
     background-color: #E1E8E9;
+    color: #3E3E3E;
 }
 
 header{
@@ -257,6 +258,10 @@ header > input:focus{
     grid-column-start: 1;
 }
 
+.taskDescription > p:nth-child(1):hover + .clear{
+    filter: brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(257%) hue-rotate(118deg) brightness(96%) contrast(91%);
+}
+
 .taskDescription{
     width: 395px;
     display: flex;
@@ -273,9 +278,6 @@ header > input:focus{
     cursor: pointer;
 }
 
-.taskDescription > p:nth-child(1):hover~img{
-    filter: brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(257%) hue-rotate(118deg) brightness(96%) contrast(91%);
-}
 
 .taskDescription > img:nth-child(2){
     margin-top: 35px;
@@ -294,6 +296,14 @@ header > input:focus{
 .clear:hover{
     filter: brightness(0) saturate(100%) invert(69%) sepia(100%) saturate(257%) hue-rotate(118deg) brightness(96%) contrast(91%);
     cursor: pointer;
+}
+
+.dark{
+    filter: invert(99%) sepia(0%) saturate(3931%) hue-rotate(91deg) brightness(122%) contrast(78%);
+}
+
+.dark:hover{
+    filter: invert(100%) sepia(24%) saturate(5638%) hue-rotate(160deg) brightness(110%) contrast(108%);
 }
 
 .modalContent > input:nth-child(2){
@@ -526,6 +536,7 @@ li{
 
 .darkApp{
     background-color: #363636;
+    color: #E3E3E3;
 }
 
 .clearLogo{
@@ -542,14 +553,7 @@ li{
 
 
 .darkFilterTask{
-    width: 493px;
-    font-family: 'Arial' , sans-serif;
     border: 2px solid #25D6E1;
-    padding: 13px 0 10px 30px;
-    margin: 31px 93px 30px 198px;
-    font-size: 20px;
-    border-radius: 10px;
-    outline: none;
 }
 
 .darkFilterTask:hover{
@@ -562,38 +566,93 @@ li{
 
 
 .darkNewTask{
-    width: 167px;
-    display: flex;
-    align-items: center;
     background-color: #25D6E1;
-    border-radius: 10px;
-    color: #FFFFFF;
-    margin: 31px 0px 30px 0px;
 }
 
 .darkNewTask:hover{
     background-color: #AAFAFF;
-    cursor: pointer;
 }
 
 .darkButtonActivate{
-    width: 16px;
-    border-radius: 11px;
     background-color: #ffffff;
     padding: 3px 25px 0px 5px;
-    margin: 45px 81px 45px 124px;
     transition: padding 0.3s ease;
 }
 
 .darkButtonActivate:hover{
     background-color: #AAFAFF;
-    cursor: pointer;
 }
 
 .darkButtonActivateCircle{
-    width: 16px;
-    height: 16px;
-    border-radius: 10px;
     background-color: #000000;
-    
 }
+
+.darkPlannedContainer{
+    width: 454px;
+    min-height: 637px;
+    border-radius: 8px;
+    border-top: 10px solid #04E1FF ;
+    background-color: #707070; 
+}
+
+.darkCount{
+    border: 1px solid #E3E3E3;
+}
+
+.darkAddTask{
+    color: #25D6E1;
+}
+
+.darkAddTask:hover{
+   color: #AAFAFF;
+}
+
+
+.darkInProgressContainer{
+    border-top: 10px solid #FFD600 ;
+    background-color: #707070; 
+}
+
+.darkCompletedContainer{
+    border-top: 10px solid #C3FF1A;
+    background-color: #707070; 
+}
+
+/* dark modal */
+
+.darkModalContent {
+    background-color: #808080;
+}
+
+.taskDescription > p:nth-child(1):hover + .dark{
+    filter: invert(100%) sepia(24%) saturate(5638%) hue-rotate(160deg) brightness(110%) contrast(108%);
+}
+
+.dark{
+    filter: invert(99%) sepia(0%) saturate(3931%) hue-rotate(91deg) brightness(122%) contrast(78%);
+}
+
+.dark:hover{
+    filter: invert(100%) sepia(24%) saturate(5638%) hue-rotate(160deg) brightness(110%) contrast(108%);
+}
+
+
+.darkModalContent > p:nth-child(5){
+    background-color: #25D6E1;
+}
+
+.darkModalContent > p:nth-child(5):hover{
+    background-color: #AAFAFF;
+}
+
+.darkCross{
+    filter: none;
+    color: #E3E3E3;
+}
+
+.darkCross:hover{
+    filter: none;
+    color: #25D6E1;
+}
+
+
