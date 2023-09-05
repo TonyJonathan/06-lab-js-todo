@@ -27,6 +27,8 @@ let completedCount = parseInt(clone.querySelector('.completedCount').textContent
 let clickUrgent = 0; 
 let clickOnHold = 0; 
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
+
+
 function clickAgainReset(event){
     if(event.target == buttonUrgent && clickUrgent == 0){
         clickUrgent++; 
@@ -44,9 +46,13 @@ function clickAgainReset(event){
 }
 
 document.addEventListener('click', clickAgainReset); 
+
+
 function openModal(){
     modal.style.display = 'block'; 
 }
+
+
 function closeModal(){
     taskCategory.textContent = 'PLANNED'; 
     modal.style.display = 'none';
@@ -59,6 +65,7 @@ function closeModal(){
     clickUrgent = 0; 
     clickOnHold = 0;  
 }
+
 newTask.addEventListener('click', openModal);
 cross.addEventListener('click', closeModal); 
 submit.addEventListener('click', submitInfo); 
@@ -150,38 +157,45 @@ localStorage.setItem(`task_${titleTaskLocalStorage}`, JSON.stringify(taskData));
      closeModal();
 }
 }
+
 function changeCategoryTask(){
-if(taskCategory.textContent == "PLANNED"){
-    taskCategory.textContent = 'IN PROGRESS';
-} else if(taskCategory.textContent == "IN PROGRESS"){
-    taskCategory.textContent = 'COMPLETED';
-} else if(taskCategory.textContent == "COMPLETED"){
-    taskCategory.textContent = 'PLANNED';
+    if(taskCategory.textContent == "PLANNED"){
+        taskCategory.textContent = 'IN PROGRESS';
+    } else if(taskCategory.textContent == "IN PROGRESS"){
+        taskCategory.textContent = 'COMPLETED';
+    } else if(taskCategory.textContent == "COMPLETED"){
+        taskCategory.textContent = 'PLANNED';
+    }
 }
-}
+
 taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
+
+
 // document.addEventListener('click', (event) =>{
 //     if(event.target){
 //         console.log(event.target); 
 //     }
 // }); 
+
+
 function addCategoryTask(){
-addTask.forEach(element => {
+    addTask.forEach(element => {
     
-    element.addEventListener('click', (event) => {
-    modal.style.display = 'block';
-    if(event.target.parentNode.className == "plannedContainer"){
-        taskCategory.textContent = 'PLANNED';
-               
-    }else if(event.target.parentNode.className == "inProgressContainer"){
-        taskCategory.textContent = 'IN PROGRESS';
-               
-    } else if (event.target.parentNode.className == "completedContainer"){
-            taskCategory.textContent = 'COMPLETED';
-        } 
-})
+        element.addEventListener('click', (event) => {
+            modal.style.display = 'block';
+            if(event.target.parentNode.className == "plannedContainer"){
+                taskCategory.textContent = 'PLANNED';
+                    
+            }else if(event.target.parentNode.className == "inProgressContainer"){
+                taskCategory.textContent = 'IN PROGRESS';
+                    
+            } else if (event.target.parentNode.className == "completedContainer"){
+                    taskCategory.textContent = 'COMPLETED';
+                } 
+        })
     }); 
+
 addTaskAll.forEach(element =>{
     element.addEventListener('click', (event) => {
         modal.style.display = 'block';
@@ -197,23 +211,21 @@ addTaskAll.forEach(element =>{
     })
 })
 };
+
 addCategoryTask(); 
+
 function deleteTask(event){
 let taskBinAll = document.querySelectorAll('.clickedTask > img:nth-child(2)');
 taskBinAll.forEach(element =>{
     if(event.target==element){
         let taskElement = element.parentNode;
-        console.log(taskElement.parentNode.childNodes[0]);
+        
 
         if(taskElement.parentNode.childNodes[0].nodeName == "#text"){
             var keyName = "task_" + taskElement.parentNode.childNodes[4].childNodes[4].textContent;
         } else {
             var keyName = "task_" + taskElement.parentNode.childNodes[0].childNodes[0].textContent; 
         }
-           
-        
-     
-        
 
         if(taskElement.parentNode.parentNode.className == "plannedContainer"){
             plannedCount--;
@@ -233,123 +245,139 @@ taskBinAll.forEach(element =>{
 
 })
 }
+
 var elements = []; 
 var keys = Object.keys(localStorage);
-keys.forEach(function(key){
-var valeur = localStorage.getItem(key);
-elements.push(valeur);
-})
-console.log(elements);
-function recreateTaskElements(){
-elements.forEach(element =>{
-    var parsedElement = JSON.parse(element); // Si vos données sont stockées au format JSON
-    console.log(parsedElement.title);
-    var recreateTask = document.createElement('div');
-    recreateTask.classList.add('task'); 
-    recreateTask.setAttribute('tabindex', '0');
-    var recreateNoClickedTask = document.createElement('div');
-    recreateNoClickedTask.classList.add('noClickedTask'); 
-    
-    var recreateTitle = document.createElement('p'); 
-    recreateTitle.textContent = parsedElement.title; 
-    var recreateAlert = document.createElement('div'); 
-    recreateAlert.classList.add('alert'); 
-    if(parsedElement.urgent == true){
-        recreateAlert.classList.add('alertUrgent');  
-    } else if(parsedElement.onHold == true){
-        recreateAlert.classList.add('alertOnHold');  
-    }
-    var recreateMenu = document.createElement('p');
-    recreateMenu.classList.add('clear');
-    recreateMenu.textContent = '...';
-    
-    recreateTask.appendChild(recreateNoClickedTask);
-    recreateNoClickedTask.appendChild(recreateTitle);
-    recreateNoClickedTask.appendChild(recreateAlert);
-    recreateNoClickedTask.appendChild(recreateMenu); 
-    var recreateButtonTask = document.createElement('p'); 
-    if(parsedElement.urgent == true){
-        recreateButtonTask.textContent = "URGENT";
-        recreateButtonTask.classList.add('taskAlertUrgent'); 
-    } else if(parsedElement.onHold == true){
-        recreateButtonTask.textContent = "ON HOLD";
-        recreateButtonTask.classList.add('taskAlertOnHold'); 
-    } else {
-        recreateButtonTask.hidden = true; 
-    }
-    recreateTask.appendChild(recreateButtonTask); 
-    var recreateClickedTask = document.createElement('div');
-    recreateClickedTask.classList.add('clickedTask'); 
-    recreateTask.appendChild(recreateClickedTask); 
-    var recreateDescription = document.createElement('p');
-    recreateDescription.textContent = parsedElement.description; 
-    recreateClickedTask.appendChild(recreateDescription); 
-    if(parsedElement.category == 'plannedContainer'){
-        plannedCount++;
-        plannedCountText.textContent = plannedCount.toString();
-        plannedContainer.appendChild(recreateTask); 
-    } else if (parsedElement.category == 'inProgressContainer'){
-        inProgressCount++;
-        inProgressCountText.textContent = inProgressCount.toString();
-        inProgressContainer.appendChild(recreateTask); 
-    } else {
-        completedCount++;
-        completedCountText.textContent = completedCount.toString();
-        completedContainer.appendChild(recreateTask); 
-    }
 
-    if(parsedElement.urgent == true){
-        var recreateTaskAlert = document.createElement('p'); 
-        recreateTaskAlert.classList.add('taskAlertUrgent'); 
-        recreateTaskAlert.textContent = 'URGENT'; 
-    } else if(parsedElement.onHold == true){
-        var recreateTaskAlert = document.createElement('p'); 
-        recreateTaskAlert.classList.add('taskAlertOnHold'); 
-        recreateTaskAlert.textContent = 'ON HOLD'; 
-    }
-    var recreateBin = document.createElement('img');
-    recreateBin.src = 'picture/Corbeille.svg';
-    recreateBin.width = 25;
-    recreateBin.height = 26;
-    recreateBin.alt = 'Corbeille';
-    recreateBin.className = 'clear';
-    recreateClickedTask.appendChild(recreateBin); 
+keys.forEach(function(key){
+    var valeur = localStorage.getItem(key);
+    elements.push(valeur);
 })
+
+
+function recreateTaskElements(){
+    elements.forEach(element =>{
+        var parsedElement = JSON.parse(element); // Si vos données sont stockées au format JSON
+        var recreateTask = document.createElement('div');
+        recreateTask.classList.add('task'); 
+        recreateTask.setAttribute('tabindex', '0');
+        var recreateNoClickedTask = document.createElement('div');
+        recreateNoClickedTask.classList.add('noClickedTask'); 
+        
+        var recreateTitle = document.createElement('p'); 
+        recreateTitle.textContent = parsedElement.title; 
+        var recreateAlert = document.createElement('div'); 
+        recreateAlert.classList.add('alert'); 
+        if(parsedElement.urgent == true){
+            recreateAlert.classList.add('alertUrgent');  
+        } else if(parsedElement.onHold == true){
+            recreateAlert.classList.add('alertOnHold');  
+        }
+        var recreateMenu = document.createElement('p');
+        recreateMenu.classList.add('clear');
+        recreateMenu.textContent = '...';
+        
+        recreateTask.appendChild(recreateNoClickedTask);
+        recreateNoClickedTask.appendChild(recreateTitle);
+        recreateNoClickedTask.appendChild(recreateAlert);
+        recreateNoClickedTask.appendChild(recreateMenu); 
+        var recreateButtonTask = document.createElement('p'); 
+        if(parsedElement.urgent == true){
+            recreateButtonTask.textContent = "URGENT";
+            recreateButtonTask.classList.add('taskAlertUrgent'); 
+        } else if(parsedElement.onHold == true){
+            recreateButtonTask.textContent = "ON HOLD";
+            recreateButtonTask.classList.add('taskAlertOnHold'); 
+        } else {
+            recreateButtonTask.hidden = true; 
+        }
+        recreateTask.appendChild(recreateButtonTask); 
+        var recreateClickedTask = document.createElement('div');
+        recreateClickedTask.classList.add('clickedTask'); 
+        recreateTask.appendChild(recreateClickedTask); 
+        var recreateDescription = document.createElement('p');
+        recreateDescription.textContent = parsedElement.description; 
+        recreateClickedTask.appendChild(recreateDescription); 
+        if(parsedElement.category == 'plannedContainer'){
+            plannedCount++;
+            plannedCountText.textContent = plannedCount.toString();
+            plannedContainer.appendChild(recreateTask); 
+        } else if (parsedElement.category == 'inProgressContainer'){
+            inProgressCount++;
+            inProgressCountText.textContent = inProgressCount.toString();
+            inProgressContainer.appendChild(recreateTask); 
+        } else {
+            completedCount++;
+            completedCountText.textContent = completedCount.toString();
+            completedContainer.appendChild(recreateTask); 
+        }
+
+        if(parsedElement.urgent == true){
+            var recreateTaskAlert = document.createElement('p'); 
+            recreateTaskAlert.classList.add('taskAlertUrgent'); 
+            recreateTaskAlert.textContent = 'URGENT'; 
+        } else if(parsedElement.onHold == true){
+            var recreateTaskAlert = document.createElement('p'); 
+            recreateTaskAlert.classList.add('taskAlertOnHold'); 
+            recreateTaskAlert.textContent = 'ON HOLD'; 
+        }
+        var recreateBin = document.createElement('img');
+        recreateBin.src = 'picture/Corbeille.svg';
+        recreateBin.width = 25;
+        recreateBin.height = 26;
+        recreateBin.alt = 'Corbeille';
+        recreateBin.className = 'clear';
+        recreateClickedTask.appendChild(recreateBin); 
+    })
 }
+
 recreateTaskElements();
+
 function deleteAllCompleteTask(){
-const completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
-    return node.tagName === 'DIV' && node.classList.contains('task');
-  });
-  completedContainerTask.forEach(divTask => {
-    divTask.remove(); 
-    var divTaskKey = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
-    localStorage.removeItem(divTaskKey);
-  });
-  completedCount = 0;
-  completedCountText.textContent = completedCount.toString();
+    const completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
+        return node.tagName === 'DIV' && node.classList.contains('task');
+        }
+    );
+    completedContainerTask.forEach(divTask => {
+        
+        divTask.remove(); 
+        if(divTask.childNodes[0].nodeName == "#text"){
+            divTaskKey = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+        } else {
+            var divTaskKey = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+        }
+        
+        localStorage.removeItem(divTaskKey);
+    });
+    completedCount = 0;
+    completedCountText.textContent = completedCount.toString();
 }
+
+
 document.addEventListener('click', deleteTask); 
 completedContainerBin.addEventListener('click', deleteAllCompleteTask); 
 document.getElementById("app").appendChild(clone);
+
+
 function filterTaskWhenType(){
-filterText = filterTask.value; 
-let allTaskTitle = document.querySelectorAll(".noClickedTask > p:nth-child(1)");
-allTaskTitle.forEach(element =>{
-    parentTask = element.parentNode.parentNode;
-    console.log(parentTask.childNodes[6].childNodes[3].textContent);
-    let taskDescription = parentTask.childNodes[6].childNodes[3].textContent;
-    
-    if(filterText ==''){
-        element.parentNode.parentNode.style.display="block"; 
+    filterText = filterTask.value; 
+    let allTaskTitle = document.querySelectorAll(".noClickedTask > p:nth-child(1)");
+    allTaskTitle.forEach(element =>{
+        parentTask = element.parentNode.parentNode;
+        console.log(parentTask.childNodes[6].childNodes[3].textContent);
+        let taskDescription = parentTask.childNodes[6].childNodes[3].textContent;
         
-    } else if(element.textContent.toLowerCase().includes(filterText) == false && taskDescription.toLowerCase().includes(filterText) == false){
-       
-        element.parentNode.parentNode.style.display="none"; 
-    } else if (element.textContent.toLowerCase().includes(filterText) == true || taskDescription.toLowerCase().includes(filterText) == true){
-        element.parentNode.parentNode.style.display="block";
-    }
-})
+        if(filterText ==''){
+            element.parentNode.parentNode.style.display="block"; 
+            
+        } else if(element.textContent.toLowerCase().includes(filterText) == false && taskDescription.toLowerCase().includes(filterText) == false){
+        
+            element.parentNode.parentNode.style.display="none"; 
+        } else if (element.textContent.toLowerCase().includes(filterText) == true || taskDescription.toLowerCase().includes(filterText) == true){
+            element.parentNode.parentNode.style.display="block";
+        }
+    })
 }
+
 filterTask.addEventListener('input', filterTaskWhenType); 
 //.append
