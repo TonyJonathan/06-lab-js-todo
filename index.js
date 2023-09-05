@@ -381,12 +381,19 @@ filterTask.addEventListener('input', filterTaskWhenType);
 const darkButton = document.querySelector('.darkButton'); 
 const app = document.querySelector('#app'); 
 const header = document.querySelector('header'); 
-
+const clearLogo = document.querySelector('header > img:nth-child(1)');
+const darkLogo = document.querySelector('.darkLogoHidden'); 
+const darkButtonCircle = document.querySelector('.darkButtonCircle');
 
 function darkMode() {
     app.classList.toggle('darkApp'); 
     header.classList.toggle('darkHeader'); 
-
+    clearLogo.classList.toggle('clearLogo');
+    darkLogo.classList.toggle('darkLogo'); 
+    filterTask.classList.toggle('darkFilterTask'); 
+    newTask.classList.toggle('darkNewTask'); 
+    darkButton.classList.toggle('darkButtonActivate'); 
+    darkButtonCircle.classList.toggle('darkButtonActivateCircle'); 
 }
 
 darkButton.addEventListener('click', darkMode); 

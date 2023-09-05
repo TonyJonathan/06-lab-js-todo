@@ -22,9 +22,14 @@ header{
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-header > img{
+header > img:nth-child(1){
     margin: 27px 0px 26px 32px ;
 }
+
+.darkLogoHidden{
+    display: none;
+}
+
 
 .new_task{
     width: 167px;
@@ -35,6 +40,7 @@ header > img{
     color: #FFFFFF;
     margin: 31px 0px 30px 0px;
 }
+
 .new_task:hover{
     background-color: #53e3d3;
     cursor: pointer;
@@ -80,6 +86,8 @@ header > input:focus{
     background-color: #3E3E3E;
     padding: 3px 5px 0px 25px;
     margin: 45px 81px 45px 124px;
+    transition: padding 0.3s ease;
+    
 }
 
 .darkButton:hover{
@@ -518,4 +526,74 @@ li{
 
 .darkApp{
     background-color: #363636;
+}
+
+.clearLogo{
+    display: none;
+}
+
+.darkLogo{
+    display: block;
+    margin: 0;
+    margin-top: 30px;
+    margin-left: 38px;
+    margin-right: 16px;
+}
+
+
+.darkFilterTask{
+    width: 493px;
+    font-family: 'Arial' , sans-serif;
+    border: 2px solid #25D6E1;
+    padding: 13px 0 10px 30px;
+    margin: 31px 93px 30px 198px;
+    font-size: 20px;
+    border-radius: 10px;
+    outline: none;
+}
+
+.darkFilterTask:hover{
+    border: 2px solid #AAFAFF;
+}
+
+.darkFilterTask:focus{
+    border: 2px solid #25D6E1;
+}
+
+
+.darkNewTask{
+    width: 167px;
+    display: flex;
+    align-items: center;
+    background-color: #25D6E1;
+    border-radius: 10px;
+    color: #FFFFFF;
+    margin: 31px 0px 30px 0px;
+}
+
+.darkNewTask:hover{
+    background-color: #AAFAFF;
+    cursor: pointer;
+}
+
+.darkButtonActivate{
+    width: 16px;
+    border-radius: 11px;
+    background-color: #ffffff;
+    padding: 3px 25px 0px 5px;
+    margin: 45px 81px 45px 124px;
+    transition: padding 0.3s ease;
+}
+
+.darkButtonActivate:hover{
+    background-color: #AAFAFF;
+    cursor: pointer;
+}
+
+.darkButtonActivateCircle{
+    width: 16px;
+    height: 16px;
+    border-radius: 10px;
+    background-color: #000000;
+    
 }
