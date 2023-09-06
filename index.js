@@ -28,6 +28,9 @@ let clickUrgent = 0;
 let clickOnHold = 0; 
 // il faudra ajouter le fait que cliquer sur l'un réinitialise l'autre :)
 
+var task; 
+var allTaskClone; 
+
 
 function clickAgainReset(event){
     if(event.target == buttonUrgent && clickUrgent == 0){
@@ -69,93 +72,104 @@ function closeModal(){
 newTask.addEventListener('click', openModal);
 cross.addEventListener('click', closeModal); 
 submit.addEventListener('click', submitInfo); 
+
+
 function submitInfo(){
 
-if(inputTitle.value == ''){
-    inputTitle.placeholder = 'Please add a title to your task'; 
-    inputTitle.classList.add('error'); 
-} else {
-    // ajoute la tâche
-    
-    const listTemplate = document.getElementById('listTemplate');
-    const ulClone = document.importNode(listTemplate.content, true);
-    const todoList = ulClone.querySelector('#todoList');
-    
-    const taskTemplate = document.getElementById('taskTemplate');
-    const taskClone = document.importNode(taskTemplate.content, true);
-    task = taskClone.querySelector('.task'); 
-    let noClickedTask = taskClone.querySelector('.noClickedTask');
-    let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
-    taskText1.textContent = inputTitle.value;
-    let alert = taskClone.querySelector('.alert'); 
-    
-    if(buttonUrgent.checked==true){
-        alert.classList.add('alertUrgent'); 
-    } else if(buttonOnHold.checked==true){
-        alert.classList.add('alertOnHold'); 
-    } 
-    let taskText2 = taskClone.querySelector('.noClickedTask > p:nth-child(3)');
-    taskText2.textContent = "...";
-    
-    noClickedTask.appendChild(taskText1); 
-    noClickedTask.appendChild(alert); 
-    noClickedTask.appendChild(taskText2); 
-    task.appendChild(noClickedTask); 
-    let taskText3 = taskClone.querySelector('.taskAlert');
-    taskText3.classList.remove('taskAlert')
-    if(buttonUrgent.checked == true){
-        taskText3.textContent = "URGENT";
-        taskText3.classList.add('taskAlertUrgent'); 
-    } else if(buttonOnHold.checked == true){
-        taskText3.textContent = "ON HOLD";
-        taskText3.classList.add('taskAlertOnHold'); 
+    if(inputTitle.value == ''){
+        inputTitle.placeholder = 'Please add a title to your task'; 
+        inputTitle.classList.add('error'); 
     } else {
-        taskText3.hidden = true; 
+        // ajoute la tâche
+        
+        const listTemplate = document.getElementById('listTemplate');
+        const ulClone = document.importNode(listTemplate.content, true);
+        const todoList = ulClone.querySelector('#todoList');
+        
+        const taskTemplate = document.getElementById('taskTemplate');
+        const taskClone = document.importNode(taskTemplate.content, true);
+        task = taskClone.querySelector('.task'); 
+        allTaskClone = taskClone.querySelectorAll('.task');
+        let noClickedTask = taskClone.querySelector('.noClickedTask');
+        let taskText1 = taskClone.querySelector('.noClickedTask > p:nth-child(1)');
+        taskText1.textContent = inputTitle.value;
+        let alert = taskClone.querySelector('.alert'); 
+        
+        if(buttonUrgent.checked==true){
+            alert.classList.add('alertUrgent'); 
+        } else if(buttonOnHold.checked==true){
+            alert.classList.add('alertOnHold'); 
+        } 
+        let taskText2 = taskClone.querySelector('.noClickedTask > p:nth-child(3)');
+        taskText2.textContent = "...";
+        
+        noClickedTask.appendChild(taskText1); 
+        noClickedTask.appendChild(alert); 
+        noClickedTask.appendChild(taskText2); 
+        task.appendChild(noClickedTask); 
+        let taskText3 = taskClone.querySelector('.taskAlert');
+        taskText3.classList.remove('taskAlert')
+        if(buttonUrgent.checked == true){
+            taskText3.textContent = "URGENT";
+            taskText3.classList.add('taskAlertUrgent'); 
+        } else if(buttonOnHold.checked == true){
+            taskText3.textContent = "ON HOLD";
+            taskText3.classList.add('taskAlertOnHold'); 
+        } else {
+            taskText3.hidden = true; 
+        }
+        let clickedTask = taskClone.querySelector('.clickedTask'); 
+        let taskText4 = taskClone.querySelector('.clickedTask > p:nth-child(1)');
+        if(textAreaDescription.value == ''){
+            taskText4.textContent = 'no description'; 
+        } else {
+            taskText4.textContent = textAreaDescription.value;
+        }
+        
+        let taskBin = taskClone.querySelector('.clickedTask > img:nth-child(2)');
+        task.appendChild(taskText3);
+        clickedTask.appendChild(taskText4);
+        clickedTask.appendChild(taskBin);
+        task.appendChild(clickedTask); 
+        todoList.appendChild(taskClone);
+        // Ajouter la liste à la page
+        document.body.appendChild(ulClone);
+        
+        // ferme le modal et incrémente le nombre de tâches
+        
+            if(taskCategory.textContent == "PLANNED") {
+                plannedCount++;
+                plannedCountText.textContent = plannedCount.toString();
+                plannedContainer.appendChild(task); 
+            } else if(taskCategory.textContent == "IN PROGRESS") {
+                inProgressCount++;
+                inProgressCountText.textContent = inProgressCount.toString();
+                inProgressContainer.appendChild(task); 
+            } else if(taskCategory.textContent == "COMPLETED") {
+                completedCount++;
+                completedCountText.textContent = completedCount.toString();
+                completedContainer.appendChild(task); 
+        }
+        // Sauvegardez les données de la tâche dans le stockage local
+        const titleTaskLocalStorage = inputTitle.value;
+        const taskData = {
+            title: inputTitle.value,
+            description: taskText4.textContent,
+            urgent: buttonUrgent.checked,
+            onHold: buttonOnHold.checked,
+            category: task.parentNode.className
+        };
+        localStorage.setItem(`task_${titleTaskLocalStorage}`, JSON.stringify(taskData));
+        allTask = document.querySelectorAll('.task'); 
+        closeModal();
+        
+
+        if(darkButton.classList.length == 2){
+            task.classList.add('darkTask'); 
+        }
+       
+        
     }
-    let clickedTask = taskClone.querySelector('.clickedTask'); 
-    let taskText4 = taskClone.querySelector('.clickedTask > p:nth-child(1)');
-    if(textAreaDescription.value == ''){
-        taskText4.textContent = 'no description'; 
-    } else {
-        taskText4.textContent = textAreaDescription.value;
-    }
-    
-    let taskBin = taskClone.querySelector('.clickedTask > img:nth-child(2)');
-    task.appendChild(taskText3);
-    clickedTask.appendChild(taskText4);
-    clickedTask.appendChild(taskBin);
-    task.appendChild(clickedTask); 
-    todoList.appendChild(taskClone);
-    // Ajouter la liste à la page
-    document.body.appendChild(ulClone);
-    
-    // ferme le modal et incrémente le nombre de tâches
-    
-        if(taskCategory.textContent == "PLANNED") {
-            plannedCount++;
-            plannedCountText.textContent = plannedCount.toString();
-            plannedContainer.appendChild(task); 
-        } else if(taskCategory.textContent == "IN PROGRESS") {
-            inProgressCount++;
-            inProgressCountText.textContent = inProgressCount.toString();
-            inProgressContainer.appendChild(task); 
-        } else if(taskCategory.textContent == "COMPLETED") {
-            completedCount++;
-            completedCountText.textContent = completedCount.toString();
-            completedContainer.appendChild(task); 
-    }
-     // Sauvegardez les données de la tâche dans le stockage local
-const titleTaskLocalStorage = inputTitle.value;
-const taskData = {
-    title: inputTitle.value,
-    description: taskText4.textContent,
-    urgent: buttonUrgent.checked,
-    onHold: buttonOnHold.checked,
-    category: task.parentNode.className
-};
-localStorage.setItem(`task_${titleTaskLocalStorage}`, JSON.stringify(taskData));
-     closeModal();
-}
 }
 
 function changeCategoryTask(){
@@ -195,13 +209,14 @@ function addCategoryTask(){
 addTaskAll.forEach(element =>{
     element.addEventListener('click', (event) => {
         modal.style.display = 'block';
+        console.log(event.target.parentNode.parentNode.className); 
         if(event.target.parentNode.parentNode.className == "plannedContainer"){
             taskCategory.textContent = 'PLANNED';
                        
-        } else if(event.target.parentNode.parentNode.className == "inProgressContainer"){
+        } else if(event.target.parentNode.parentNode.className == "inProgressContainer" || event.target.parentNode.parentNode.className == "inProgressContainer darkInProgressContainer"){
             taskCategory.textContent = 'IN PROGRESS';
                        
-        } else if (event.target.parentNode.parentNode.className == "completedContainer"){
+        } else if (event.target.parentNode.parentNode.className == "completedContainer" || event.target.parentNode.parentNode.className == "completedContainer darkCompletedContainer"){
             taskCategory.textContent = 'COMPLETED';
         } 
     })
@@ -360,6 +375,8 @@ function filterTaskWhenType(){
         let allTaskTitle = document.querySelectorAll(".noClickedTask > p:nth-child(1)");
         allTaskTitle.forEach(element =>{
         let parentTask = element.parentNode.parentNode;
+
+        /* fonction if qui sert à avoir un impact sur les tâches actualisé et les tâches créer post actualisation */
         if(parentTask.childNodes[0].nodeName == "#text"){
             var taskDescription = parentTask.childNodes[4].childNodes[4].textContent
         } else {
@@ -381,7 +398,6 @@ function filterTaskWhenType(){
 
 filterTask.addEventListener('input', filterTaskWhenType); 
 
-
 const darkButton = document.querySelector('.darkButton'); 
 const app = document.querySelector('#app'); 
 const header = document.querySelector('header'); 
@@ -390,8 +406,8 @@ const darkLogo = document.querySelector('.darkLogoHidden');
 const darkButtonCircle = document.querySelector('.darkButtonCircle');
 const clearElement = document.querySelectorAll('.clear'); 
 const modalContent = document.querySelector('.modalContent');
-
-
+let allTask = document.querySelectorAll('.task'); 
+const allCloneTask = clone.querySelectorAll('.task'); 
 
 function darkMode() {
     app.classList.toggle('darkApp'); 
@@ -408,6 +424,7 @@ function darkMode() {
     completedCountText.classList.toggle('darkCount'); 
     inProgressContainer.classList.toggle('darkInProgressContainer');
     completedContainer.classList.toggle('darkCompletedContainer'); 
+
     addTask.forEach(element =>{
         element.classList.toggle('darkAddTask'); 
     })
@@ -416,7 +433,15 @@ function darkMode() {
     })
     modalContent.classList.toggle('darkModalContent'); 
     cross.classList.toggle('darkCross'); 
-
+    console.log(allTask); 
+    allTask.forEach(element =>{
+        console.log(element);
+        element.classList.toggle('darkTask'); 
+    })
+    // allTaskClone.forEach(element =>{
+    //     console.log(element);
+    //     element.classList.toggle('darkTask');
+    // })
 
 }
 
@@ -430,3 +455,4 @@ darkButton.addEventListener('click', darkMode);
 //         console.log(event.target); 
 //     }
 // }); 
+
