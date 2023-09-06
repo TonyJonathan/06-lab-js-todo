@@ -53,6 +53,9 @@ document.addEventListener('click', clickAgainReset);
 
 function openModal(){
     modal.style.display = 'block'; 
+    inputTitle.classList.remove('error'); 
+    inputTitle.placeholder = 'Title of the task';
+    inputTitle.value = ''; 
 }
 
 
@@ -197,10 +200,10 @@ function addCategoryTask(){
             if(event.target.parentNode.className == "plannedContainer"){
                 taskCategory.textContent = 'PLANNED';
                     
-            }else if(event.target.parentNode.className == "inProgressContainer"){
+            }else if(event.target.parentNode.className == "inProgressContainer" || event.target.parentNode.className == "inProgressContainer darkInProgressContainer"){
                 taskCategory.textContent = 'IN PROGRESS';
                     
-            } else if (event.target.parentNode.className == "completedContainer"){
+            } else if (event.target.parentNode.className == "completedContainer" || event.target.parentNode.className == "completedContainer darkCompletedContainer"){
                     taskCategory.textContent = 'COMPLETED';
                 } 
         })
@@ -272,6 +275,7 @@ function recreateTaskElements(){
         var recreateTask = document.createElement('div');
         recreateTask.classList.add('task'); 
         recreateTask.setAttribute('tabindex', '0');
+        recreateTask.setAttribute('draggable', 'true');
         var recreateNoClickedTask = document.createElement('div');
         recreateNoClickedTask.classList.add('noClickedTask'); 
         
@@ -447,6 +451,14 @@ function darkMode() {
 
 darkButton.addEventListener('click', darkMode); 
 
+
+
+document.addEventListener('keydown', (event) =>{
+    if(event.key === 'Enter') {
+        submitInfo();
+    }
+});
+
 //.append
 
 
@@ -456,3 +468,63 @@ darkButton.addEventListener('click', darkMode);
 //     }
 // }); 
 
+//drag n drop
+
+let dragSrcEl = null;
+
+// Gestionnaire pour le début du glissement
+function handleDragStart(e) {
+    dragSrcEl = this;
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+    this.classList.add('dragging');
+}
+
+// Gestionnaire pour le survol pendant le glissement
+function handleDragOver(e) {
+
+        e.preventDefault();
+
+    this.classList.add('over');
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+
+// Gestionnaire pour quitter le survol
+function handleDragLeave() {
+    this.classList.remove('over');
+}
+
+// Gestionnaire pour le lâcher
+function handleDrop(e) {
+
+        e.stopPropagation();
+    
+    if (dragSrcEl !== this) {
+        dragSrcEl.innerHTML = this.innerHTML;
+        this.innerHTML = e.dataTransfer.getData('text/html');
+    }
+    return false;
+}
+
+// Gestionnaire pour la fin du glissement
+function handleDragEnd() {
+    this.classList.remove('over');
+    this.classList.remove('dragging');
+}
+
+allTask.forEach(element =>{
+    element.addEventListener('dragstart', handleDragStart, false); 
+    element.addEventListener('dragenter', handleDragOver, false);
+    element.addEventListener('dragover', handleDragOver, false);
+    element.addEventListener('dragleave', handleDragLeave, false);
+    element.addEventListener('drop', handleDrop, false);
+    element.addEventListener('dragend', handleDragEnd, false); 
+    
+}); 
+
+document.addEventListener('click', ()=> {
+    allTask.forEach(element =>{
+        element.classList.remove('over'); 
+    })
+})

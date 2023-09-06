@@ -688,3 +688,14 @@ li{
 }
 
 
+/* draggable task */ 
+
+.dragging {
+    opacity: 0.8;
+}
+
+.over {
+    background-color: #901fad;
+}
+
+
