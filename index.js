@@ -154,8 +154,8 @@ function submitInfo(){
                 completedContainer.appendChild(task); 
         }
         // Sauvegardez les données de la tâche dans le stockage local
-        const titleTaskLocalStorage = inputTitle.value;
-        const taskData = {
+        var titleTaskLocalStorage = inputTitle.value;
+        var taskData = {
             title: inputTitle.value,
             description: taskText4.textContent,
             urgent: buttonUrgent.checked,
@@ -260,6 +260,7 @@ taskBinAll.forEach(element =>{
 })
 }
 
+
 var elements = []; 
 var keys = Object.keys(localStorage);
 
@@ -267,6 +268,7 @@ keys.forEach(function(key){
     var valeur = localStorage.getItem(key);
     elements.push(valeur);
 })
+
 
 
 function recreateTaskElements(){
@@ -501,8 +503,54 @@ function handleDrop(e) {
     e.preventDefault();
 
     if (dragSrcEl !== this) {
+        if(dragSrcEl.parentNode !== this.parentNode){
+            if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'plannedCount'){
+                plannedCount--;
+                plannedCountText.textContent = plannedCount.toString();
+            } else if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount'){
+                inProgressCount--;
+                inProgressCountText.textContent = inProgressCount.toString();
+            } else if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'completedCount'){
+                completedCount--;
+                completedCountText.textContent = completedCount.toString();
+            }
+
+            if(this.parentNode.childNodes[1].childNodes[3].className == 'plannedCount'){
+                plannedCount++;
+                plannedCountText.textContent = plannedCount.toString();
+            } else if(this.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount'){
+                inProgressCount++;
+                inProgressCountText.textContent = inProgressCount.toString();
+            } else if(this.parentNode.childNodes[1].childNodes[3].className == 'completedCount'){
+                completedCount++;
+                completedCountText.textContent = completedCount.toString();
+            }
+        }
+
+        var taskContainer = this.parentNode.className;
+        var taskName = dragSrcEl.childNodes[0].childNodes[0].textContent;
+
+        console.log(taskName); 
         // Déplacez l'élément glissé (dragSrcEl) après l'élément cible (this)
         this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
+    
+        
+        elements.forEach(element =>{
+            var parsedData = JSON.parse(element);
+            console.log(parsedData.title); 
+
+            if(taskName == parsedData.title){
+                // parsedData.category = taskContainer; 
+                var keyName = "task_"+parsedData.title;
+                var currentValue = localStorage.getItem(keyName); 
+                var taskValue = JSON.parse(currentValue);
+                taskValue.category = taskContainer; 
+                var newValue = JSON.stringify(taskValue); 
+                localStorage.setItem(keyName, newValue); 
+            }
+        }) 
+        
+        
     }
 
     return false;
@@ -527,3 +575,7 @@ allTask.forEach(element =>{
     
 }); 
 
+// window.addEventListener('beforeunload', function (event) {
+//     // Votre code ici, par exemple, pour demander une confirmation avant le rechargement
+//     event.returnValue = 'Voulez-vous vraiment quitter cette page ?';
+// });
