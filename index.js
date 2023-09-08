@@ -77,6 +77,9 @@ cross.addEventListener('click', closeModal);
 submit.addEventListener('click', submitInfo); 
 
 
+let inProgressContainerTask;
+let plannedContainerTask;
+
 function submitInfo(){
 
     if(inputTitle.value == ''){
@@ -166,11 +169,80 @@ function submitInfo(){
         allTask = document.querySelectorAll('.task'); 
         closeModal();
         
-
+        // ajoute 
         if(darkButton.classList.length == 2){
             task.classList.add('darkTask'); 
         }
-       
+
+        plannedContainerTask = Array.from(plannedContainer.childNodes).filter(node => {
+            return node.tagName === 'DIV' && node.classList.contains('task');
+            }
+        );
+        inProgressContainerTask = Array.from(inProgressContainer.childNodes).filter(node => {
+            return node.tagName === 'DIV' && node.classList.contains('task');
+            }
+        );
+        completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
+            return node.tagName === 'DIV' && node.classList.contains('task');
+            }
+        );
+
+            function letTaskInOrder (){
+                var elements = []; 
+
+
+            plannedContainerTask.forEach(divTask =>{
+                if(divTask.childNodes[0].nodeName == "#text"){
+                    var plannedKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+                } else {
+                    var plannedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+                }
+            
+            var plannedKeyValue = localStorage.getItem(plannedKeyName);
+            elements.push(plannedKeyValue); 
+            })
+
+            inProgressContainerTask.forEach(divTask =>{
+                if(divTask.childNodes[0].nodeName == "#text"){
+                    var inProgressKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+                } else {
+                    var inProgressKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+                }
+            console.log(inProgressKeyName);
+            var inProgressKeyValue = localStorage.getItem(inProgressKeyName);
+            elements.push(inProgressKeyValue); 
+            })
+
+            completedContainerTask.forEach(divTask =>{
+                if(divTask.childNodes[0].nodeName == "#text"){
+                    var completedKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+                } else {
+                    var completedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+                }
+            console.log(completedKeyName);
+            var completedKeyValue = localStorage.getItem(completedKeyName);
+            elements.push(completedKeyValue); 
+            })
+
+        console.log(elements); 
+
+        
+
+        elements.forEach(element =>{
+            var parsedData = JSON.parse(element);
+             
+
+            var taskName = 'task_' + parsedData.title; 
+
+            localStorage.setItem(taskName, element); 
+        }) 
+
+
+            }
+
+            letTaskInOrder();
+
+            
         
     }
 }
@@ -188,6 +260,20 @@ function changeCategoryTask(){
 taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
 
+// document.addEventListener('click', () => {
+//     completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
+//         return node.tagName === 'DIV' && node.classList.contains('task');
+//         }
+//     );
+    
+    // completedContainerTask.forEach(divTask =>{
+    //     var keyName = 'task_' + divTask.childNodes[0].childNodes[0].textContent; 
+    //     console.log(keyName);
+    //     keyValue = localStorage.getItem(keyName);
+    //     console.log(keyValue); 
+        
+// })
+// })
 
 
 
@@ -263,6 +349,7 @@ taskBinAll.forEach(element =>{
 
 var elements = []; 
 var keys = Object.keys(localStorage);
+ 
 
 keys.forEach(function(key){
     var valeur = localStorage.getItem(key);
@@ -350,11 +437,16 @@ function recreateTaskElements(){
 
 recreateTaskElements();
 
+var completedContainerTask;
+
+
 function deleteAllCompleteTask(){
-    const completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
+        completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
         return node.tagName === 'DIV' && node.classList.contains('task');
         }
     );
+
+    console.log(completedContainerTask); 
     completedContainerTask.forEach(divTask => {
         
         divTask.remove(); 
