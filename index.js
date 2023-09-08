@@ -497,13 +497,14 @@ function handleDragLeave() {
 
 // Gestionnaire pour le lâcher
 function handleDrop(e) {
+    e.stopPropagation();
+    e.preventDefault();
 
-        e.stopPropagation();
-    
     if (dragSrcEl !== this) {
-        dragSrcEl.innerHTML = this.innerHTML;
-        this.innerHTML = e.dataTransfer.getData('text/html');
+        // Déplacez l'élément glissé (dragSrcEl) après l'élément cible (this)
+        this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
     }
+
     return false;
 }
 
@@ -520,11 +521,9 @@ allTask.forEach(element =>{
     element.addEventListener('dragleave', handleDragLeave, false);
     element.addEventListener('drop', handleDrop, false);
     element.addEventListener('dragend', handleDragEnd, false); 
+    element.addEventListener('mouseleave', () => {
+        element.classList.remove('over'); 
+    })
     
 }); 
 
-document.addEventListener('click', ()=> {
-    allTask.forEach(element =>{
-        element.classList.remove('over'); 
-    })
-})
