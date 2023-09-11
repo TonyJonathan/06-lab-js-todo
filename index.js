@@ -17,6 +17,7 @@ const plannedContainer = clone.querySelector('.plannedContainer');
 const inProgressContainer = clone.querySelector('.inProgressContainer');
 const completedContainer = clone.querySelector('.completedContainer');
 const completedContainerBin = clone.querySelector('.completed > img');
+const containerTask = clone.querySelectorAll('.containerTask > div'); 
 
 let plannedCountText = clone.querySelector('.plannedCount');
 let inProgressCountText = clone.querySelector('.inProgressCount');
@@ -644,6 +645,7 @@ let dragSrcEl = null;
 // Gestionnaire pour le début du glissement
 function handleDragStart(e) {
     dragSrcEl = this;
+    
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this.innerHTML);
     this.classList.add('dragging');
@@ -654,7 +656,7 @@ function handleDragOver(e) {
 
     e.preventDefault();
 
-    if(localStorage.getItem('dark') == 'inactive'){
+    if(localStorage.getItem('dark') == 'inactif'){
         this.classList.add('over');
     } else {
         this.classList.add('darkOver');
@@ -678,24 +680,24 @@ function handleDrop(e) {
 
     if (dragSrcEl !== this) {
         if(dragSrcEl.parentNode !== this.parentNode){
-            if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'plannedCount'){
+            if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'plannedCount' || dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'plannedCount darkCount'){
                 plannedCount--;
                 plannedCountText.textContent = plannedCount.toString();
-            } else if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount'){
+            } else if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount' || dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount darkCount'){
                 inProgressCount--;
                 inProgressCountText.textContent = inProgressCount.toString();
-            } else if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'completedCount'){
+            } else if(dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'completedCount' || dragSrcEl.parentNode.childNodes[1].childNodes[3].className == 'completedCount darkCount'){
                 completedCount--;
                 completedCountText.textContent = completedCount.toString();
             }
 
-            if(this.parentNode.childNodes[1].childNodes[3].className == 'plannedCount'){
+            if(this.parentNode.childNodes[1].childNodes[3].className == 'plannedCount' || this.parentNode.childNodes[1].childNodes[3].className == 'plannedCount darkCount'){
                 plannedCount++;
                 plannedCountText.textContent = plannedCount.toString();
-            } else if(this.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount'){
+            } else if(this.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount' || this.parentNode.childNodes[1].childNodes[3].className == 'inProgressCount darkCount'){
                 inProgressCount++;
                 inProgressCountText.textContent = inProgressCount.toString();
-            } else if(this.parentNode.childNodes[1].childNodes[3].className == 'completedCount'){
+            } else if(this.parentNode.childNodes[1].childNodes[3].className == 'completedCount' || this.parentNode.childNodes[1].childNodes[3].className == 'completedCount darkCount'){
                 completedCount++;
                 completedCountText.textContent = completedCount.toString();
             }
@@ -707,6 +709,8 @@ function handleDrop(e) {
         console.log(taskName); 
         // Déplacez l'élément glissé (dragSrcEl) après l'élément cible (this)
         this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
+
+        console.log(this); 
     
         elements.forEach(element =>{
             var parsedData = JSON.parse(element);
@@ -736,6 +740,8 @@ function handleDragEnd() {
     this.classList.remove('dragging');
 }
 
+
+
 allTask.forEach(element =>{
     element.addEventListener('dragstart', handleDragStart, false); 
     element.addEventListener('dragenter', handleDragOver, false);
@@ -749,6 +755,49 @@ allTask.forEach(element =>{
     })
     
 }); 
+
+function handleDragOverContainer(e) {
+
+    e.preventDefault();
+    console.log(localStorage.getItem('dark'))
+    if(localStorage.getItem('dark') == 'inactif'){
+        this.classList.add('overContainer');
+    } else {
+        this.classList.add('darkOverContainer');
+    }
+
+    e.dataTransfer.dropEffect = 'move';
+    return false;
+}
+
+function handleDropContainer(e) {
+        e.stopPropagation();
+        console.log(dragSrcEl); 
+
+  this.appendChild(dragSrcEl); 
+    return false;
+}
+
+function handleDragLeaveContainer() {
+    this.classList.remove('overContainer');
+    this.classList.remove('darkOverContainer');
+}
+
+function handleDragContainer() {
+    this.classList.remove('overContainer');
+    this.classList.remove('darkOverContainer');
+    this.classList.remove('dragging');
+}
+
+
+containerTask.forEach(container =>{
+    
+    container.addEventListener('dragover', handleDragOverContainer, false);
+    container.addEventListener('drop', handleDropContainer, false);
+    container.addEventListener('mousemove', () =>{
+        container.classList.remove('overContainer'); 
+    } )
+})
 
 // window.addEventListener('beforeunload', function (event) {
 //     // Votre code ici, par exemple, pour demander une confirmation avant le rechargement
