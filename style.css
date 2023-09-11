@@ -13,6 +13,8 @@ body{
 .clearApp{
     background-color: #E1E8E9;
     color: #3E3E3E;
+    transition: background-color 1s;
+    transition: color 1s;
 }
 
 header{
@@ -21,6 +23,7 @@ header{
     background-color: #FFFFFF;
     margin: 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transition: background-color 1s;
 }
 
 header > img:nth-child(1){
@@ -40,11 +43,13 @@ header > img:nth-child(1){
     border-radius: 10px;
     color: #FFFFFF;
     margin: 31px 0px 30px 0px;
+    transition: background-color 1s;
 }
 
 .new_task:hover{
     background-color: #53e3d3;
     cursor: pointer;
+    transition: background-color 0s;
 }
 
 .new_task > p:nth-child(1){
@@ -70,14 +75,17 @@ header > input{
     font-size: 20px;
     border-radius: 10px;
     outline: none;
+    transition: border-color 0.3s ease;
 }
 
 header > input:hover{
     border: 2px solid #53e3d3;
+    transition: border-color 0s ease;
 }
 
 header > input:focus{
     border: 2px solid #00B49E;
+    transition: border-color 0s ease;
 }
 
 
@@ -119,6 +127,7 @@ header > input:focus{
     border-radius: 8px;
     border-top: 10px solid #86D3EB ;
     background-color: #FFFFFF; 
+    transition: background-color 1s;
 }
 
 .planned{
@@ -148,11 +157,13 @@ header > input:focus{
     color: #00B49E;
     margin: 0;
     padding: 21px 0px 21px 0px;
+    transition: color 1s;
 }
 
 .addTask:hover{
     cursor: pointer;
    color: #53e3d3;
+   transition: color 0s;
  
 }
 
@@ -177,6 +188,8 @@ header > input:focus{
     border-top: 10px solid #F6DA44 ;
     background-color: #FFFFFF; 
     margin-left: 21px;
+    transition: background-color 1s;
+    
 }
 
 .inProgress{
@@ -203,6 +216,7 @@ header > input:focus{
     border-top: 10px solid #9FD700;
     background-color: #FFFFFF; 
     margin-left: 21px;
+    transition: background-color 1s;
 }
 
 

@@ -264,6 +264,7 @@ function submitInfo(){
 
     }
 
+    location.reload(); 
     
 }
 
@@ -394,55 +395,22 @@ if(localStorage.getItem('orderOfTask') !== null && localStorage.getItem('orderOf
         elements.push(keyValue);
     }
 
-    console.log(keys); 
-
-
-
-
 } else {
 
 var keys = localStorage.getItem('orderOfTask');
 
 }
 
-
-
-console.log(elements); 
-
-
- 
-
-
-
-
-
-
-
-
-
-// keys.forEach(function(key){
-//     var valeur = localStorage.getItem(key);
-//     elements.push(valeur);
-// })
-
-
-
-
-
 function recreateTaskElements(){
 
 
+    elements.forEach(element =>{
+        var parsedData = JSON.parse(element);
+        
+        var taskName = 'task_' + parsedData.title; 
 
-
-elements.forEach(element =>{
-var parsedData = JSON.parse(element);
- 
-
-var taskName = 'task_' + parsedData.title; 
-
-localStorage.setItem(taskName, element); 
-}) 
-
+        localStorage.setItem(taskName, element); 
+    }) 
 
     elements.forEach(element =>{
         var parsedElement = JSON.parse(element); // Si vos données sont stockées au format JSON
@@ -487,6 +455,7 @@ localStorage.setItem(taskName, element);
         var recreateDescription = document.createElement('p');
         recreateDescription.textContent = parsedElement.description; 
         recreateClickedTask.appendChild(recreateDescription); 
+
         if(parsedElement.category == 'plannedContainer' || parsedElement.category == 'plannedContainer darkPlannedContainer'){
             plannedCount++;
             plannedCountText.textContent = plannedCount.toString();
@@ -522,9 +491,7 @@ localStorage.setItem(taskName, element);
 
 recreateTaskElements();
 
-
 var completedContainerTask;
-
 
 function deleteAllCompleteTask(){
         completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
@@ -670,8 +637,6 @@ document.addEventListener('keydown', (event) =>{
 // }); 
 
 
-
-
 //drag n drop
 
 let dragSrcEl = null;
@@ -687,15 +652,13 @@ function handleDragStart(e) {
 // Gestionnaire pour le survol pendant le glissement
 function handleDragOver(e) {
 
-        e.preventDefault();
+    e.preventDefault();
 
-        if(localStorage.getItem('dark') == 'inactive'){
-            this.classList.add('over');
-        } else {
-            this.classList.add('darkOver');
-        }
-
-    
+    if(localStorage.getItem('dark') == 'inactive'){
+        this.classList.add('over');
+    } else {
+        this.classList.add('darkOver');
+    }
 
     e.dataTransfer.dropEffect = 'move';
     return false;
@@ -711,6 +674,7 @@ function handleDragLeave() {
 function handleDrop(e) {
     e.stopPropagation();
     e.preventDefault();
+
 
     if (dragSrcEl !== this) {
         if(dragSrcEl.parentNode !== this.parentNode){
@@ -744,13 +708,12 @@ function handleDrop(e) {
         // Déplacez l'élément glissé (dragSrcEl) après l'élément cible (this)
         this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
     
-        
         elements.forEach(element =>{
             var parsedData = JSON.parse(element);
             console.log(parsedData.title); 
 
             if(taskName == parsedData.title){
-                // parsedData.category = taskContainer; 
+         
                 var keyName = "task_"+parsedData.title;
                 var currentValue = localStorage.getItem(keyName); 
                 var taskValue = JSON.parse(currentValue);
