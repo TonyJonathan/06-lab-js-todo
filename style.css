@@ -695,7 +695,10 @@ li{
 }
 
 .over {
-    background-color: #901fad;
+    background-color: #E1E8E9;
+    
 }
 
-
+.darkOver{
+    background-color: #a3a3a3;
+}
