@@ -371,7 +371,7 @@ taskBinAll.forEach(element =>{
 })
 }
 
-elements = []; 
+var elements = []; 
 
 
 // Récupère la clé orderOfTask (sous forme de string) et la transforme en tableau (fonction if dans le cas ou il y a 0, 1 ou plusieurs clés)
@@ -754,12 +754,9 @@ function handleDragOverContainer(e) {
 
 function handleDropContainer(e) {
         e.stopPropagation(); 
-        console.log(this);
-        console.log(dragSrcEl.parentNode); 
 
     if(this !== dragSrcEl.parentNode){
         if(dragSrcEl.parentNode.className == "plannedContainer" || dragSrcEl.parentNode.className == "plannedContainer darkPlannedContainer" ){
-            console.log('ok');
             plannedCount--;
             plannedCountText.textContent = plannedCount.toString();
         } else if(dragSrcEl.parentNode.className == "inProgressContainer" || dragSrcEl.parentNode.className == "inProgressContainer darkInProgressContainer" ){
