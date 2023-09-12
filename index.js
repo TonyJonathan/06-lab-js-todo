@@ -121,7 +121,7 @@ inProgressContainerTask.forEach(divTask =>{
     } else {
         var inProgressKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
     }
-console.log(inProgressKeyName);
+
 var inProgressKeyValue = localStorage.getItem(inProgressKeyName);
 elements.push(inProgressKeyValue); 
 })
@@ -132,7 +132,7 @@ completedContainerTask.forEach(divTask =>{
     } else {
         var completedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
     }
-console.log(completedKeyName);
+
 var completedKeyValue = localStorage.getItem(completedKeyName);
 elements.push(completedKeyValue); 
 })
@@ -148,7 +148,6 @@ elements.forEach(element =>{
     
     localStorage.setItem(taskName, element); 
     }) 
-    console.log(elements); 
     
     orderOfTask = localStorage.removeItem('orderOfTask');
     var orderOfTaskValue = [];
@@ -322,7 +321,6 @@ function addCategoryTask(){
 addTaskAll.forEach(element =>{
     element.addEventListener('click', (event) => {
         modal.style.display = 'block';
-        console.log(event.target.parentNode.parentNode.className); 
         if(event.target.parentNode.parentNode.className == "plannedContainer" || event.target.parentNode.parentNode.className == "plannedContainer darkPlannedContainer"){
             taskCategory.textContent = 'PLANNED';
                        
@@ -367,7 +365,7 @@ taskBinAll.forEach(element =>{
         element.parentNode.parentNode.remove(); 
         localStorage.removeItem(keyName);
 
-        putOrder();
+        
     }
 
 })
@@ -377,8 +375,6 @@ elements = [];
 
 
 // Récupère la clé orderOfTask (sous forme de string) et la transforme en tableau (fonction if dans le cas ou il y a 0, 1 ou plusieurs clés)
-
-console.log(localStorage.getItem('orderOfTask')); 
 
 if(localStorage.getItem('orderOfTask') !== null && localStorage.getItem('orderOfTask') !== ""){
 
@@ -500,7 +496,6 @@ function deleteAllCompleteTask(){
         }
     );
 
-    console.log(completedContainerTask); 
     completedContainerTask.forEach(divTask => {
         
         divTask.remove(); 
@@ -563,7 +558,6 @@ const modalContent = document.querySelector('.modalContent');
 let allTask = document.querySelectorAll('.task'); 
 const allCloneTask = clone.querySelectorAll('.task'); 
 
-console.log(localStorage.getItem('dark')); 
 
 function darkMode() {
     app.classList.toggle('darkApp'); 
@@ -589,9 +583,7 @@ function darkMode() {
     })
     modalContent.classList.toggle('darkModalContent'); 
     cross.classList.toggle('darkCross'); 
-    console.log(allTask); 
     allTask.forEach(element =>{
-        console.log(element);
         element.classList.toggle('darkTask'); 
     })
 
@@ -706,15 +698,11 @@ function handleDrop(e) {
         var taskContainer = this.parentNode.className;
         var taskName = dragSrcEl.childNodes[0].childNodes[0].textContent;
 
-        console.log(taskName); 
         // Déplacez l'élément glissé (dragSrcEl) après l'élément cible (this)
         this.parentNode.insertBefore(dragSrcEl, this.nextSibling);
-
-        console.log(this); 
     
         elements.forEach(element =>{
-            var parsedData = JSON.parse(element);
-            console.log(parsedData.title); 
+            var parsedData = JSON.parse(element); 
 
             if(taskName == parsedData.title){
          
@@ -759,22 +747,61 @@ allTask.forEach(element =>{
 function handleDragOverContainer(e) {
 
     e.preventDefault();
-    console.log(localStorage.getItem('dark'))
-    if(localStorage.getItem('dark') == 'inactif'){
-        this.classList.add('overContainer');
-    } else {
-        this.classList.add('darkOverContainer');
-    }
 
     e.dataTransfer.dropEffect = 'move';
     return false;
 }
 
 function handleDropContainer(e) {
-        e.stopPropagation();
-        console.log(dragSrcEl); 
+        e.stopPropagation(); 
+        console.log(this);
+        console.log(dragSrcEl.parentNode); 
+
+    if(this !== dragSrcEl.parentNode){
+        if(dragSrcEl.parentNode.className == "plannedContainer" || dragSrcEl.parentNode.className == "plannedContainer darkPlannedContainer" ){
+            console.log('ok');
+            plannedCount--;
+            plannedCountText.textContent = plannedCount.toString();
+        } else if(dragSrcEl.parentNode.className == "inProgressContainer" || dragSrcEl.parentNode.className == "inProgressContainer darkInProgressContainer" ){
+            inProgressCount--;
+            inProgressCountText.textContent = inProgressCount.toString();
+        } else if(dragSrcEl.parentNode.className == "completedContainer" || dragSrcEl.parentNode.className == "completedContainer darkCompletedContainer" ){
+            completedCount--;
+            completedCountText.textContent = completedCount.toString();
+        }
+
+        if(this.className == "plannedContainer" || this.className == "plannedContainer darkPlannedContainer" ){
+            plannedCount++;
+            plannedCountText.textContent = plannedCount.toString();
+        } else if(this.className == "inProgressContainer" || this.className == "inProgressContainer darkInProgressContainer" ){
+            inProgressCount++;
+            inProgressCountText.textContent = inProgressCount.toString();
+        } else if(this.className == "completedContainer" || this.className == "completedContainer darkCompletedContainer" ){
+            completedCount++;
+            completedCountText.textContent = completedCount.toString();
+        }
+
+        var taskContainer = this.className;
+        var taskName = dragSrcEl.childNodes[0].childNodes[0].textContent;
+    
+        elements.forEach(element =>{
+            var parsedData = JSON.parse(element);
+
+            if(taskName == parsedData.title){
+         
+                var keyName = "task_"+parsedData.title;
+                var currentValue = localStorage.getItem(keyName); 
+                var taskValue = JSON.parse(currentValue);
+                taskValue.category = taskContainer; 
+                var newValue = JSON.stringify(taskValue); 
+                localStorage.setItem(keyName, newValue); 
+            }
+        }) 
+
+    }
 
   this.appendChild(dragSrcEl); 
+  
     return false;
 }
 
@@ -791,7 +818,7 @@ function handleDragContainer() {
 
 
 containerTask.forEach(container =>{
-    
+
     container.addEventListener('dragover', handleDragOverContainer, false);
     container.addEventListener('drop', handleDropContainer, false);
     container.addEventListener('mousemove', () =>{
