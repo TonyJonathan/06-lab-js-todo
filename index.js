@@ -59,7 +59,6 @@ function openModal(){
     inputTitle.value = ''; 
 }
 
-
 function closeModal(){
     taskCategory.textContent = 'PLANNED'; 
     modal.style.display = 'none';
@@ -77,15 +76,14 @@ newTask.addEventListener('click', openModal);
 cross.addEventListener('click', closeModal); 
 submit.addEventListener('click', submitInfo); 
 
-
 let inProgressContainerTask;
 let plannedContainerTask;
 let orderOfTask; 
 
+// la fonction putOrder sert à definir la clé orderOfTask en temps réel 
 
 function putOrder(){
     var elements = []; 
-
 
     // retrouve toutes les div.task dans chacun des containers
 
@@ -102,51 +100,49 @@ function putOrder(){
         }
     );
 
- 
+    plannedContainerTask.forEach(divTask =>{
+        if(divTask.childNodes[0].nodeName == "#text"){
+            var plannedKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+        } else {
+            var plannedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+        }
 
-plannedContainerTask.forEach(divTask =>{
-    if(divTask.childNodes[0].nodeName == "#text"){
-        var plannedKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
-    } else {
-        var plannedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
-    }
+    var plannedKeyValue = localStorage.getItem(plannedKeyName);
+    elements.push(plannedKeyValue); 
+    })
 
-var plannedKeyValue = localStorage.getItem(plannedKeyName);
-elements.push(plannedKeyValue); 
-})
+    inProgressContainerTask.forEach(divTask =>{
+        if(divTask.childNodes[0].nodeName == "#text"){
+            var inProgressKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+        } else {
+            var inProgressKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+        }
 
-inProgressContainerTask.forEach(divTask =>{
-    if(divTask.childNodes[0].nodeName == "#text"){
-        var inProgressKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
-    } else {
-        var inProgressKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
-    }
+    var inProgressKeyValue = localStorage.getItem(inProgressKeyName);
+    elements.push(inProgressKeyValue); 
+    })
 
-var inProgressKeyValue = localStorage.getItem(inProgressKeyName);
-elements.push(inProgressKeyValue); 
-})
+    completedContainerTask.forEach(divTask =>{
+        if(divTask.childNodes[0].nodeName == "#text"){
+            var completedKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
+        } else {
+            var completedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
+        }
 
-completedContainerTask.forEach(divTask =>{
-    if(divTask.childNodes[0].nodeName == "#text"){
-        var completedKeyName = 'task_' + divTask.childNodes[4].childNodes[4].textContent;
-    } else {
-        var completedKeyName = 'task_'+ divTask.childNodes[0].childNodes[0].textContent;
-    }
-
-var completedKeyValue = localStorage.getItem(completedKeyName);
-elements.push(completedKeyValue); 
-})
+    var completedKeyValue = localStorage.getItem(completedKeyName);
+    elements.push(completedKeyValue); 
+    })
 
 
 //reprend toutes les tâches et ajoute leurs titre dans la valeurs de la clé orderOfTask qui sera utile pour retrouver les tâches dans l'ordre
 
-elements.forEach(element =>{
-    var parsedData = JSON.parse(element);
-     
-    
-    var taskName = 'task_' + parsedData.title; 
-    
-    localStorage.setItem(taskName, element); 
+    elements.forEach(element =>{
+        var parsedData = JSON.parse(element);
+        
+        
+        var taskName = 'task_' + parsedData.title; 
+        
+        localStorage.setItem(taskName, element); 
     }) 
     
     orderOfTask = localStorage.removeItem('orderOfTask');
@@ -283,23 +279,6 @@ function changeCategoryTask(){
 taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
 
-// document.addEventListener('click', () => {
-//     completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
-//         return node.tagName === 'DIV' && node.classList.contains('task');
-//         }
-//     );
-    
-    // completedContainerTask.forEach(divTask =>{
-    //     var keyName = 'task_' + divTask.childNodes[0].childNodes[0].textContent; 
-    //     console.log(keyName);
-    //     keyValue = localStorage.getItem(keyName);
-    //     console.log(keyValue); 
-        
-// })
-// })
-
-
-
 
 function addCategoryTask(){
     addTask.forEach(element => {
@@ -318,55 +297,55 @@ function addCategoryTask(){
         })
     }); 
 
-addTaskAll.forEach(element =>{
-    element.addEventListener('click', (event) => {
-        modal.style.display = 'block';
-        if(event.target.parentNode.parentNode.className == "plannedContainer" || event.target.parentNode.parentNode.className == "plannedContainer darkPlannedContainer"){
-            taskCategory.textContent = 'PLANNED';
-                       
-        } else if(event.target.parentNode.parentNode.className == "inProgressContainer" || event.target.parentNode.parentNode.className == "inProgressContainer darkInProgressContainer"){
-            taskCategory.textContent = 'IN PROGRESS';
-                       
-        } else if (event.target.parentNode.parentNode.className == "completedContainer" || event.target.parentNode.parentNode.className == "completedContainer darkCompletedContainer"){
-            taskCategory.textContent = 'COMPLETED';
-        } 
+    addTaskAll.forEach(element =>{
+        element.addEventListener('click', (event) => {
+            modal.style.display = 'block';
+            if(event.target.parentNode.parentNode.className == "plannedContainer" || event.target.parentNode.parentNode.className == "plannedContainer darkPlannedContainer"){
+                taskCategory.textContent = 'PLANNED';
+                        
+            } else if(event.target.parentNode.parentNode.className == "inProgressContainer" || event.target.parentNode.parentNode.className == "inProgressContainer darkInProgressContainer"){
+                taskCategory.textContent = 'IN PROGRESS';
+                        
+            } else if (event.target.parentNode.parentNode.className == "completedContainer" || event.target.parentNode.parentNode.className == "completedContainer darkCompletedContainer"){
+                taskCategory.textContent = 'COMPLETED';
+            } 
+        })
     })
-})
 };
 
 addCategoryTask(); 
 
 
 function deleteTask(event){
-let taskBinAll = document.querySelectorAll('.clickedTask > img:nth-child(2)');
-taskBinAll.forEach(element =>{
-    if(event.target==element){
-        let taskElement = element.parentNode;
-        
+    let taskBinAll = document.querySelectorAll('.clickedTask > img:nth-child(2)');
+    taskBinAll.forEach(element =>{
+        if(event.target==element){
+            let taskElement = element.parentNode;
+            
 
-        if(taskElement.parentNode.childNodes[0].nodeName == "#text"){
-            var keyName = "task_" + taskElement.parentNode.childNodes[4].childNodes[4].textContent;
-        } else {
-            var keyName = "task_" + taskElement.parentNode.childNodes[0].childNodes[0].textContent; 
-        }
-
-        if(taskElement.parentNode.parentNode.className == "plannedContainer" || taskElement.parentNode.parentNode.className == "plannedContainer darkPlannedContainer"){
-            plannedCount--;
-            plannedCountText.textContent = plannedCount.toString();
-                   
-        }else if(taskElement.parentNode.parentNode.className == "inProgressContainer" || taskElement.parentNode.parentNode.className == "inProgressContainer darkInProgressContainer"){
-            inProgressCount--; 
-            inProgressCountText.textContent = inProgressCount.toString();
-                   
-        } else if (taskElement.parentNode.parentNode.className == "completedContainer" || taskElement.parentNode.parentNode.className == "completedContainer darkCompletedContainer"){
-                completedCount--; 
-                completedCountText.textContent = completedCount.toString();
+            if(taskElement.parentNode.childNodes[0].nodeName == "#text"){
+                var keyName = "task_" + taskElement.parentNode.childNodes[4].childNodes[4].textContent;
+            } else {
+                var keyName = "task_" + taskElement.parentNode.childNodes[0].childNodes[0].textContent; 
             }
-        element.parentNode.parentNode.remove(); 
-        localStorage.removeItem(keyName);
 
-        
-    }
+            if(taskElement.parentNode.parentNode.className == "plannedContainer" || taskElement.parentNode.parentNode.className == "plannedContainer darkPlannedContainer"){
+                plannedCount--;
+                plannedCountText.textContent = plannedCount.toString();
+                    
+            }else if(taskElement.parentNode.parentNode.className == "inProgressContainer" || taskElement.parentNode.parentNode.className == "inProgressContainer darkInProgressContainer"){
+                inProgressCount--; 
+                inProgressCountText.textContent = inProgressCount.toString();
+                    
+            } else if (taskElement.parentNode.parentNode.className == "completedContainer" || taskElement.parentNode.parentNode.className == "completedContainer darkCompletedContainer"){
+                    completedCount--; 
+                    completedCountText.textContent = completedCount.toString();
+                }
+            element.parentNode.parentNode.remove(); 
+            localStorage.removeItem(keyName);
+
+            putOrder();
+        }
 
 })
 }
@@ -382,10 +361,10 @@ if(localStorage.getItem('orderOfTask') !== null && localStorage.getItem('orderOf
         var keys = localStorage.getItem('orderOfTask').split(",");
 
         keys.forEach(keyName =>{
-    
-    let keyValue = localStorage.getItem('task_' + keyName);
-    elements.push(keyValue); 
-})
+            let keyValue = localStorage.getItem('task_' + keyName);
+            elements.push(keyValue); 
+        })
+        
     } else {
         var keys = localStorage.getItem('orderOfTask');
         let keyValue = localStorage.getItem('task_' + keys);
@@ -798,6 +777,8 @@ function handleDropContainer(e) {
     }
 
   this.appendChild(dragSrcEl); 
+
+  putOrder();
   
     return false;
 }
