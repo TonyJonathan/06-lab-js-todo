@@ -1,3 +1,35 @@
+:root{
+    font-size: 100%;
+    --color-turquoise : #00B49E;
+    --color-turquoise-hover : #53e3d3;
+    --color-darkbutton : #3E3E3E; 
+    --color-blue-planned : #86D3EB;
+    --color-border : #E1E8E9;  
+    --color-white : #FFFFFF;
+    --color-dark-text : #E3E3E3;
+    --color-yellow : #F6DA44; 
+    --color-green : #9FD700;  
+    --color-grey : #9B9B9B;  
+    --color-red-urgent : #FF3838;
+    --color-red-urgent-hover : #ff6c6c;
+    --color-orange-urgent : #FF9900;
+    --color-orange-urgent-hover : #FFB951;
+    --color-red-error : #FF0000; 
+    --color-dark-grey-background : #363636;
+    --color-dark-turquoise : #25D6E1; 
+    --color--dark-turquoise-hover : #AAFAFF;  
+    --color-black : #000000;
+    --color-dark-blue : #04E1FF; 
+    --color-dark-yellow : #FFD600; 
+    --color-dark-green : #C3FF1A;
+    --color-dark-grey-modal : #808080; 
+    --color-dark-grey-over : #a3a3a3; 
+    --color-dark-grey : #707070;
+
+
+}
+
+
 @font-face {
     font-family: 'JetBrains Mono';
     font-style: normal;
@@ -25,7 +57,7 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
-  @media (min-width: 1440px) and (max-width: 2560px){
+
 
 body{
     margin: 0;
@@ -44,8 +76,8 @@ body{
 }
 
 .clearApp{
-    background-color: #E1E8E9;
-    color: #3E3E3E;
+    background-color: var(--color-border);
+    color: var(--color-darkbutton);
     transition: background-color 1s;
     transition: color 1s;
 }
@@ -53,10 +85,11 @@ body{
 header{
     max-width: 1440px;
     display: flex;
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
     margin: 0;
     box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
     transition: background-color 1s;
+    padding-top: 10px;
 }
 
 header > img:nth-child(1){
@@ -68,18 +101,18 @@ header > img:nth-child(1){
 }
 
 .new_task{
-    width: 167px;
+    min-width: 167px;
     display: flex;
     align-items: center;
-    background-color: #00B49E;
+    background-color: var(--color-turquoise);
     border-radius: 10px;
-    color: #FFFFFF;
+    color: var(--color-white);
     margin: 31px 0px 30px 0px;
     transition: background-color 1s;
 }
 
 .new_task:hover{
-    background-color: #53e3d3;
+    background-color: var(--color-turquoise-hover);
     cursor: pointer;
     transition: background-color 0s;
 }
@@ -101,7 +134,7 @@ header > img:nth-child(1){
 header > input{
     width: 493px;
     font-family: 'Arial' , sans-serif;
-    border: 2px solid #00B49E;
+    border: 2px solid var(--color-turquoise);
     padding: 13px 0 10px 30px;
     margin: 31px 93px 30px 198px;
     font-size: 20px;
@@ -111,26 +144,26 @@ header > input{
 }
 
 header > input:hover{
-    border: 2px solid #53e3d3;
+    border: 2px solid var(--color-turquoise-hover);
     transition: border-color 0s ease;
 }
 
 header > input:focus{
-    border: 2px solid #00B49E;
+    border: 2px solid var(--color-turquoise);
     transition: border-color 0s ease;
 }
 
 .darkButton{
     width: 16px;
     border-radius: 11px;
-    background-color: #3E3E3E;
+    background-color: var(--color-darkbutton);
     padding: 3px 5px 0px 25px;
     margin: 45px 81px 45px 124px;
     transition: padding 0.3s ease; 
 }
 
 .darkButton:hover{
-    background-color: #707070;
+    background-color: var(--color-dark-grey);
     cursor: pointer;
 }
 
@@ -138,7 +171,7 @@ header > input:focus{
     width: 16px;
     height: 16px;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: var(--color-white);
 }
 
 /* container */ 
@@ -146,6 +179,7 @@ header > input:focus{
 .containerTask{
     margin: 0;
     margin-top: 69px;
+    margin-left: 5px;
     display: flex;
     justify-content: space-between;
 }
@@ -154,16 +188,17 @@ header > input:focus{
     width: 454px;
     min-height: 637px;
     border-radius: 8px;
-    border-top: 10px solid #86D3EB ;
-    background-color: #FFFFFF; 
+    border-top: 10px solid var(--color-blue-planned) ;
+    background-color: var(--color-white); 
     transition: background-color 1s;
+    justify-content: center;
 }
 
 .planned{
     display: flex;
     font-size: 24px;
     align-items: center;
-    border-bottom: 2px solid #E1E8E9;
+    border-bottom: 2px solid var(--color-border);
 }
 
 .title{
@@ -172,7 +207,7 @@ header > input:focus{
 
 .plannedCount{
     margin-left: 15px;
-    border: 1px solid #3E3E3E;
+    border: 1px solid var(--color-darkbutton);
     border-radius: 8px;
     width: 37px;
     text-align: center;
@@ -183,7 +218,7 @@ header > input:focus{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #00B49E;
+    color: var(--color-turquoise);
     margin: 0;
     padding: 21px 0px 21px 0px;
     transition: color 1s;
@@ -191,7 +226,7 @@ header > input:focus{
 
 .addTask:hover{
     cursor: pointer;
-   color: #53e3d3;
+   color: var(--color-turquoise-hover);
    transition: color 0s;
 }
 
@@ -212,8 +247,8 @@ header > input:focus{
     width: 454px;
     min-height: 637px;
     border-radius: 8px;
-    border-top: 10px solid #F6DA44 ;
-    background-color: #FFFFFF; 
+    border-top: 10px solid var(--color-yellow) ;
+    background-color: var(--color-white); 
     margin-left: 21px;
     transition: background-color 1s;
 }
@@ -222,12 +257,13 @@ header > input:focus{
     display: flex;
     font-size: 24px;
     align-items: center;
-    border-bottom: 2px solid #E1E8E9;
+    justify-content: center;
+    border-bottom: 2px solid var(--color-border);
 }
 
 .inProgressCount{
     margin-left: 15px;
-    border: 1px solid #3E3E3E;
+    border: 1px solid var(--color-darkbutton);
     border-radius: 8px;
     width: 37px;
     text-align: center;
@@ -238,8 +274,8 @@ header > input:focus{
     width: 454px;
     min-height: 637px;
     border-radius: 8px;
-    border-top: 10px solid #9FD700;
-    background-color: #FFFFFF; 
+    border-top: 10px solid var(--color-green);
+    background-color: var(--color-white); 
     margin-left: 21px;
     transition: background-color 1s;
 }
@@ -248,12 +284,12 @@ header > input:focus{
     display: flex;
     font-size: 24px;
     align-items: center;
-    border-bottom: 2px solid #E1E8E9;
+    border-bottom: 2px solid var(--color-border);
 }
 
 .completedCount{
     margin-left: 15px;
-    border: 1px solid #3E3E3E;
+    border: 1px solid var(--color-darkbutton);
     border-radius: 8px;
     width: 37px;
     text-align: center;
@@ -269,12 +305,15 @@ header > input:focus{
 .modal {
     display: none;
     position: fixed;
+    flex-direction: column;
     z-index: 1;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
     background-color: rgba(0, 0, 0, 0.6); /* Fond semi-transparent */
+    align-items: center;
+    justify-content: center;
 }
 
 .modalContent {
@@ -282,7 +321,6 @@ header > input:focus{
     padding-left: 42px;
     border-radius: 15px;
     width:395px;
-    margin: 180px 0px 0px 495px;
     position: relative;
     display: block;
     padding-bottom: 25px;
@@ -348,7 +386,7 @@ header > input:focus{
     margin-top: 15px;
     padding: 16px 62px 13px 23px;
     border-radius: 8px;
-    border: 2px solid #E1E8E9;
+    border: 2px solid var(--color-border);
     font-weight: 500;
     font-family: 'Arial' , sans-serif;
 }
@@ -362,7 +400,7 @@ header > input:focus{
     margin-top: 19px;
     padding: 16px 23px 20px 23px;
     border-radius: 8px;
-    border: 2px solid #E1E8E9;
+    border: 2px solid var(--color-border);
     line-height: 30px;
     resize: none;
 }
@@ -376,8 +414,8 @@ label{
     display: block;
     margin: 0;
     width: 103px;
-    color: #FFFFFF;
-    background-color: #9B9B9B;
+    color: var(--color-white);
+    background-color: var(--color-grey);
     text-align: center;
     line-height: 31px;
     border-radius: 5px;
@@ -388,22 +426,22 @@ label{
 }
 
 .urgent > label:hover{
-    background-color: #ff6c6c;
+    background-color: var(--color-red-urgent-hover);
     cursor: pointer;
     transition: color 0s;
 } 
 
 .onHold > label:hover{
-    background-color: #FFB951;
+    background-color: var(--color-orange-urgent-hover);
     cursor: pointer;
 } 
 
 .urgent > input:checked +label{
-    background-color: #FF3838;
+    background-color: var(--color-red-urgent);
 }
 
 .onHold > input:checked +label{
-    background-color: #FF9900;
+    background-color: var(--color-orange-urgent);
 }
 
 .urgent > input, .onHold > input {
@@ -412,8 +450,8 @@ label{
 
 .modalContent > p:nth-child(5){
     width: 350px;
-    color: #ffffff;
-    background-color: #00B49E;
+    color: var(--color-white);
+    background-color: var(--color-turquoise);
     text-align: center;
     line-height: 42px;
     border-radius: 10px;
@@ -423,11 +461,11 @@ label{
 
 .modalContent > p:nth-child(5):hover{
     cursor: pointer;
-    background-color: #53e3d3;
+    background-color: var(--color-turquoise-hover);
 }
 
 .error::placeholder{
-    color: red;
+    color: var(--color-red-error);
 }
 
 /* task */ 
@@ -441,20 +479,20 @@ li{
     padding-left: 21px;
     font-family: 'Merriweather Sans' , sans-serif;
     font-weight: 500;
-    border: 2px solid #E1E8E9;
+    border: 2px solid var(--color-border);
     border-radius: 8px;
-    margin-left: 14px;
+    margin-left: 12px;
     margin-bottom: 15px;
     padding-bottom: 16px;
 }
 
 .task:hover{
-    border: 2px solid #53e3d3;
+    border: 2px solid var(--color-turquoise-hover);
     cursor: pointer;
 }
 
 .task:focus{
-    border: 2px solid #00B49E;
+    border: 2px solid var(--color-turquoise);
 }
 
 .noClickedTask{
@@ -468,15 +506,16 @@ li{
 .noClickedTask > p:nth-child(1){
     width: 335px;
     font-size: 20px;
-    color: #3E3E3E;
+    color: var(--color-darkbutton);
     margin: 0;
+    word-wrap: break-word;
 }
 
 .alertUrgent{
     width: 17px;
     height: 17px;
     border-radius: 5px;
-    background-color: #FF3838;
+    background-color: var(--color-red-urgent);
     margin-left: 10px;
 }
 
@@ -484,13 +523,13 @@ li{
     width: 17px;
     height: 17px;
     border-radius: 5px;
-    background-color: #FF9900;
+    background-color: var(--color-orange-urgent);
     margin-left: 10px;
 }
 
 .noClickedTask > p:nth-child(3){
     font-size: 30px;
-    color: #9B9B9B;
+    color: var(--color-grey);
     margin: 0;
     margin-left: auto;
     margin-right: -3px;
@@ -501,7 +540,7 @@ li{
 }
 
 .noClickedTask:hover > .clear:nth-child(3){
-    color: #53e3d3;
+    color: var(--color-turquoise-hover);
 }
 
 .task:focus > .taskAlertUrgent, .task:focus > .taskAlertOnHold {
@@ -518,27 +557,27 @@ li{
 
 .taskAlertUrgent{
     width: 103px;
-    background-color: #FF3838;
-    color: #FFFFFF;
+    background-color: var(--color-red-urgent);
+    color: var(--color-white);
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 5px;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 20px;
     display: none;
 }
 
 .taskAlertOnHold{
     width: 103px;
-    background-color: #FF9900;
-    color: #FFFFFF;
+    background-color: var(--color-orange-urgent);
+    color: var(--color-white);
     text-align: center;
     padding-top: 5px;
     padding-bottom: 5px;
     border-radius: 5px;
     margin: 0;
-    margin-top: 10px;
+    margin-top: 20px;
     display: none;
 }
 
@@ -554,6 +593,7 @@ li{
 .clickedTask > p:nth-child(1){
    width: 353px;
    margin: 0;
+   word-wrap: break-word;
 }
 
 .clickedTask > p:nth-child(1)::first-letter{
@@ -569,12 +609,12 @@ li{
 /* darkMode */ 
 
 .darkHeader{
-    background-color: #707070;
+    background-color: var(--color-dark-grey);
 }
 
 .darkApp{
-    background-color: #363636;
-    color: #E3E3E3;
+    background-color: var(--color-dark-grey-background);
+    color: var(--color-dark-text);
 }
 
 .clearLogo{
@@ -591,75 +631,75 @@ li{
 
 
 .darkFilterTask{
-    border: 2px solid #25D6E1;
+    border: 2px solid var(--color-dark-turquoise);
 }
 
 .darkFilterTask:hover{
-    border: 2px solid #AAFAFF;
+    border: 2px solid var(--color--dark-turquoise-hover);
 }
 
 .darkFilterTask:focus{
-    border: 2px solid #25D6E1;
+    border: 2px solid var(--color-dark-turquoise);
 }
 
 
 .darkNewTask{
-    background-color: #25D6E1;
+    background-color: var(--color-dark-turquoise);
 }
 
 .darkNewTask:hover{
-    background-color: #AAFAFF;
+    background-color: var(--color--dark-turquoise-hover);
 }
 
 .darkButtonActivate{
-    background-color: #ffffff;
+    background-color: var(--color-white);
     padding: 3px 25px 0px 5px;
     transition: padding 0.3s ease;
 }
 
 .darkButtonActivate:hover{
-    background-color: #AAFAFF;
+    background-color: var(--color--dark-turquoise-hover);
 }
 
 .darkButtonActivateCircle{
-    background-color: #000000;
+    background-color: var(--color-black);
 }
 
 .darkPlannedContainer{
     width: 454px;
     min-height: 637px;
     border-radius: 8px;
-    border-top: 10px solid #04E1FF ;
-    background-color: #707070; 
+    border-top: 10px solid var(--color-dark-blue) ;
+    background-color: var(--color-dark-grey); 
 }
 
 .darkCount{
-    border: 1px solid #E3E3E3;
+    border: 1px solid var(--color-dark-text);
 }
 
 .darkAddTask{
-    color: #25D6E1;
+    color: var(--color-dark-turquoise);
 }
 
 .darkAddTask:hover{
-   color: #AAFAFF;
+   color: var(--color--dark-turquoise-hover);
 }
 
 
 .darkInProgressContainer{
-    border-top: 10px solid #FFD600 ;
-    background-color: #707070; 
+    border-top: 10px solid var(--color-dark-yellow) ;
+    background-color: var(--color-dark-grey); 
 }
 
 .darkCompletedContainer{
-    border-top: 10px solid #C3FF1A;
-    background-color: #707070; 
+    border-top: 10px solid var(--color-dark-green);
+    background-color: var(--color-dark-grey); 
 }
 
 /* dark modal */
 
 .darkModalContent {
-    background-color: #808080;
+    background-color: var(--color-dark-grey-modal);
 }
 
 .taskDescription > p:nth-child(1):hover + .dark{
@@ -676,21 +716,21 @@ li{
 
 
 .darkModalContent > p:nth-child(5){
-    background-color: #25D6E1;
+    background-color: var(--color-dark-turquoise);
 }
 
 .darkModalContent > p:nth-child(5):hover{
-    background-color: #AAFAFF;
+    background-color: var(--color--dark-turquoise-hover);
 }
 
 .darkCross{
     filter: none;
-    color: #E3E3E3;
+    color: var(--color-dark-text);
 }
 
 .darkCross:hover{
     filter: none;
-    color: #25D6E1;
+    color: var(--color-dark-turquoise);
 }
 
 
@@ -698,28 +738,28 @@ li{
 
 
 .darkTask:hover{
-    border: 2px solid #25D6E1;
+    border: 2px solid var(--color-dark-turquoise);
 }
 
 .darkTask:focus{
-    border: 2px solid #25D6E1;
+    border: 2px solid var(--color-dark-turquoise);
 }
 
 
 .darkTask > .noClickedTask > p:nth-child(1){
-    color: #e3e3e3;
+    color: var(--color-dark-text);
 }
 
 
 
 .darkTask > .noClickedTask > p:nth-child(3){
     filter: none;
-    color: #e3e3e3;
+    color: var(--color-dark-text);
 }
 
 .darkTask:hover > .noClickedTask > p:nth-child(3){
     filter: none;
-    color: #25D6E1;
+    color: var(--color-dark-turquoise);
 }
 
 
@@ -730,15 +770,15 @@ li{
 }
 
 .over {
-    background-color: #E1E8E9;
+    background-color: var(--color-border);
     
 }
 
 .darkOver{
-    background-color: #a3a3a3;
+    background-color: var(--color-dark-grey-over);
 }
 
-}
+
 
 @media (min-width: 1024px) and (max-width: 1439px){
 
@@ -746,4 +786,122 @@ li{
         max-width: 1024px;
     }
 
+    header > img:nth-child(1){
+        margin: 27px 0px 26px 17px ;
+    }
+
+    header > input{
+        width: 357px;
+        margin: 31px 62px 30px 82px;
+    }
+
+    .darkButton{
+        margin: 45px 55px 45px 43px;
+    }
+
+    /* container */ 
+
+    .containerTask{
+        margin-left: 0px;
+    }
+
+    .plannedContainer, .inProgressContainer, .completedContainer{
+        width: 323px;
+    }
+
+    .inProgressContainer{
+        margin-left: 13px;
+    }
+
+    .completedContainer{
+        margin-left: 13px;
+    }
+
+    .title{
+        margin-left: 22px;
+    }
+
+    .completed > img{
+        margin-left: 44px;
+    }
+
+    /* task */ 
+
+.task{
+    width: 288px;
+    padding-left: 16px;
+    margin-left: 7.5px;
 }
+
+
+.noClickedTask{
+    width: 305px;
+    margin-top: 15px;
+}
+
+.noClickedTask > p:nth-child(1){
+    width: 225px;
+    font-size: 16px;
+}
+
+.alertUrgent, .alertOnHold {
+    margin-right: 13px;
+}
+
+
+.noClickedTask > p:nth-child(3){
+    font-size: 30px;
+    margin-right: 16px;
+}
+
+
+
+.clickedTask{
+    font-size: 16px;
+    margin-top: 16px;
+}
+
+.clickedTask > p:nth-child(1){
+   width: 225px;
+   margin: 0;
+}
+
+.clickedTask > img:nth-child(2){
+    margin-left: auto;
+    margin-right: 10px;
+}
+
+
+.modalContent {
+    padding-left: 32px;
+    width:300px;
+}
+
+.taskDescription{
+    width: 300px;
+}
+
+
+.taskDescription > p:nth-child(3){
+    margin-right: 7px;
+}
+
+
+.modalContent > input:nth-child(2){
+    width: 180px;
+}
+
+.textArea{
+    width: 219px;
+}
+
+.modalContent > p:nth-child(5){
+    width: 269px;
+    margin-top: 25px;
+}
+
+
+}
+
+
+

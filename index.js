@@ -53,7 +53,7 @@ document.addEventListener('click', clickAgainReset);
 
 
 function openModal(){
-    modal.style.display = 'block'; 
+    modal.style.display = 'flex'; 
     inputTitle.classList.remove('error'); 
     inputTitle.placeholder = 'Title of the task';
     inputTitle.value = ''; 
@@ -364,7 +364,7 @@ if(localStorage.getItem('orderOfTask') !== null && localStorage.getItem('orderOf
             let keyValue = localStorage.getItem('task_' + keyName);
             elements.push(keyValue); 
         })
-        
+
     } else {
         var keys = localStorage.getItem('orderOfTask');
         let keyValue = localStorage.getItem('task_' + keys);
@@ -793,7 +793,6 @@ function handleDragContainer() {
     this.classList.remove('darkOverContainer');
     this.classList.remove('dragging');
 }
-
 
 containerTask.forEach(container =>{
 
