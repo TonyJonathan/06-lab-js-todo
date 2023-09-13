@@ -257,7 +257,6 @@ header > input:focus{
     display: flex;
     font-size: 24px;
     align-items: center;
-    justify-content: center;
     border-bottom: 2px solid var(--color-border);
 }
 
@@ -827,81 +826,307 @@ li{
 
     /* task */ 
 
-.task{
-    width: 288px;
-    padding-left: 16px;
-    margin-left: 7.5px;
-}
+    .task{
+        width: 288px;
+        padding-left: 16px;
+        margin-left: 7.5px;
+    }
 
 
-.noClickedTask{
-    width: 305px;
-    margin-top: 15px;
-}
+    .noClickedTask{
+        width: 305px;
+        margin-top: 15px;
+    }
 
-.noClickedTask > p:nth-child(1){
+    .noClickedTask > p:nth-child(1){
+        width: 225px;
+        font-size: 16px;
+    }
+
+    .alertUrgent, .alertOnHold {
+        margin-right: 13px;
+    }
+
+
+    .noClickedTask > p:nth-child(3){
+        font-size: 30px;
+        margin-right: 16px;
+    }
+
+
+
+    .clickedTask{
+        font-size: 16px;
+        margin-top: 16px;
+    }
+
+    .clickedTask > p:nth-child(1){
     width: 225px;
-    font-size: 16px;
-}
+    margin: 0;
+    }
 
-.alertUrgent, .alertOnHold {
-    margin-right: 13px;
-}
-
-
-.noClickedTask > p:nth-child(3){
-    font-size: 30px;
-    margin-right: 16px;
-}
+    .clickedTask > img:nth-child(2){
+        margin-left: auto;
+        margin-right: 10px;
+    }
 
 
+    .modalContent {
+        padding-left: 32px;
+        width:300px;
+    }
 
-.clickedTask{
-    font-size: 16px;
-    margin-top: 16px;
-}
-
-.clickedTask > p:nth-child(1){
-   width: 225px;
-   margin: 0;
-}
-
-.clickedTask > img:nth-child(2){
-    margin-left: auto;
-    margin-right: 10px;
-}
+    .taskDescription{
+        width: 300px;
+    }
 
 
-.modalContent {
-    padding-left: 32px;
-    width:300px;
-}
-
-.taskDescription{
-    width: 300px;
-}
+    .taskDescription > p:nth-child(3){
+        margin-right: 7px;
+    }
 
 
-.taskDescription > p:nth-child(3){
-    margin-right: 7px;
-}
+    .modalContent > input:nth-child(2){
+        width: 180px;
+    }
 
+    .textArea{
+        width: 219px;
+    }
 
-.modalContent > input:nth-child(2){
-    width: 180px;
-}
-
-.textArea{
-    width: 219px;
-}
-
-.modalContent > p:nth-child(5){
-    width: 269px;
-    margin-top: 25px;
-}
+    .modalContent > p:nth-child(5){
+        width: 269px;
+        margin-top: 25px;
+    }
 
 
 }
 
+@media (min-width: 768px) and (max-width: 1023px){
 
+    header{
+        max-width: 768px;
+        padding-top: 0px;
+    }
+
+    header > img:nth-child(1){
+        width: 162px;
+        height: 48px;
+        margin: 23px 0px 10px 13px;
+    }
+
+    .darkLogo{
+        width: 162px;
+        height: 48px;
+        margin: 23px 0px 10px 13px;
+    }
+    
+    header > input{
+        max-width: 247px;
+        margin: 31px 48px 20px 55px;
+        font-size: 16px;
+        padding: 3px 0 0px 30px;
+    }
+
+    .new_task{
+        min-width: 119px;
+        margin: 31px 0px 20px 0px;
+    }
+    
+    .new_task > p:nth-child(1){
+        font-size: 40px;
+        line-height: 0px;
+        margin: 0;
+        margin-left: 7px;
+    }
+    
+    .new_task > p:nth-child(2){
+        font-size: 16px;
+        line-height: 0px;
+        margin: 0;
+        margin-left: 4px;
+    }
+
+    .darkButton{
+        margin: 40px 55px 25px 43px;
+        padding-bottom: 3px;
+        
+    }
+
+    /* container */ 
+
+    .containerTask{
+        margin-left: 0px;
+    }
+
+    .plannedContainer, .inProgressContainer, .completedContainer{
+        width: 243px;
+    }
+
+    .inProgressContainer{
+        margin-left: 10px;
+    }
+
+    .completedContainer{
+        margin-left: 10px;
+    }
+
+    .title{
+        margin-left: 16px;
+        font-size: 18px;
+    }
+
+    .plannedCount, .inProgressCount, .completedCount{
+        border-radius: 8px;
+        width: 27px;
+        line-height: 28px;
+        font-size: 18px;
+    }
+
+    .completed > img{
+        width: 28px;
+        margin-top: 3px;
+        margin-left: 32px;
+    }
+
+    .addTask{
+        padding: 15px 0px 15px 0px;
+    }
+    
+    .addTaskPlus{
+        font-size: 37px;
+        font-weight: 700;
+    }
+    
+    .addTaskText{
+        margin: 0;
+        font-size: 18px;
+        margin-left: 8px;
+    }
+
+    /* task */ 
+
+    .task{
+        width: 216px;
+        padding-left: 14px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+    }
+
+    .noClickedTask{
+        width: 230px;
+        margin-top: 8px;
+    }
+
+
+    .noClickedTask > p:nth-child(1){
+        width: 165px;
+        font-size: 14px;
+    }
+
+    .alertUrgent, .alertOnHold {
+        margin-left: 8px;
+        width: 12px;
+        height: 12px;
+    }
+
+    .noClickedTask > p:nth-child(3){
+        font-size: 22px;
+        margin-right: 16px;
+    }
+
+    .taskAlertUrgent{
+        width: 75px;
+        font-size: 10px;
+        margin-top: 8px;
+    }
+
+    .taskAlertOnHold{
+        width: 75px;
+        font-size: 10px;
+        margin-top: 8px;
+    }
+
+    .clickedTask{
+        font-family: 'Merriweather Sans' , sans-serif;
+        font-size: 12px;
+        margin-top: 8px;
+    
+    }
+
+    .clickedTask > p:nth-child(1){
+    width: 175px;
+    }
+
+    .clickedTask > img:nth-child(2){
+        width: 20px;
+    }
+
+    .modalContent {
+        width: 263px;
+        padding-left: 32px;
+        padding-bottom: 25px;
+    }
+
+    .taskDescription{
+        width: 263px;
+    }
+
+
+    .taskDescription > p:nth-child(1){
+        font-size: 18px;
+        margin-top: 30px;
+    }
+
+    .taskDescription > img:nth-child(2){
+        width: 12px;
+        margin-top: 30px;
+        padding-left: 20px;
+    }
+
+
+    .taskDescription > p:nth-child(3){
+        font-size: 45px;
+        margin-right: 7px;
+    }
+
+    .modalContent > input:nth-child(2){
+        width: 190px;
+        font-size: 14px;
+        margin-top: 5px;
+        padding: 15px 23px 13px 13px;
+    }
+
+    .textArea{
+        width: 213px;
+        font-size: 14px;
+        margin-top: 19px;
+        padding: 5px 0px 10px 13px;
+        line-height: 30px;
+    }
+
+    .buttonModal{
+        margin-top: 18px;
+    }
+
+    label{
+        width: 75px;
+        line-height: 23px;
+        font-size: 10px;
+
+    }
+
+    .onHold > label{
+        margin-left: 25px;
+    }
+
+    .modalContent > p:nth-child(5){
+        width: 230px;
+        margin-top: 25px;
+        line-height: 42px;
+        font-size: 14px;
+    }
+
+}
 

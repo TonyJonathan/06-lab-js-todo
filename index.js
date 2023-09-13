@@ -284,7 +284,7 @@ function addCategoryTask(){
     addTask.forEach(element => {
     
         element.addEventListener('click', (event) => {
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
             if(event.target.parentNode.className == "plannedContainer" || event.target.parentNode.className == "plannedContainer darkPlannedContainer" ){
                 taskCategory.textContent = 'PLANNED';
                     
@@ -299,7 +299,7 @@ function addCategoryTask(){
 
     addTaskAll.forEach(element =>{
         element.addEventListener('click', (event) => {
-            modal.style.display = 'block';
+            modal.style.display = 'flex';
             if(event.target.parentNode.parentNode.className == "plannedContainer" || event.target.parentNode.parentNode.className == "plannedContainer darkPlannedContainer"){
                 taskCategory.textContent = 'PLANNED';
                         
