@@ -544,7 +544,7 @@ function darkMode() {
     clearLogo.classList.toggle('clearLogo');
     darkLogo.classList.toggle('darkLogo'); 
     filterTask.classList.toggle('darkFilterTask'); 
-    newTask.classList.toggle('darkNewTask'); 
+    newTask.classList.toggle('darkNewTask');  
     darkButton.classList.toggle('darkButtonActivate'); 
     darkButtonCircle.classList.toggle('darkButtonActivateCircle'); 
     plannedContainer.classList.toggle('darkPlannedContainer'); 
