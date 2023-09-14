@@ -25,8 +25,6 @@
     --color-dark-grey-modal : #808080; 
     --color-dark-grey-over : #a3a3a3; 
     --color-dark-grey : #707070;
-
-
 }
 
 
@@ -57,11 +55,8 @@
     unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
   }
 
-
-
 body{
     margin: 0;
-    
 }
 
 #app{
@@ -80,6 +75,16 @@ body{
     color: var(--color-darkbutton);
     transition: background-color 1s;
     transition: color 1s;
+}
+
+.footer{
+    margin: 0;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%; 
+    background-color: var(--color-white);
+    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
 }
 
 header{
@@ -1189,14 +1194,27 @@ li{
     }
     
     header > input:hover{
-        border: 2px solid var(--color-turquoise-hover);
+        border: 3px solid var(--color-turquoise-hover);
         transition: border-color 0s ease;
     }
     
     header > input:focus{
-        border: 2px solid var(--color-turquoise);
+        border: 3px solid var(--color-turquoise);
         transition: border-color 0s ease;
     }
+
+    .darkFilterTask{
+        border: 3px solid var(--color-dark-turquoise);
+    }
+
+    .darkFilterTask:hover{
+        border: 3px solid var(--color--dark-turquoise-hover);
+    }
+
+    .darkFilterTask:focus{
+        border: 3px solid var(--color-dark-turquoise);
+    }
+    
     
     .darkButton{
         width: 35px;
@@ -1251,7 +1269,7 @@ li{
         align-items: center;
     }
     
-    .planned, .inProgress, .completed{
+    .planned, .inProgress{
         width: 803px;
         display: flex;
         font-size: 42px;
@@ -1263,9 +1281,12 @@ li{
     .plannedCount, .inProgressCount, .completedCount{
         margin-left: 35px;
         border: 2px solid var(--color-darkbutton);
-        border-radius: 8px;
         width: 60px;
         line-height: 60px;
+    }
+
+    .darkCount{
+        border: 2px solid var(--color-dark-text);
     }
     
     .addTask{
@@ -1303,6 +1324,9 @@ li{
         width: 803px;
         border-top: 17px solid var(--color-green);
         margin-left: 35px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
     
     .completed{
@@ -1311,10 +1335,337 @@ li{
         border-bottom: 4px solid var(--color-border);
     }
 
+    .completed > .title {
+        margin-left: 225px;
+    }
+
+    
+    .completed > img{
+        width: 55px;
+        height: 55px;
+        margin-left: 120px;
+    }
+
+
+    /* task */ 
+
+    .task{
+        width: 750px;
+        padding-left: 14px;
+        margin-left: 5px;
+        margin-bottom: 10px;
+        padding-bottom: 8px;
+        margin-bottom: 30px;
+        border: 3px solid var(--color-border);
+    }
+
+    .noClickedTask{
+        width: 750px;
+        margin-top: 8px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+    }
+
+
+    .noClickedTask > p:nth-child(1){
+        width: 600px;
+        font-size: 30px;
+        margin-left: 20px;
+    }
+
+    .alertUrgent, .alertOnHold {
+        margin-left: 30px;
+        width: 28px;
+        height: 28px;
+    }
+
+    .noClickedTask > p:nth-child(3){
+        font-size: 36px;
+        margin-right: 16px;
+    }
+
+    .taskAlertUrgent{
+        width: 145px;
+        font-size: 24px;
+        margin-top: 8px;
+        margin-left: 20px;
+    }
+
+    .taskAlertOnHold{
+        width: 145px;
+        font-size: 24px;
+        margin-top: 8px;
+        margin-left: 20px;
+    }
+
+    .clickedTask{
+        font-size: 22px;
+        margin-top: 8px;
+        padding-bottom: 15px;
+        padding-top: 10px;
+    }
+
+    .clickedTask > p:nth-child(1){
+        width: 620px;
+        margin-left: 20px;
+        margin-right: 20px;
+    }
+
+    .clickedTask > img:nth-child(2){
+        width: 40px;
+        height: 40px;
+        margin-right: 20px;
+    }
+
+    /* modal */
+
+    .modalContent {
+        padding-left: 52px;
+        width:680px;
+        padding-bottom: 35px;
+    }
+
+    
+    .taskDescription{
+        width: 665px;
+    }
+    
+    .taskDescription > p:nth-child(1){
+        font-size: 42px;
+        margin-top: 50px;
+    }
+    
+    .taskDescription > img:nth-child(2){
+        width: 56px;
+        height: 41px;
+        margin-top: 52px;
+        padding-left: 30px;
+    }
+    
+    .taskDescription > p:nth-child(3){
+        font-size: 100px;
+        margin-right: 0px;
+        margin-top: 50px;
+    }
+    
+
+    .modalContent > input:nth-child(2){
+        width: 520px;
+        font-size: 30px;
+        margin-top: 15px;
+        border: 3px solid var(--color-border);
+        padding: 25px 62px 25px 23px;
+    }
+    
+    .textArea{
+        width: 559px;
+        font-size: 30px;
+        margin-top: 30px;
+        padding: 25px 23px 100px 23px;
+        border: 3px solid var(--color-border);
+        line-height: 50px;
+
+    }
+    
+    .buttonModal{
+        display: flex;
+        margin-top: 30px;
+    }
+    
+    label{
+        width: 170px;
+        line-height: 52px;
+        font-size: 24px;
+    }
+    
+    .onHold > label{
+        margin-left: 67px;
+    }
+    
+    
+    .modalContent > p:nth-child(5){
+        width: 611px;
+        line-height: 78px;
+        font-size: 28px;
+        margin-top: 35px;
+    }
+    
+    
+    
+}
+
+@media (max-width: 767px){
+
+    #app{
+        min-height: 100vh;
+        box-sizing: border-box;
+        padding-bottom: 150px;
+    }
+
+    header > *{
+        display: none;
+    }
+    header{
+        width: 100%;
+        display: flex;
+        background-color: var(--color-white);
+        margin: 0;
+        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background-color 1s;
+        padding-top: 10px;
+    }
+    
+    header > img:nth-child(1){
+        width: 170px;
+        height: 52px;
+        margin: 31px 53px 21px 12px ;
+        display: block;
+    }
+
+
+    .darkLogo{
+        position: absolute;
+        display: block;
+        width: 151.5px;
+        height: 43px;
+        margin: 34px 27px 0px 17px;
+    }
+    
+    
+    .new_task{
+        min-width: 167px;
+        margin-left: 63px;
+        align-items: center;
+        background-color: var(--color-turquoise);
+        border-radius: 10px;
+        color: var(--color-white);
+        margin: 31px 0px 30px 0px;
+        transition: background-color 1s;
+    }
+    
+    .new_task:hover{
+        background-color: var(--color-turquoise-hover);
+        cursor: pointer;
+        transition: background-color 0s;
+    }
+    
+    .new_task > p:nth-child(1){
+        font-size: 50px;
+        line-height: 50px;
+        margin: 0;
+        margin-left: 9px;
+    }
+    
+    .new_task > p:nth-child(2){
+        font-size: 22px;
+        line-height: 50px;
+        margin: 0;
+        margin-left: 7px;
+    }
+    
+    .footer > input{
+        width: 207px;
+        font-family: 'Arial' , sans-serif;
+        border: 2px solid var(--color-turquoise);
+        padding: 5px 0px 5px 20px;
+        margin: 27px 0px 28px 35px;
+        font-size: 16px;
+        border-radius: 10px;
+        outline: none;
+        transition: border-color 0.3s ease;
+        line-height: 0px;
+    }
+    
+    .footer > input:hover{
+        border: 2px solid var(--color-turquoise-hover);
+        transition: border-color 0s ease;
+    }
+    
+    .footer > input:focus{
+        border: 2px solid var(--color-turquoise);
+        transition: border-color 0s ease;
+    }
+    
+    .darkButton{
+        width: 16px;
+        border-radius: 11px;
+        background-color: var(--color-darkbutton);
+        padding: 3px 5px 3px 25px;
+        margin: 35px 0px 35px 63px;
+        transition: padding 0.3s ease; 
+    }
+    
+    .darkButton:hover{
+        background-color: var(--color-dark-grey);
+        cursor: pointer;
+    }
+    
+    .darkButtonCircle{
+        width: 16px;
+        height: 16px;
+        border-radius: 10px;
+        background-color: var(--color-white);
+    }
+
+
+
+    .containerTask{
+        display: flex; 
+        flex-direction: column;
+        margin: 0;
+        margin-top: 69px;
+        align-items: center;
+    }
+    
+    .plannedContainer{
+        width: 404px;
+        min-height: 0px;
+        border-radius: 8px;
+    }
+    
+
+    
+    .inProgressContainer{
+        width: 404px;
+        min-height: 0px;
+        margin-top: 21px;
+        margin-left: 0px;
+    }
+    
+
+    
+    .completedContainer{
+        width: 404px;
+        min-height: 0px;
+        border-radius: 8px;
+        margin-top: 21px;
+        margin-left: 0px;
+
+    }
+    
+    .completed{
+        display: flex;
+        font-size: 24px;
+        align-items: center;
+        border-bottom: 2px solid var(--color-border);
+    }
+    
+    .completedCount{
+        margin-left: 15px;
+        border: 1px solid var(--color-darkbutton);
+        border-radius: 8px;
+        width: 37px;
+        text-align: center;
+        line-height: 38px;
+    }
     
     .completed > img{
         margin-left: 170px;
     }
+
     
-    
+
+
+
+
 }

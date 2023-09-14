@@ -256,11 +256,12 @@ function submitInfo(){
 
         putOrder(); 
 
+        location.reload(); 
 
 
     }
 
-    location.reload(); 
+    
     
 }
 
@@ -802,6 +803,37 @@ containerTask.forEach(container =>{
         container.classList.remove('overContainer'); 
     } )
 })
+
+
+const mediaQuery = window.matchMedia('(max-width: 426px)');
+
+const footer = document.querySelector('.footer'); 
+
+
+
+
+function change(event){
+    if(event.matches == true){
+        footer.style.display = "flex"; 
+        footer.appendChild(filterTask); 
+        footer.appendChild(darkButton); 
+        console.log('425px')
+    } else {
+        console.log('768pxpx')
+        footer.style.display = "none";
+        header.appendChild(darkButton); 
+        header.insertBefore(filterTask, newTask); 
+    }
+    
+}
+
+change(mediaQuery); 
+
+
+
+mediaQuery.addEventListener('change', change); 
+
+
 
 // window.addEventListener('beforeunload', function (event) {
 //     // Votre code ici, par exemple, pour demander une confirmation avant le rechargement
