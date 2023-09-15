@@ -34,23 +34,6 @@ var allTaskClone;
 
 // Lorsque que l'on clic sur le bouton URGENT ou ON HOLD, clicAgainReset permet de recliquer dessus pour annuler la sélection
 
-function clickAgainReset(event){
-    if(event.target == buttonUrgent && clickUrgent == 0){
-        clickUrgent++; 
-        clickOnHold = 0;
-    } else if (event.target == buttonUrgent && clickUrgent == 1){
-        buttonUrgent.checked = false;
-        clickUrgent--;
-    }else if(event.target == buttonOnHold && clickOnHold == 0){
-        clickOnHold++; 
-        clickUrgent = 0;
-    } else if (event.target == buttonOnHold && clickOnHold == 1){
-        buttonOnHold.checked = false;
-        clickOnHold--;
-    }
-}
-
-document.addEventListener('click', clickAgainReset); 
 
 
 function openModal(){
@@ -73,6 +56,23 @@ function closeModal(){
     clickOnHold = 0;  
 }
 
+function clickAgainReset(event){
+    if(event.target == buttonUrgent && clickUrgent == 0){
+        clickUrgent++; 
+        clickOnHold = 0;
+    } else if (event.target == buttonUrgent && clickUrgent == 1){
+        buttonUrgent.checked = false;
+        clickUrgent--;
+    }else if(event.target == buttonOnHold && clickOnHold == 0){
+        clickOnHold++; 
+        clickUrgent = 0;
+    } else if (event.target == buttonOnHold && clickOnHold == 1){
+        buttonOnHold.checked = false;
+        clickOnHold--;
+    }
+}
+
+document.addEventListener('click', clickAgainReset); 
 newTask.addEventListener('click', openModal);
 cross.addEventListener('click', closeModal); 
 submit.addEventListener('click', submitInfo); 
@@ -134,12 +134,10 @@ function putOrder(){
     elements.push(completedKeyValue); 
     })
 
-
-//reprend toutes les tâches et ajoute leurs titre dans la valeurs de la clé orderOfTask qui sera utile pour retrouver les tâches dans l'ordre
+//reprend toutes les tâches et ajoute leurs titres dans la valeur de la clé orderOfTask qui sera utile pour retrouver les tâches dans l'ordre
 
     elements.forEach(element =>{
         var parsedData = JSON.parse(element);
-        
         
         var taskName = 'task_' + parsedData.title; 
         
@@ -158,7 +156,6 @@ function putOrder(){
     localStorage.setItem('orderOfTask', orderOfTaskValue); 
 }
 
-
 function submitInfo(){
 
     if(inputTitle.value == ''){
@@ -171,9 +168,9 @@ function submitInfo(){
         const listTemplate = document.getElementById('listTemplate');
         const ulClone = document.importNode(listTemplate.content, true);
         const todoList = ulClone.querySelector('#todoList');
-        
         const taskTemplate = document.getElementById('taskTemplate');
         const taskClone = document.importNode(taskTemplate.content, true);
+
         task = taskClone.querySelector('.task'); 
         allTaskClone = taskClone.querySelectorAll('.task');
         let noClickedTask = taskClone.querySelector('.noClickedTask');
@@ -258,12 +255,7 @@ function submitInfo(){
         putOrder(); 
 
         location.reload(); 
-
-
     }
-
-    
-    
 }
 
 // Change le container ou la tâche va s'ajouter à chaque clic
@@ -280,7 +272,6 @@ function changeCategoryTask(){
 
 taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
-
 
 // Selon le container dans lequel se trouve le + Add task sur lequel on clic,  le modal en s'ouvrant va afficher le nom de ce meme container 
 
@@ -319,16 +310,13 @@ function addCategoryTask(){
 
 addCategoryTask(); 
 
-
-// supprime les tâches 
-
+// Supprime les tâches 
 
 function deleteTask(event){
     let taskBinAll = document.querySelectorAll('.clickedTask > img:nth-child(2)');
     taskBinAll.forEach(element =>{
         if(event.target==element){
             let taskElement = element.parentNode;
-            
 
             if(taskElement.parentNode.childNodes[0].nodeName == "#text"){
                 var keyName = "task_" + taskElement.parentNode.childNodes[4].childNodes[4].textContent;
@@ -353,12 +341,10 @@ function deleteTask(event){
 
             putOrder();
         }
-
 })
 }
 
 var elements = []; 
-
 
 // Récupère la clé orderOfTask (sous forme de string) et la transforme en tableau (fonction if dans le cas ou il y a 0, 1 ou plusieurs clés)
 
@@ -387,7 +373,6 @@ var keys = localStorage.getItem('orderOfTask');
 // Recréer tous les élements en fonction de l'ordre défini dans la clé orderOfTask, lui même défini par la fonciton putOrder(), ordre défini par la disposition des tâches dans les containers 
 
 function recreateTaskElements(){
-
 
     elements.forEach(element =>{
         var parsedData = JSON.parse(element);
@@ -503,11 +488,9 @@ function deleteAllCompleteTask(){
     putOrder();
 }
 
-
 document.addEventListener('click', deleteTask); 
 completedContainerBin.addEventListener('click', deleteAllCompleteTask); 
 document.getElementById("app").appendChild(clone);
-
 
 // Filtre les tâches 
 
@@ -590,7 +573,6 @@ function darkMode() {
     } else {
         localStorage.setItem('dark', 'actif'); 
     }
-    
 }
 
 darkButton.addEventListener('click', darkMode); 
@@ -609,7 +591,6 @@ document.addEventListener('keydown', (event) =>{
         submitInfo();
     }
 });
-
 
 //drag n drop
 
@@ -648,7 +629,6 @@ function handleDragLeave() {
 function handleDrop(e) {
     e.stopPropagation();
     e.preventDefault();
-
 
     if (dragSrcEl !== this) {
         if(dragSrcEl.parentNode !== this.parentNode){
@@ -787,7 +767,6 @@ containerTask.forEach(container =>{
     container.addEventListener('dragover', handleDragOverContainer, false);
     container.addEventListener('drop', handleDropContainer, false);
 })
-
 
 const mediaQuery = window.matchMedia('(max-width: 426px)');
 
