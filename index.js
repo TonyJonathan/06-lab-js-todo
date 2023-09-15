@@ -1,3 +1,5 @@
+import { clicAndShow } from "./function_js/clicAndShow.js";
+
 const template = document.getElementById("mon-template");
 const clone = document.importNode(template.content, true);
 const filterTask = clone.querySelector('header > input');
@@ -32,6 +34,7 @@ let clickOnHold = 0;
 var task; 
 var allTaskClone; 
 
+// Lorsque que l'on clic sur le bouton URGENT ou ON HOLD, clicAgainReset permet de recliquer dessus pour annuler la sélection
 
 function clickAgainReset(event){
     if(event.target == buttonUrgent && clickUrgent == 0){
@@ -80,7 +83,7 @@ let inProgressContainerTask;
 let plannedContainerTask;
 let orderOfTask; 
 
-// la fonction putOrder sert à definir la clé orderOfTask en temps réel 
+// la fonction putOrder sert à definir la valeur de la clé orderOfTask afin d'y ajouter le nom des tâches
 
 function putOrder(){
     var elements = []; 
@@ -265,7 +268,7 @@ function submitInfo(){
     
 }
 
-
+// Change le container ou la tâche va s'ajouter à chaque clic
 
 function changeCategoryTask(){
     if(taskCategory.textContent == "PLANNED"){
@@ -280,6 +283,8 @@ function changeCategoryTask(){
 taskCategory.addEventListener('click', changeCategoryTask);
 quotationMark.addEventListener('click', changeCategoryTask);
 
+
+// Selon le container dans lequel se trouve le + Add task sur lequel on clic,  le modal en s'ouvrant va afficher le nom de ce meme container 
 
 function addCategoryTask(){
     addTask.forEach(element => {
@@ -315,6 +320,9 @@ function addCategoryTask(){
 };
 
 addCategoryTask(); 
+
+
+// supprime les tâches 
 
 
 function deleteTask(event){
@@ -377,6 +385,8 @@ if(localStorage.getItem('orderOfTask') !== null && localStorage.getItem('orderOf
 var keys = localStorage.getItem('orderOfTask');
 
 }
+
+// Recréer tous les élements en fonction de l'ordre défini dans la clé orderOfTask, lui même défini par la fonciton putOrder(), ordre défini par la disposition des tâches dans les containers 
 
 function recreateTaskElements(){
 
@@ -470,6 +480,8 @@ recreateTaskElements();
 
 var completedContainerTask;
 
+// supprime toutes les tâches du container completed
+
 function deleteAllCompleteTask(){
         completedContainerTask = Array.from(completedContainer.childNodes).filter(node => {
         return node.tagName === 'DIV' && node.classList.contains('task');
@@ -498,6 +510,8 @@ document.addEventListener('click', deleteTask);
 completedContainerBin.addEventListener('click', deleteAllCompleteTask); 
 document.getElementById("app").appendChild(clone);
 
+
+// Filtre les tâches 
 
 function filterTaskWhenType(){
         let filterText = filterTask.value; 
@@ -536,8 +550,6 @@ const darkButtonCircle = document.querySelector('.darkButtonCircle');
 const clearElement = document.querySelectorAll('.clear'); 
 const modalContent = document.querySelector('.modalContent');
 let allTask = document.querySelectorAll('.task'); 
-const allCloneTask = clone.querySelectorAll('.task'); 
-
 
 function darkMode() {
     app.classList.toggle('darkApp'); 
@@ -600,15 +612,9 @@ document.addEventListener('keydown', (event) =>{
     }
 });
 
-//.append
 
 
-// document.addEventListener('click', (event) =>{
-//     if(event.target){
-//         console.log(event.target); 
-//     }
-// }); 
-
+document.addEventListener('click', clicAndShow); 
 
 //drag n drop
 
@@ -617,7 +623,6 @@ let dragSrcEl = null;
 // Gestionnaire pour le début du glissement
 function handleDragStart(e) {
     dragSrcEl = this;
-    
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/html', this.innerHTML);
     this.classList.add('dragging');
@@ -708,8 +713,6 @@ function handleDragEnd() {
     this.classList.remove('dragging');
 }
 
-
-
 allTask.forEach(element =>{
     element.addEventListener('dragstart', handleDragStart, false); 
     element.addEventListener('dragenter', handleDragOver, false);
@@ -784,24 +787,10 @@ function handleDropContainer(e) {
     return false;
 }
 
-function handleDragLeaveContainer() {
-    this.classList.remove('overContainer');
-    this.classList.remove('darkOverContainer');
-}
-
-function handleDragContainer() {
-    this.classList.remove('overContainer');
-    this.classList.remove('darkOverContainer');
-    this.classList.remove('dragging');
-}
-
 containerTask.forEach(container =>{
 
     container.addEventListener('dragover', handleDragOverContainer, false);
     container.addEventListener('drop', handleDropContainer, false);
-    container.addEventListener('mousemove', () =>{
-        container.classList.remove('overContainer'); 
-    } )
 })
 
 
@@ -809,6 +798,7 @@ const mediaQuery = window.matchMedia('(max-width: 426px)');
 
 const footer = document.querySelector('.footer'); 
 
+// Permet de détecté lorsque l'on passe en dessous de 427px et d'ajouter le menu en bas de page 
 
 function change(event){
     if(event.matches == true){
@@ -826,14 +816,4 @@ function change(event){
 }
 
 change(mediaQuery); 
-
-
-
 mediaQuery.addEventListener('change', change); 
-
-
-
-// window.addEventListener('beforeunload', function (event) {
-//     // Votre code ici, par exemple, pour demander une confirmation avant le rechargement
-//     event.returnValue = 'Voulez-vous vraiment quitter cette page ?';
-// });
