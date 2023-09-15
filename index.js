@@ -810,8 +810,6 @@ const mediaQuery = window.matchMedia('(max-width: 426px)');
 const footer = document.querySelector('.footer'); 
 
 
-
-
 function change(event){
     if(event.matches == true){
         footer.style.display = "flex"; 
