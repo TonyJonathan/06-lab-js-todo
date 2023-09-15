@@ -64,7 +64,7 @@ body{
     font-family: 'Merriweather Sans' , sans-serif;
     display: flex;
     flex-direction: column;
-    padding-bottom: 83px;
+    padding-bottom: 5.1875rem;
     align-items: center;
     min-height: 100vh;
     box-sizing: border-box;
@@ -84,7 +84,7 @@ body{
     bottom: 0;
     width: 100%; 
     background-color: var(--color-white);
-    box-shadow: 0px -4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0rem -0.25rem 0.5rem rgba(0, 0, 0, 0.2);
 }
 
 header{
@@ -92,13 +92,13 @@ header{
     display: flex;
     background-color: var(--color-white);
     margin: 0;
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
     transition: background-color 1s;
-    padding-top: 10px;
+    padding-top: 0.625rem;
 }
 
 header > img:nth-child(1){
-    margin: 16px 0px 24px 24px ;
+    margin: 1rem 0rem 1.5rem 1.5rem ;
 }
 
 .darkLogoHidden{
@@ -106,13 +106,13 @@ header > img:nth-child(1){
 }
 
 .new_task{
-    min-width: 167px;
+    width: 167px;
     display: flex;
     align-items: center;
     background-color: var(--color-turquoise);
-    border-radius: 10px;
+    border-radius: 0.625rem;
     color: var(--color-white);
-    margin: 31px 0px 30px 0px;
+    margin: 1.9375rem 0rem 1.875rem 0rem;
     transition: background-color 1s;
 }
 
@@ -123,47 +123,47 @@ header > img:nth-child(1){
 }
 
 .new_task > p:nth-child(1){
-    font-size: 50px;
-    line-height: 50px;
+    font-size: 3.125rem;
+    line-height: 3.125rem;
     margin: 0;
-    margin-left: 9px;
+    margin-left: 0.5625rem;
 }
 
 .new_task > p:nth-child(2){
-    font-size: 22px;
-    line-height: 50px;
+    font-size: 1.375rem;
+    line-height: 3.125rem;
     margin: 0;
-    margin-left: 7px;
+    margin-left: 0.4375rem;
 }
 
 header > input{
     width: 493px;
     font-family: 'Arial' , sans-serif;
-    border: 2px solid var(--color-turquoise);
-    padding: 13px 0 10px 30px;
-    margin: 31px 93px 30px 198px;
-    font-size: 20px;
-    border-radius: 10px;
+    border: 0.125rem solid var(--color-turquoise);
+    padding: 0.8125rem 0 0.625rem 1.875rem;
+    margin: 1.9375rem 5.8125rem 1.875rem 12.375rem;
+    font-size: 1.25rem;
+    border-radius: 0.625rem;
     outline: none;
     transition: border-color 0.3s ease;
 }
 
 header > input:hover{
-    border: 2px solid var(--color-turquoise-hover);
+    border: 0.125rem solid var(--color-turquoise-hover);
     transition: border-color 0s ease;
 }
 
 header > input:focus{
-    border: 2px solid var(--color-turquoise);
+    border: 0.125rem solid var(--color-turquoise);
     transition: border-color 0s ease;
 }
 
 .darkButton{
     width: 16px;
-    border-radius: 11px;
+    border-radius: 0.6875rem;
     background-color: var(--color-darkbutton);
-    padding: 3px 5px 0px 25px;
-    margin: 45px 81px 45px 124px;
+    padding: 0.1875rem 0.3125rem 0.1875rem 1.5625rem;
+    margin: 2.8125rem 5.0625rem 2.8125rem 7.75rem;
     transition: padding 0.3s ease; 
 }
 
@@ -175,7 +175,7 @@ header > input:focus{
 .darkButtonCircle{
     width: 16px;
     height: 16px;
-    border-radius: 10px;
+    border-radius: 0.625rem;
     background-color: var(--color-white);
 }
 
@@ -183,8 +183,8 @@ header > input:focus{
 
 .containerTask{
     margin: 0;
-    margin-top: 69px;
-    margin-left: 5px;
+    margin-top: 4.3125rem;
+    margin-left: 0.3125rem;
     display: flex;
     justify-content: space-between;
 }
@@ -192,8 +192,8 @@ header > input:focus{
 .plannedContainer{
     width: 454px;
     min-height: 637px;
-    border-radius: 8px;
-    border-top: 10px solid var(--color-blue-planned) ;
+    border-radius: 0.5rem;
+    border-top: 0.625rem solid var(--color-blue-planned) ;
     background-color: var(--color-white); 
     transition: background-color 1s;
     justify-content: center;
@@ -201,22 +201,22 @@ header > input:focus{
 
 .planned{
     display: flex;
-    font-size: 24px;
+    font-size: 1.5rem;
     align-items: center;
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 0.125rem solid var(--color-border);
 }
 
 .title{
-    margin-left: 30px;
+    margin-left: 1.875rem;
 }
 
 .plannedCount{
-    margin-left: 15px;
-    border: 1px solid var(--color-darkbutton);
-    border-radius: 8px;
     width: 37px;
+    margin-left: 0.9375rem;
+    border: 0.0625rem solid var(--color-darkbutton);
+    border-radius: 0.5rem;
     text-align: center;
-    line-height: 38px;
+    line-height: 2.375rem;
 }
 
 .addTask{
@@ -225,7 +225,7 @@ header > input:focus{
     align-items: center;
     color: var(--color-turquoise);
     margin: 0;
-    padding: 21px 0px 21px 0px;
+    padding: 1.3125rem 0rem 1.3125rem 0rem;
     transition: color 1s;
 }
 
@@ -236,72 +236,72 @@ header > input:focus{
 }
 
 .addTaskPlus{
-    font-size: 47px;
+    font-size: 2.9375rem;
     font-weight: 700;
-    line-height: 30px;
+    line-height: 1.875rem;
     margin: 0;
 }
 
 .addTaskText{
     margin: 0;
-    font-size: 22px;
-    margin-left: 8px;
+    font-size: 1.375rem;
+    margin-left: 0.5rem;
 }
 
 .inProgressContainer{
     width: 454px;
     min-height: 637px;
-    border-radius: 8px;
-    border-top: 10px solid var(--color-yellow) ;
+    border-radius: 0.5rem;
+    border-top: 0.625rem solid var(--color-yellow) ;
     background-color: var(--color-white); 
-    margin-left: 21px;
+    margin-left: 1.3125rem;
     transition: background-color 1s;
 }
 
 .inProgress{
     display: flex;
-    font-size: 24px;
+    font-size: 1.5rem;
     align-items: center;
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 0.125rem solid var(--color-border);
 }
 
 .inProgressCount{
-    margin-left: 15px;
-    border: 1px solid var(--color-darkbutton);
-    border-radius: 8px;
     width: 37px;
+    margin-left: 0.9375rem;
+    border: 0.0625rem solid var(--color-darkbutton);
+    border-radius: 0.5rem;
     text-align: center;
-    line-height: 38px;
+    line-height: 2.375rem;
 }
 
 .completedContainer{
     width: 454px;
     min-height: 637px;
-    border-radius: 8px;
-    border-top: 10px solid var(--color-green);
+    border-radius: 0.5rem;
+    border-top: 0.625rem solid var(--color-green);
     background-color: var(--color-white); 
-    margin-left: 21px;
+    margin-left: 1.3125rem;
     transition: background-color 1s;
 }
 
 .completed{
     display: flex;
-    font-size: 24px;
+    font-size: 1.5rem;
     align-items: center;
-    border-bottom: 2px solid var(--color-border);
+    border-bottom: 0.125rem solid var(--color-border);
 }
 
 .completedCount{
-    margin-left: 15px;
-    border: 1px solid var(--color-darkbutton);
-    border-radius: 8px;
     width: 37px;
+    margin-left: 0.9375rem;
+    border: 0.0625rem solid var(--color-darkbutton);
+    border-radius: 0.5rem;
     text-align: center;
-    line-height: 38px;
+    line-height: 2.375rem;
 }
 
 .completed > img{
-    margin-left: 170px;
+    margin-left: 10.625rem;
 }
 
 /* modal */ 
@@ -322,12 +322,12 @@ header > input:focus{
 
 .modalContent {
     background-color: #fff;
-    padding-left: 42px;
-    border-radius: 15px;
+    padding-left: 2.625rem;
+    border-radius: 0.9375rem;
     width:395px;
     position: relative;
     display: block;
-    padding-bottom: 25px;
+    padding-bottom: 1.5625rem;
 }
 
 .modalContent > *{
@@ -345,9 +345,9 @@ header > input:focus{
 }
 
 .taskDescription > p:nth-child(1){
-    font-size: 24px;
+    font-size: 1.5rem;
     margin: 0;
-    margin-top: 33px;
+    margin-top: 2.0625rem;
     white-space: nowrap;
 }
 
@@ -356,17 +356,17 @@ header > input:focus{
 }
 
 .taskDescription > img:nth-child(2){
-    margin-top: 35px;
-    padding-left: 20px;
+    margin-top: 2.1875rem;
+    padding-left: 1.25rem;
 }
 
 .taskDescription > p:nth-child(3){
-    font-size: 50px;
+    font-size: 3.125rem;
     margin-left: auto;
-    margin-right: 17px;
+    margin-right: 1.0625rem;
     rotate: 45deg;
-    line-height: 0px;
-    margin-top: 32px;
+    line-height: 0rem;
+    margin-top: 2rem;
 }
 
 .clear:hover{
@@ -384,13 +384,13 @@ header > input:focus{
 
 .modalContent > input:nth-child(2){
     width: 262px;
-    font-size: 16px;
+    font-size: 1rem;
     outline: none;
     margin: 0;
-    margin-top: 15px;
-    padding: 16px 62px 13px 23px;
-    border-radius: 8px;
-    border: 2px solid var(--color-border);
+    margin-top: 0.9375rem;
+    padding: 1rem 3.875rem 0.8125rem 1.4375rem;
+    border-radius: 0.5rem;
+    border: 0.125rem solid var(--color-border);
     font-weight: 500;
     font-family: 'Arial' , sans-serif;
 }
@@ -398,20 +398,20 @@ header > input:focus{
 .textArea{
     width: 301px;
     font-family: 'Arial' , sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     outline: none;
     margin: 0;
-    margin-top: 19px;
-    padding: 16px 23px 20px 23px;
-    border-radius: 8px;
-    border: 2px solid var(--color-border);
-    line-height: 30px;
+    margin-top: 1.1875rem;
+    padding: 1rem 1.4375rem 1.25rem 1.4375rem;
+    border-radius: 0.5rem;
+    border: 0.125rem solid var(--color-border);
+    line-height: 1.875rem;
     resize: none;
 }
 
 .buttonModal{
     display: flex;
-    margin-top: 18px;
+    margin-top: 1.125rem;
 }
 
 label{
@@ -421,12 +421,12 @@ label{
     color: var(--color-white);
     background-color: var(--color-grey);
     text-align: center;
-    line-height: 31px;
-    border-radius: 5px;
+    line-height: 1.9375rem;
+    border-radius: 0.3125rem;
 }
 
 .onHold > label{
-    margin-left: 35px;
+    margin-left: 2.1875rem;
 }
 
 .urgent > label:hover{
@@ -457,10 +457,10 @@ label{
     color: var(--color-white);
     background-color: var(--color-turquoise);
     text-align: center;
-    line-height: 42px;
-    border-radius: 10px;
+    line-height: 2.625rem;
+    border-radius: 0.625rem;
     margin: 0;
-    margin-top: 35px;
+    margin-top: 2.1875rem;
 }
 
 .modalContent > p:nth-child(5):hover{
@@ -480,23 +480,23 @@ li{
 
 .task{
     width: 405px;
-    padding-left: 21px;
+    padding-left: 1.3125rem;
     font-family: 'Merriweather Sans' , sans-serif;
     font-weight: 500;
-    border: 2px solid var(--color-border);
-    border-radius: 8px;
-    margin-left: 12px;
-    margin-bottom: 15px;
-    padding-bottom: 16px;
+    border: 0.125rem solid var(--color-border);
+    border-radius: 0.5rem;
+    margin-left: 0.75rem;
+    margin-bottom: 0.9375rem;
+    padding-bottom: 1rem;
 }
 
 .task:hover{
-    border: 2px solid var(--color-turquoise-hover);
+    border: 0.125rem solid var(--color-turquoise-hover);
     cursor: pointer;
 }
 
 .task:focus{
-    border: 2px solid var(--color-turquoise);
+    border: 0.125rem solid var(--color-turquoise);
 }
 
 .noClickedTask{
@@ -504,12 +504,12 @@ li{
     display: flex;
     align-items: center;
     margin: 0;
-    margin-top: 15px;
+    margin-top: 0.9375rem;
 }
 
 .noClickedTask > p:nth-child(1){
     width: 335px;
-    font-size: 20px;
+    font-size: 1.25rem;
     color: var(--color-darkbutton);
     margin: 0;
     word-wrap: break-word;
@@ -518,28 +518,28 @@ li{
 .alertUrgent{
     width: 17px;
     height: 17px;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     background-color: var(--color-red-urgent);
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 .alertOnHold{
     width: 17px;
     height: 17px;
-    border-radius: 5px;
+    border-radius: 0.3125rem;
     background-color: var(--color-orange-urgent);
-    margin-left: 10px;
+    margin-left: 0.625rem;
 }
 
 .noClickedTask > p:nth-child(3){
-    font-size: 30px;
+    font-size: 1.875rem;
     color: var(--color-grey);
     margin: 0;
     margin-left: auto;
-    margin-right: -3px;
-    margin-top: 0px;
+    margin-right: -0.1875rem;
+    margin-top: 0rem;
     rotate: 90deg;
-    letter-spacing: -1px;
+    letter-spacing: -0.0625rem;
     font-weight: 700;
 }
 
@@ -564,11 +564,11 @@ li{
     background-color: var(--color-red-urgent);
     color: var(--color-white);
     text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    border-radius: 0.3125rem;
     margin: 0;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     display: none;
 }
 
@@ -577,20 +577,20 @@ li{
     background-color: var(--color-orange-urgent);
     color: var(--color-white);
     text-align: center;
-    padding-top: 5px;
-    padding-bottom: 5px;
-    border-radius: 5px;
+    padding-top: 0.3125rem;
+    padding-bottom: 0.3125rem;
+    border-radius: 0.3125rem;
     margin: 0;
-    margin-top: 20px;
+    margin-top: 1.25rem;
     display: none;
 }
 
 .clickedTask{
     font-family: 'Merriweather Sans' , sans-serif;
-    font-size: 16px;
+    font-size: 1rem;
     display: flex;
     align-items: center;
-    margin-top: 16px;
+    margin-top: 1rem;
     display: none;
 }
 
@@ -606,7 +606,7 @@ li{
 
 .clickedTask > img:nth-child(2){
     margin-left: auto;
-    margin-right: 10px;
+    margin-right: 0.625rem;
 }
 
 
@@ -628,20 +628,20 @@ li{
 .darkLogo{
     display: block;
     margin: 0;
-    margin: 16px 0px 24px 24px ;
+    margin: 1rem 0rem 1.5rem 1.5rem ;
 }
 
 
 .darkFilterTask{
-    border: 2px solid var(--color-dark-turquoise);
+    border: 0.125rem solid var(--color-dark-turquoise);
 }
 
 .darkFilterTask:hover{
-    border: 2px solid var(--color--dark-turquoise-hover);
+    border: 0.125rem solid var(--color--dark-turquoise-hover);
 }
 
 .darkFilterTask:focus{
-    border: 2px solid var(--color-dark-turquoise);
+    border: 0.125rem solid var(--color-dark-turquoise);
 }
 
 
@@ -655,7 +655,7 @@ li{
 
 .darkButtonActivate{
     background-color: var(--color-white);
-    padding: 3px 25px 0px 5px;
+    padding: 0.1875rem 1.5625rem 0rem 0.3125rem;
     transition: padding 0.3s ease;
 }
 
@@ -670,13 +670,13 @@ li{
 .darkPlannedContainer{
     width: 454px;
     min-height: 637px;
-    border-radius: 8px;
-    border-top: 10px solid var(--color-dark-blue) ;
+    border-radius: 0.5rem;
+    border-top: 0.625rem solid var(--color-dark-blue) ;
     background-color: var(--color-dark-grey); 
 }
 
 .darkCount{
-    border: 1px solid var(--color-dark-text);
+    border: 0.0625rem solid var(--color-dark-text);
 }
 
 .darkAddTask{
@@ -689,12 +689,12 @@ li{
 
 
 .darkInProgressContainer{
-    border-top: 10px solid var(--color-dark-yellow) ;
+    border-top: 0.625rem solid var(--color-dark-yellow) ;
     background-color: var(--color-dark-grey); 
 }
 
 .darkCompletedContainer{
-    border-top: 10px solid var(--color-dark-green);
+    border-top: 0.625rem solid var(--color-dark-green);
     background-color: var(--color-dark-grey); 
 }
 
@@ -740,11 +740,11 @@ li{
 
 
 .darkTask:hover{
-    border: 2px solid var(--color-dark-turquoise);
+    border: 0.125rem solid var(--color-dark-turquoise);
 }
 
 .darkTask:focus{
-    border: 2px solid var(--color-dark-turquoise);
+    border: 0.125rem solid var(--color-dark-turquoise);
 }
 
 
@@ -787,51 +787,51 @@ li{
     }
 
     header > img:nth-child(1){
-        margin: 27px 0px 26px 17px ;
+        margin: 1.6875rem 0rem 1.625rem 1.0625rem ;
         width: 162px;
         height: 57px;
     }
 
     .darkLogo{
-        margin: 27px 0px 26px 17px ;
+        margin: 1.6875rem 0rem 1.625rem 1.0625rem ;
         width: 162px;
         height: 57px;
     }
 
     header > input{
         width: 357px;
-        margin: 35px 62px 40px 82px;
-        padding: 8px 0 8px 30px;
+        margin: 2.1875rem 3.875rem 2.5rem 5.125rem;
+        padding: 0.5rem 0 0.5rem 1.875rem;
         
     }
 
     .new_task{
         min-width: 150px;
-        margin: 35px 0px 41px 0px;
+        margin: 2.1875rem 0rem 2.5625rem 0rem;
     }
     
     .new_task > p:nth-child(1){
-        font-size: 40px;
-        line-height: 43px;
+        font-size: 2.5rem;
+        line-height: 2.6875rem;
         margin: 0;
-        margin-left: 9px;
+        margin-left: 0.5625rem;
     }
     
     .new_task > p:nth-child(2){
-        font-size: 20px;
-        line-height: 43px;
+        font-size: 1.25rem;
+        line-height: 2.6875rem;
         margin: 0;
-        margin-left: 7px;
+        margin-left: 0.4375rem;
     }
 
     .darkButton{
-        margin: 46px 62px 51px 82px;
+        margin: 2.875rem 3.875rem 3.1875rem 5.125rem;
     }
 
     /* container */ 
 
     .containerTask{
-        margin-left: 0px;
+        margin-left: 0rem;
     }
 
     .plannedContainer, .inProgressContainer, .completedContainer{
@@ -839,55 +839,55 @@ li{
     }
 
     .inProgressContainer{
-        margin-left: 13px;
+        margin-left: 0.8125rem;
     }
 
     .completedContainer{
-        margin-left: 13px;
+        margin-left: 0.8125rem;
     }
 
     .title{
-        margin-left: 22px;
+        margin-left: 1.375rem;
     }
 
     .completed > img{
-        margin-left: 44px;
+        margin-left: 2.75rem;
     }
 
     /* task */ 
 
     .task{
         width: 288px;
-        padding-left: 16px;
-        margin-left: 7.5px;
+        padding-left: 1rem;
+        margin-left: 0.4688rem;
     }
 
 
     .noClickedTask{
         width: 305px;
-        margin-top: 15px;
+        margin-top: 0.9375rem;
     }
 
     .noClickedTask > p:nth-child(1){
         width: 225px;
-        font-size: 16px;
+        font-size: 1rem;
     }
 
     .alertUrgent, .alertOnHold {
-        margin-right: 13px;
+        margin-right: 0.8125rem;
     }
 
 
     .noClickedTask > p:nth-child(3){
-        font-size: 30px;
-        margin-right: 16px;
+        font-size: 1.875rem;
+        margin-right: 1rem;
     }
 
 
 
     .clickedTask{
-        font-size: 16px;
-        margin-top: 16px;
+        font-size: 1rem;
+        margin-top: 1rem;
     }
 
     .clickedTask > p:nth-child(1){
@@ -897,11 +897,11 @@ li{
 
     .clickedTask > img:nth-child(2){
         margin-left: auto;
-        margin-right: 10px;
+        margin-right: 0.625rem;
     }
 
     .modalContent {
-        padding-left: 32px;
+        padding-left: 2rem;
         width:300px;
     }
 
@@ -910,7 +910,7 @@ li{
     }
 
     .taskDescription > p:nth-child(3){
-        margin-right: 7px;
+        margin-right: 0.4375rem;
     }
 
     .modalContent > input:nth-child(2){
@@ -923,7 +923,7 @@ li{
 
     .modalContent > p:nth-child(5){
         width: 269px;
-        margin-top: 25px;
+        margin-top: 1.5625rem;
     }
 
 
@@ -933,57 +933,57 @@ li{
 
     header{
         max-width: 768px;
-        padding-top: 0px;
+        padding-top: 0rem;
     }
 
     header > img:nth-child(1){
         width: 162px;
         height: 48px;
-        margin: 23px 0px 10px 13px;
+        margin: 1.4375rem 0rem 0.625rem 0.8125rem;
     }
 
     .darkLogo{
         width: 162px;
         height: 48px;
-        margin: 23px 0px 10px 13px;
+        margin: 1.4375rem 0rem 0.625rem 0.8125rem;
     }
     
     header > input{
         max-width: 247px;
-        margin: 31px 48px 20px 55px;
-        font-size: 16px;
-        padding: 3px 0 0px 30px;
+        margin: 1.9375rem 3rem 1.25rem 3.4375rem;
+        font-size: 1rem;
+        padding: 0.1875rem 0 0rem 1.875rem;
     }
 
     .new_task{
         min-width: 119px;
-        margin: 31px 0px 20px 0px;
+        margin: 1.9375rem 0rem 1.25rem 0rem;
     }
     
     .new_task > p:nth-child(1){
-        font-size: 40px;
-        line-height: 0px;
+        font-size: 2.5rem;
+        line-height: 0rem;
         margin: 0;
-        margin-left: 7px;
+        margin-left: 0.4375rem;
     }
     
     .new_task > p:nth-child(2){
-        font-size: 16px;
-        line-height: 0px;
+        font-size: 1rem;
+        line-height: 0rem;
         margin: 0;
-        margin-left: 4px;
+        margin-left: 0.25rem;
     }
 
     .darkButton{
-        margin: 40px 55px 25px 43px;
-        padding-bottom: 3px;
+        margin: 2.5rem 3.4375rem 1.5625rem 2.6875rem;
+        padding-bottom: 0.1875rem;
         
     }
 
     /* container */ 
 
     .containerTask{
-        margin-left: 0px;
+        margin-left: 0rem;
     }
 
     .plannedContainer, .inProgressContainer, .completedContainer{
@@ -991,94 +991,94 @@ li{
     }
 
     .inProgressContainer{
-        margin-left: 10px;
+        margin-left: 0.625rem;
     }
 
     .completedContainer{
-        margin-left: 10px;
+        margin-left: 0.625rem;
     }
 
     .title{
-        margin-left: 16px;
-        font-size: 18px;
+        margin-left: 1rem;
+        font-size: 1.125rem;
     }
 
     .plannedCount, .inProgressCount, .completedCount{
-        border-radius: 8px;
+        border-radius: 0.5rem;
         width: 27px;
-        line-height: 28px;
-        font-size: 18px;
+        line-height: 1.75rem;
+        font-size: 1.125rem;
     }
 
     .completed > img{
         width: 28px;
-        margin-top: 3px;
-        margin-left: 32px;
+        margin-top: 0.1875rem;
+        margin-left: 2rem;
     }
 
     .addTask{
-        padding: 15px 0px 15px 0px;
+        padding: 0.9375rem 0rem 0.9375rem 0rem;
     }
     
     .addTaskPlus{
-        font-size: 37px;
+        font-size: 2.3125rem;
         font-weight: 700;
     }
     
     .addTaskText{
         margin: 0;
-        font-size: 18px;
-        margin-left: 8px;
+        font-size: 1.125rem;
+        margin-left: 0.5rem;
     }
 
     /* task */ 
 
     .task{
         width: 216px;
-        padding-left: 14px;
-        margin-left: 5px;
-        margin-bottom: 10px;
-        padding-bottom: 8px;
+        padding-left: 0.875rem;
+        margin-left: 0.3125rem;
+        margin-bottom: 0.625rem;
+        padding-bottom: 0.5rem;
     }
 
     .noClickedTask{
         width: 230px;
-        margin-top: 8px;
+        margin-top: 0.5rem;
     }
 
 
     .noClickedTask > p:nth-child(1){
         width: 165px;
-        font-size: 14px;
+        font-size: 0.875rem;
     }
 
     .alertUrgent, .alertOnHold {
-        margin-left: 8px;
+        margin-left: 0.5rem;
         width: 12px;
         height: 12px;
     }
 
     .noClickedTask > p:nth-child(3){
-        font-size: 22px;
-        margin-right: 16px;
+        font-size: 1.375rem;
+        margin-right: 1rem;
     }
 
     .taskAlertUrgent{
         width: 75px;
-        font-size: 10px;
-        margin-top: 8px;
+        font-size: 0.625rem;
+        margin-top: 0.5rem;
     }
 
     .taskAlertOnHold{
         width: 75px;
-        font-size: 10px;
-        margin-top: 8px;
+        font-size: 0.625rem;
+        margin-top: 0.5rem;
     }
 
     .clickedTask{
         font-family: 'Merriweather Sans' , sans-serif;
-        font-size: 12px;
-        margin-top: 8px;
+        font-size: 0.75rem;
+        margin-top: 0.5rem;
     
     }
 
@@ -1092,8 +1092,8 @@ li{
 
     .modalContent {
         width: 263px;
-        padding-left: 32px;
-        padding-bottom: 25px;
+        padding-left: 2rem;
+        padding-bottom: 1.5625rem;
     }
 
     .taskDescription{
@@ -1102,57 +1102,57 @@ li{
 
 
     .taskDescription > p:nth-child(1){
-        font-size: 18px;
-        margin-top: 30px;
+        font-size: 1.125rem;
+        margin-top: 1.875rem;
     }
 
     .taskDescription > img:nth-child(2){
         width: 12px;
-        margin-top: 30px;
-        padding-left: 20px;
+        margin-top: 1.875rem;
+        padding-left: 1.25rem;
     }
 
 
     .taskDescription > p:nth-child(3){
-        font-size: 45px;
-        margin-right: 7px;
+        font-size: 2.8125rem;
+        margin-right: 0.4375rem;
     }
 
     .modalContent > input:nth-child(2){
         width: 190px;
-        font-size: 14px;
-        margin-top: 5px;
-        padding: 15px 23px 13px 13px;
+        font-size: 0.875rem;
+        margin-top: 0.3125rem;
+        padding: 0.9375rem 1.4375rem 0.8125rem 0.8125rem;
     }
 
     .textArea{
         width: 213px;
-        font-size: 14px;
-        margin-top: 19px;
-        padding: 5px 0px 10px 13px;
-        line-height: 30px;
+        font-size: 0.875rem;
+        margin-top: 1.1875rem;
+        padding: 0.3125rem 0rem 0.625rem 0.8125rem;
+        line-height: 1.875rem;
     }
 
     .buttonModal{
-        margin-top: 18px;
+        margin-top: 1.125rem;
     }
 
     label{
         width: 75px;
-        line-height: 23px;
-        font-size: 10px;
+        line-height: 1.4375rem;
+        font-size: 0.625rem;
 
     }
 
     .onHold > label{
-        margin-left: 25px;
+        margin-left: 1.5625rem;
     }
 
     .modalContent > p:nth-child(5){
         width: 230px;
-        margin-top: 25px;
-        line-height: 42px;
-        font-size: 14px;
+        margin-top: 1.5625rem;
+        line-height: 2.625rem;
+        font-size: 0.875rem;
     }
 
 }
@@ -1161,28 +1161,28 @@ li{
 
     header{
         min-width: 2560px;
-        padding-top: 30px;
-        padding-bottom: 30px;
+        padding-top: 1.875rem;
+        padding-bottom: 1.875rem;
     }
     
     header > img:nth-child(1){
         width: 289px;
         height: 89px;
-        margin: 27px 0px 26px 52px ;
+        margin: 1.6875rem 0rem 1.625rem 3.25rem ;
     }
 
     .darkLogoHidden{
         width: 289px;
         height: 89px;
-        margin: 27px 0px 26px 52px ;
+        margin: 1.6875rem 0rem 1.625rem 3.25rem ;
     }
     
     .new_task{
         min-width: 250px;
         background-color: var(--color-turquoise);
-        border-radius: 10px;
+        border-radius: 0.625rem;
         color: var(--color-white);
-        margin: 31px 0px 30px 0px;
+        margin: 1.9375rem 0rem 1.875rem 0rem;
         transition: background-color 1s;
     }
     
@@ -1193,14 +1193,14 @@ li{
     }
     
     .new_task > p:nth-child(1){
-        font-size: 70px;
-        line-height: 50px;
-        margin-left: 19px;
+        font-size: 4.375rem;
+        line-height: 3.125rem;
+        margin-left: 1.1875rem;
     }
     
     .new_task > p:nth-child(2){
-        font-size: 32px;
-        margin-left: 17px;
+        font-size: 2rem;
+        margin-left: 1.0625rem;
     }
 
     .darkNewTask{
@@ -1209,47 +1209,47 @@ li{
     
     header > input{
         width: 800px;
-        border: 3px solid var(--color-turquoise);
-        padding: 13px 0 10px 30px;
-        margin: 31px 200px 30px 524px;
-        font-size: 30px;
+        border: 0.1875rem solid var(--color-turquoise);
+        padding: 0.8125rem 0 0.625rem 1.875rem;
+        margin: 1.9375rem 12.5rem 1.875rem 32.75rem;
+        font-size: 1.875rem;
     }
     
     header > input:hover{
-        border: 3px solid var(--color-turquoise-hover);
+        border: 0.1875rem solid var(--color-turquoise-hover);
         transition: border-color 0s ease;
     }
     
     header > input:focus{
-        border: 3px solid var(--color-turquoise);
+        border: 0.1875rem solid var(--color-turquoise);
         transition: border-color 0s ease;
     }
 
     .darkFilterTask{
-        border: 3px solid var(--color-dark-turquoise);
+        border: 0.1875rem solid var(--color-dark-turquoise);
     }
 
     .darkFilterTask:hover{
-        border: 3px solid var(--color--dark-turquoise-hover);
+        border: 0.1875rem solid var(--color--dark-turquoise-hover);
     }
 
     .darkFilterTask:focus{
-        border: 3px solid var(--color-dark-turquoise);
+        border: 0.1875rem solid var(--color-dark-turquoise);
     }
     
     
     .darkButton{
         width: 35px;
         height: 40px;
-        border-radius: 30px;
+        border-radius: 1.875rem;
         background-color: var(--color-darkbutton);
-        padding: 7px 7px 0px 55px;
-        margin-left: 200px;
+        padding: 0.4375rem 0.4375rem 0rem 3.4375rem;
+        margin-left: 12.5rem;
     }
 
     .darkButtonActivate{
         background-color: var(--color-white);
-        padding: 7px 55px 0px 9px;
+        padding: 0.4375rem 3.4375rem 0rem 0.5625rem;
         transition: padding 0.3s ease;
     }
 
@@ -1265,7 +1265,7 @@ li{
     .darkButtonCircle{
         width: 32px;
         height: 32px;
-        border-radius: 18px;
+        border-radius: 1.125rem;
         background-color: var(--color-white);
     }
 
@@ -1277,14 +1277,14 @@ li{
     
     .containerTask{
         margin: 0;
-        margin-top: 100px;
+        margin-top: 6.25rem;
     }
     
     .plannedContainer{
         width: 803px;
         min-height: 637px;
-        border-radius: 8px;
-        border-top: 17px solid var(--color-blue-planned) ;
+        border-radius: 0.5rem;
+        border-top: 1.0625rem solid var(--color-blue-planned) ;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -1294,45 +1294,45 @@ li{
     .planned, .inProgress{
         width: 803px;
         display: flex;
-        font-size: 42px;
+        font-size: 2.625rem;
         align-items: center;
         justify-content: center;
-        border-bottom: 4px solid var(--color-border);
+        border-bottom: 0.25rem solid var(--color-border);
     }
     
     .plannedCount, .inProgressCount, .completedCount{
-        margin-left: 35px;
-        border: 2px solid var(--color-darkbutton);
+        margin-left: 2.1875rem;
+        border: 0.125rem solid var(--color-darkbutton);
         width: 60px;
-        line-height: 60px;
+        line-height: 3.75rem;
     }
 
     .darkCount{
-        border: 2px solid var(--color-dark-text);
+        border: 0.125rem solid var(--color-dark-text);
     }
     
     .addTask{
-        padding: 36px 0px 36px 0px;
+        padding: 2.25rem 0rem 2.25rem 0rem;
     }
     
     .addTaskPlus{
-        font-size: 80px;
+        font-size: 5rem;
         font-weight: 700;
-        line-height: 51px;
+        line-height: 3.1875rem;
         margin: 0;
     }
     
     .addTaskText{
         margin: 0;
-        font-size: 37px;
-        margin-left: 8px;
+        font-size: 2.3125rem;
+        margin-left: 0.5rem;
     }
     
     .inProgressContainer{
         width: 803px;
         min-height: 1083px;
-        border-top: 17px solid var(--color-yellow) ;
-        margin-left: 35px;
+        border-top: 1.0625rem solid var(--color-yellow) ;
+        margin-left: 2.1875rem;
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
@@ -1344,8 +1344,8 @@ li{
 
     .completedContainer{
         width: 803px;
-        border-top: 17px solid var(--color-green);
-        margin-left: 35px;
+        border-top: 1.0625rem solid var(--color-green);
+        margin-left: 2.1875rem;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -1353,19 +1353,19 @@ li{
     
     .completed{
         width: 803px;
-        font-size: 42px;
-        border-bottom: 4px solid var(--color-border);
+        font-size: 2.625rem;
+        border-bottom: 0.25rem solid var(--color-border);
     }
 
     .completed > .title {
-        margin-left: 225px;
+        margin-left: 14.0625rem;
     }
 
     
     .completed > img{
         width: 55px;
         height: 55px;
-        margin-left: 120px;
+        margin-left: 7.5rem;
     }
 
 
@@ -1373,78 +1373,78 @@ li{
 
     .task{
         width: 750px;
-        padding-left: 14px;
-        margin-left: 5px;
-        margin-bottom: 10px;
-        padding-bottom: 8px;
-        margin-bottom: 30px;
-        border: 3px solid var(--color-border);
+        padding-left: 0.875rem;
+        margin-left: 0.3125rem;
+        margin-bottom: 0.625rem;
+        padding-bottom: 0.5rem;
+        margin-bottom: 1.875rem;
+        border: 0.1875rem solid var(--color-border);
     }
 
     .noClickedTask{
         width: 750px;
-        margin-top: 8px;
-        padding-top: 15px;
-        padding-bottom: 15px;
+        margin-top: 0.5rem;
+        padding-top: 0.9375rem;
+        padding-bottom: 0.9375rem;
     }
 
 
     .noClickedTask > p:nth-child(1){
         width: 600px;
-        font-size: 30px;
-        margin-left: 20px;
+        font-size: 1.875rem;
+        margin-left: 1.25rem;
     }
 
     .alertUrgent, .alertOnHold {
-        margin-left: 30px;
+        margin-left: 1.875rem;
         width: 28px;
         height: 28px;
     }
 
     .noClickedTask > p:nth-child(3){
-        font-size: 36px;
-        margin-right: 16px;
+        font-size: 2.25rem;
+        margin-right: 1rem;
     }
 
     .taskAlertUrgent{
         width: 145px;
-        font-size: 24px;
-        margin-top: 8px;
-        margin-left: 20px;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        margin-left: 1.25rem;
     }
 
     .taskAlertOnHold{
         width: 145px;
-        font-size: 24px;
-        margin-top: 8px;
-        margin-left: 20px;
+        font-size: 1.5rem;
+        margin-top: 0.5rem;
+        margin-left: 1.25rem;
     }
 
     .clickedTask{
-        font-size: 22px;
-        margin-top: 8px;
-        padding-bottom: 15px;
-        padding-top: 10px;
+        font-size: 1.375rem;
+        margin-top: 0.5rem;
+        padding-bottom: 0.9375rem;
+        padding-top: 0.625rem;
     }
 
     .clickedTask > p:nth-child(1){
         width: 620px;
-        margin-left: 20px;
-        margin-right: 20px;
+        margin-left: 1.25rem;
+        margin-right: 1.25rem;
     }
 
     .clickedTask > img:nth-child(2){
         width: 40px;
         height: 40px;
-        margin-right: 20px;
+        margin-right: 1.25rem;
     }
 
     /* modal */
 
     .modalContent {
-        padding-left: 52px;
+        padding-left: 3.25rem;
         width:680px;
-        padding-bottom: 35px;
+        padding-bottom: 2.1875rem;
     }
 
     
@@ -1453,63 +1453,63 @@ li{
     }
     
     .taskDescription > p:nth-child(1){
-        font-size: 42px;
-        margin-top: 50px;
+        font-size: 2.625rem;
+        margin-top: 3.125rem;
     }
     
     .taskDescription > img:nth-child(2){
         width: 56px;
         height: 41px;
-        margin-top: 52px;
-        padding-left: 30px;
+        margin-top: 3.25rem;
+        padding-left: 1.875rem;
     }
     
     .taskDescription > p:nth-child(3){
-        font-size: 100px;
-        margin-right: 0px;
-        margin-top: 50px;
+        font-size: 6.25rem;
+        margin-right: 0rem;
+        margin-top: 3.125rem;
     }
     
 
     .modalContent > input:nth-child(2){
         width: 520px;
-        font-size: 30px;
-        margin-top: 15px;
-        border: 3px solid var(--color-border);
-        padding: 25px 62px 25px 23px;
+        font-size: 1.875rem;
+        margin-top: 0.9375rem;
+        border: 0.1875rem solid var(--color-border);
+        padding: 1.5625rem 3.875rem 1.5625rem 1.4375rem;
     }
     
     .textArea{
         width: 559px;
-        font-size: 30px;
-        margin-top: 30px;
-        padding: 25px 23px 100px 23px;
-        border: 3px solid var(--color-border);
-        line-height: 50px;
+        font-size: 1.875rem;
+        margin-top: 1.875rem;
+        padding: 1.5625rem 1.4375rem 6.25rem 1.4375rem;
+        border: 0.1875rem solid var(--color-border);
+        line-height: 3.125rem;
 
     }
     
     .buttonModal{
         display: flex;
-        margin-top: 30px;
+        margin-top: 1.875rem;
     }
     
     label{
         width: 170px;
-        line-height: 52px;
-        font-size: 24px;
+        line-height: 3.25rem;
+        font-size: 1.5rem;
     }
     
     .onHold > label{
-        margin-left: 67px;
+        margin-left: 4.1875rem;
     }
     
     
     .modalContent > p:nth-child(5){
         width: 611px;
-        line-height: 78px;
-        font-size: 28px;
-        margin-top: 35px;
+        line-height: 4.875rem;
+        font-size: 1.75rem;
+        margin-top: 2.1875rem;
     }
     
     
@@ -1521,7 +1521,7 @@ li{
     #app{
         min-height: 100vh;
         box-sizing: border-box;
-        padding-bottom: 150px;
+        padding-bottom: 9.375rem;
     }
 
     /* Header */ 
@@ -1532,15 +1532,15 @@ li{
         display: flex;
         background-color: var(--color-white);
         margin: 0;
-        box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+        box-shadow: 0rem 0.25rem 0.5rem rgba(0, 0, 0, 0.2);
         transition: background-color 1s;
-        padding-top: 10px;
+        padding-top: 0.625rem;
     }
     
     header > img:nth-child(1){
         width: 170px;
         height: 52px;
-        margin: 31px 53px 21px 12px ;
+        margin: 1.9375rem 3.3125rem 1.3125rem 0.75rem ;
         display: block;
     }
 
@@ -1550,18 +1550,18 @@ li{
         display: block;
         width: 170px;
         height: 52px;
-        margin: 31px 53px 21px 12px ;
+        margin: 1.9375rem 3.3125rem 1.3125rem 0.75rem ;
     }
     
     
     .new_task{
         min-width: 167px;
-        margin-left: 63px;
+        margin-left: 3.9375rem;
         align-items: center;
         background-color: var(--color-turquoise);
-        border-radius: 10px;
+        border-radius: 0.625rem;
         color: var(--color-white);
-        margin: 31px 0px 30px 0px;
+        margin: 1.9375rem 0rem 1.875rem 0rem;
         transition: background-color 1s;
     }
     
@@ -1572,48 +1572,48 @@ li{
     }
     
     .new_task > p:nth-child(1){
-        font-size: 50px;
-        line-height: 50px;
+        font-size: 3.125rem;
+        line-height: 3.125rem;
         margin: 0;
-        margin-left: 9px;
+        margin-left: 0.5625rem;
     }
     
     .new_task > p:nth-child(2){
-        font-size: 22px;
-        line-height: 50px;
+        font-size: 1.375rem;
+        line-height: 3.125rem;
         margin: 0;
-        margin-left: 7px;
+        margin-left: 0.4375rem;
     }
     
     .footer > input{
         width: 207px;
         font-family: 'Arial' , sans-serif;
-        border: 2px solid var(--color-turquoise);
-        padding: 5px 0px 5px 20px;
-        margin: 27px 0px 28px 35px;
-        font-size: 16px;
-        border-radius: 10px;
+        border: 0.125rem solid var(--color-turquoise);
+        padding: 0.3125rem 0rem 0.3125rem 1.25rem;
+        margin: 1.6875rem 0rem 1.75rem 2.1875rem;
+        font-size: 1rem;
+        border-radius: 0.625rem;
         outline: none;
         transition: border-color 0.3s ease;
-        line-height: 0px;
+        line-height: 0rem;
     }
     
     .footer > input:hover{
-        border: 2px solid var(--color-turquoise-hover);
+        border: 0.125rem solid var(--color-turquoise-hover);
         transition: border-color 0s ease;
     }
     
     .footer > input:focus{
-        border: 2px solid var(--color-turquoise);
+        border: 0.125rem solid var(--color-turquoise);
         transition: border-color 0s ease;
     }
     
     .darkButton{
         width: 16px;
-        border-radius: 11px;
+        border-radius: 0.6875rem;
         background-color: var(--color-darkbutton);
-        padding: 3px 5px 3px 25px;
-        margin: 35px 0px 35px 63px;
+        padding: 0.1875rem 0.3125rem 0.1875rem 1.5625rem;
+        margin: 2.1875rem 0rem 2.1875rem 3.9375rem;
         transition: padding 0.3s ease; 
     }
     
@@ -1625,7 +1625,7 @@ li{
     .darkButtonCircle{
         width: 16px;
         height: 16px;
-        border-radius: 10px;
+        border-radius: 0.625rem;
         background-color: var(--color-white);
     }
 
@@ -1635,34 +1635,34 @@ li{
         display: flex; 
         flex-direction: column;
         margin: 0;
-        margin-top: 69px;
+        margin-top: 4.3125rem;
         align-items: center;
     }
     
     .plannedContainer{
         width: 404px;
         min-height: 0px;
-        border-radius: 8px;
+        border-radius: 0.5rem;
     }
     
     .inProgressContainer{
         width: 404px;
         min-height: 0px;
-        margin-top: 21px;
-        margin-left: 0px;
+        margin-top: 1.3125rem;
+        margin-left: 0rem;
     }
     
     .completedContainer{
         width: 404px;
         min-height: 0px;
-        border-radius: 8px;
-        margin-top: 21px;
-        margin-left: 0px;
+        border-radius: 0.5rem;
+        margin-top: 1.3125rem;
+        margin-left: 0rem;
 
     }
     
     .completed > img{
-        margin-left: 120px;
+        margin-left: 7.5rem;
     }
 
     /* Task */ 
@@ -1686,7 +1686,7 @@ li{
     /* Modal */ 
     
     .modalContent {
-        padding-left: 23px;
+        padding-left: 1.4375rem;
         width: 381px;
     }
     
@@ -1696,30 +1696,30 @@ li{
     }
     
     .taskDescription > p:nth-child(1){
-        font-size: 24px;
+        font-size: 1.5rem;
         margin: 0;
-        margin-top: 33px;
+        margin-top: 2.0625rem;
     }
     
 
     .taskDescription > img:nth-child(2){
-        margin-top: 35px;
-        padding-left: 20px;
+        margin-top: 2.1875rem;
+        padding-left: 1.25rem;
     }
     
     .taskDescription > p:nth-child(3){
-        font-size: 50px;
+        font-size: 3.125rem;
         margin-left: auto;
-        margin-right: 17px;
+        margin-right: 1.0625rem;
         rotate: 45deg;
-        line-height: 0px;
-        margin-top: 32px;
+        line-height: 0rem;
+        margin-top: 2rem;
     }
     
 
     .modalContent > input:nth-child(2){
         width: 271px;
-        padding: 16px 40px 13px 23px;
+        padding: 1rem 2.5rem 0.8125rem 1.4375rem;
     }
     
     .textArea{
@@ -1728,7 +1728,7 @@ li{
     
     .modalContent > p:nth-child(5){
         width: 338px;
-        margin-top: 30px;
+        margin-top: 1.875rem;
     }
 
     
