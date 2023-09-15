@@ -1,5 +1,3 @@
-import { clicAndShow } from "./function_js/clicAndShow.js";
-
 const template = document.getElementById("mon-template");
 const clone = document.importNode(template.content, true);
 const filterTask = clone.querySelector('header > input');
@@ -612,9 +610,6 @@ document.addEventListener('keydown', (event) =>{
     }
 });
 
-
-
-document.addEventListener('click', clicAndShow); 
 
 //drag n drop
 
