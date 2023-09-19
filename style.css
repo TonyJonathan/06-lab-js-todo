@@ -1570,6 +1570,8 @@ li{
         cursor: pointer;
         transition: background-color 0s;
     }
+
+
     
     .new_task > p:nth-child(1){
         font-size: 3.125rem;
@@ -1584,8 +1586,18 @@ li{
         margin: 0;
         margin-left: 0.4375rem;
     }
+
+    .darkNewTask{
+        background-color: var(--color-dark-turquoise);
+    }
+
+    .darkNewTask:hover{
+        background-color: var(--color--dark-turquoise-hover);
+    }
+
+
     
-    .footer > input{
+    .footer > .filter{
         width: 207px;
         font-family: 'Arial' , sans-serif;
         border: 0.125rem solid var(--color-turquoise);
@@ -1607,6 +1619,17 @@ li{
         border: 0.125rem solid var(--color-turquoise);
         transition: border-color 0s ease;
     }
+
+    .footer> .darkFilterTask{
+        border: 0.125rem solid var(--color-dark-turquoise);
+        transition: border-color 0s ease;
+    }
+
+    .footer> .darkFilterTask:hover{
+        border: 0.125rem solid var(--color--dark-turquoise-hover);
+        transition: border-color 0s ease;
+    }
+
     
     .darkButton{
         width: 16px;

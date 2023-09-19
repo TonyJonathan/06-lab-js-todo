@@ -532,6 +532,7 @@ const clearElement = document.querySelectorAll('.clear');
 const modalContent = document.querySelector('.modalContent');
 let allTask = document.querySelectorAll('.task'); 
 
+
 function darkMode() {
     app.classList.toggle('darkApp'); 
     header.classList.toggle('darkHeader'); 
@@ -546,7 +547,7 @@ function darkMode() {
     inProgressCountText.classList.toggle('darkCount'); 
     completedCountText.classList.toggle('darkCount'); 
     inProgressContainer.classList.toggle('darkInProgressContainer');
-    completedContainer.classList.toggle('darkCompletedContainer'); 
+    completedContainer.classList.toggle('darkCompletedContainer');
 
     addTask.forEach(element =>{
         element.classList.toggle('darkAddTask'); 
@@ -573,6 +574,8 @@ function darkMode() {
     } else {
         localStorage.setItem('dark', 'actif'); 
     }
+
+
 }
 
 darkButton.addEventListener('click', darkMode); 
